@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './assets/styles/App.scss';
 
 class App extends Component {
   render() {
     return (
-      <div></div>
+      <div>
+          <h1>hello</h1>
+      </div>
     );
   }
 }
