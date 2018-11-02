@@ -1,3 +1,81 @@
 * {
     box-sizing: border-box;
 }
+
+body > #root{
+
+    header {
+        height: 50px;
+        background-color: #1b8bf9;
+
+        div {
+            display: inline-block;
+        }
+
+        .company-name {
+            color: white;
+            font-size: 32px;
+            margin-left: 10%;
+        }
+
+        .nav-user {
+            float: right;
+            margin-right: 5%;
+            color: white;
+            font-size: 18px;
+            padding: 5px;
+
+            img {
+                width: 40px;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .main-container {
+        padding-top: 50px;
+        background-color: #e5e5e5;
+        height: 1000px;
+
+        .profile-heading {
+            font-size: 24px;
+            font-weight: 500;
+            margin: 25px 0;
+        }
+
+        .cover {
+            background-image: url("../images/hero-img.jpg");
+            background-size: cover;
+            height: 325px;
+            position: relative;
+            box-shadow: 1px 1px 3px 1px #c5c5c5;
+
+            .menu { 
+                height: 70px;
+                background-color: white;
+                color: black;
+                position: absolute;
+                right: 0;
+                bottom: -70px;
+                box-shadow: 1px 1px 3px 1px #c5c5c5;
+
+                .menu-item {
+                    text-align: center;
+                    font-size: 18px;
+                    padding-top: 20px;
+                    height: 70px;
+                }
+
+                .link {
+                    color: #626461;
+                }
+            }
+            
+            .user-info-container {
+                position: relative;
+                padding-left: 0px;
+                top: 115px;
+            }
+        }
+    }
+}
