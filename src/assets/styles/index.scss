@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 body > #root{
 
     header {
@@ -35,7 +31,7 @@ body > #root{
     .main-container {
         padding-top: 50px;
         background-color: #e5e5e5;
-        height: 1000px;
+        height: 2000px;
 
         .profile-heading {
             font-size: 24px;
@@ -70,11 +66,157 @@ body > #root{
                     color: #626461;
                 }
             }
+        }
+
+        .row {
             
-            .user-info-container {
+            .profile-content {
+                margin: 0 0 0 15px;
+                padding: 0;
+                width: 22%;
+                height: 100%;
                 position: relative;
-                padding-left: 0px;
-                top: 115px;
+                top: -200px;
+
+                %share-profile {
+                    padding: 15px;
+                    border-radius: 5px;
+                    background-color: white;
+                    text-align: center;
+                    margin-bottom: 30px;
+                }
+
+                %profile-header {
+                    height: 64px;
+                    border-bottom: 1px solid #747474;
+                    color: #747474;
+                    font-size: 16px;
+                    font-weight: 500;
+                    padding: 22px 15px;
+                }
+                
+                .user-info {
+                    @extend %share-profile;
+                    box-shadow: 1px 1px 1px 1px #c5c5c5;
+
+                    h4 {
+                        padding-top: 15px;
+                        font-weight: 400;
+                    }
+
+                    p {
+                        font-weight: 400;
+                    }
+
+                    .user-stats {
+                        margin: 30px 0;
+                        width: 100%;
+
+                        .content {
+                            width: 33%;
+                            display: inline-block;
+
+                            .main-count {
+                                font-size: 22px;
+                                color: #2b93ff;
+                            }
+                        }
+                    }
+
+                    .add-friend-button {
+                        display: inline-block;
+                        text-decoration: none;
+                        color: #747474;
+                        padding: 10px;
+                        margin-bottom: 10px;
+                        border: 1px solid #747474;
+                        border-radius: 2px;
+                        transition: background-color 0.5s, color 0.5s;
+
+                        &:hover {
+                            color: white;
+                            background-color: #1b8bf9;
+                        }
+
+                        i {
+                            padding-right: 10px;
+                        }
+                    }
+                }
+
+                .following {
+                    @extend %share-profile;
+                    padding: 0px;
+                    text-align: left;
+                    box-shadow: 1px 1px 3px 1px #c5c5c5;
+
+                    .following-header {
+                        @extend %profile-header;
+                    }
+
+                    .following-content {
+                        padding: 15px;
+
+                        .following-info {
+                            margin: 10px 10px;
+
+                            .following-img {
+                                display: inline-block;
+                                width: 25%;
+                                border-radius: 50%;
+                                vertical-align: top;
+                            }
+
+                            .follower-info {
+                                display: inline-block;
+                                padding: 0 10px;
+                                width: 75%;
+                                
+                                .follower-name {
+                                    font-size: 16px;
+                                }
+
+                                .follower-work {
+                                    color: #747474;
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .friends-container {
+                    @extend %share-profile;
+                    padding: 0px;
+                    text-align: left;
+                    box-shadow: 1px 1px 3px 1px #c5c5c5;
+
+                    .following-header {
+                        @extend %profile-header;
+
+                        .show-friends-button {
+                            display: inline-block;
+                            float: right;
+                            font-size: 12px;
+                            text-decoration: none;
+                            background-color: #3198fe;
+                            color: white;
+                            padding: 2px 5px;
+                            border-radius: 5px;
+                        }
+                    }
+
+                    .friends {
+                        padding: 20px;
+                        img {
+                            display: inline-block;
+                            border-radius: 50%;
+                            width: 22%;
+                            margin: 5px 5px;
+                        }
+                    }
+
+                }
             }
         }
     }
