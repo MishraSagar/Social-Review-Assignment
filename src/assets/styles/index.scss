@@ -31,7 +31,6 @@ body > #root{
     .main-container {
         padding-top: 50px;
         background-color: #e5e5e5;
-        height: 2000px;
 
         .profile-heading {
             font-size: 24px;
@@ -42,6 +41,7 @@ body > #root{
         .cover {
             background-image: url("../images/hero-img.jpg");
             background-size: cover;
+            background-position: center;
             height: 325px;
             position: relative;
             box-shadow: 1px 1px 3px 1px #c5c5c5;
@@ -71,9 +71,7 @@ body > #root{
         .row {
             
             .profile-content {
-                margin: 0 0 0 15px;
-                padding: 0;
-                width: 22%;
+                // width: 22%;
                 height: 100%;
                 position: relative;
                 top: -200px;
@@ -98,6 +96,10 @@ body > #root{
                 .user-info {
                     @extend %share-profile;
                     box-shadow: 1px 1px 1px 1px #c5c5c5;
+
+                    img {
+                        width: 100%;
+                    }
 
                     h4 {
                         padding-top: 15px;
@@ -216,6 +218,22 @@ body > #root{
                         }
                     }
 
+                }
+            }
+
+            .about-container {
+                
+                .row {
+                    .about-content {
+                        background-color: white;
+                        height: 200px;
+                        margin-right: 15px;
+                        position: relative;
+                        top: 100px;
+                        padding: 15px;
+                        
+
+                    }
                 }
             }
         }
