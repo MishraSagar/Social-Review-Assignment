@@ -28,6 +28,15 @@ body > #root{
         }
     }
 
+    %profile-header {
+        height: 64px;
+        border-bottom: 1px solid #CCCCCC;
+        color: #747474;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 22px 15px;
+    }
+
     .main-container {
         padding-top: 50px;
         background-color: #e5e5e5;
@@ -82,15 +91,6 @@ body > #root{
                     background-color: white;
                     text-align: center;
                     margin-bottom: 30px;
-                }
-
-                %profile-header {
-                    height: 64px;
-                    border-bottom: 1px solid #CCCCCC;
-                    color: #747474;
-                    font-size: 16px;
-                    font-weight: 500;
-                    padding: 22px 15px;
                 }
                 
                 .user-info {
@@ -251,7 +251,6 @@ body > #root{
                                 margin-bottom: 40px;
                                 
                                 .post-header {
-                                    height: 90px;
                                     position: relative;
                                     padding: 20px;
                                     border-bottom: 1px solid #CCCCCC;
@@ -263,6 +262,7 @@ body > #root{
                                     
                                     .timestamp {
                                         color: grey;
+                                        margin-bottom: 0px;
                                     }
 
                                     img {
@@ -306,6 +306,46 @@ body > #root{
                                         }
                                     }
                                 }
+                            }
+                        }
+
+                        .about {
+
+                            .basic-info {
+                                background-color: white;
+                                border-radius: 5px;
+                                margin-bottom: 40px;
+                                box-shadow: 1px 1px 3px 1px #c5c5c5;
+                                .header {
+                                    @extend %profile-header;
+                                }
+
+                                .content {
+                                    padding: 20px;
+                                    font-size: 16px;
+                                    .row {
+                                        margin: 20px 5px;
+
+                                        .title {
+                                            font-weight: 500;    
+                                        }
+
+                                        .value {
+                                            color: grey;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .photos-container {
+                            background-color: white;
+                            padding: 20px;
+                            box-shadow: 1px 1px 3px 1px #c5c5c5;
+                            border-radius: 5px;
+                            .image {
+                                width: 24%;
+                                
                             }
                         }
                     }
