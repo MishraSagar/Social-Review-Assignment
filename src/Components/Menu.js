@@ -28,7 +28,7 @@ export default class Menu extends React.Component {
         let menuItems = this.list.map((item, index) => {
             return (
                 <Link to={'/'+item.toLowerCase()} key={item} className="link" onClick={(e) => this.handleClick(e, item)}>
-                        <div className="menu-item col-xs-3 col-sm-3 col-md-3" style={item == this.state.active ? activeStyle : {}}>
+                        <div className="menu-item col-xs-3" style={item == this.state.active ? activeStyle : {}}>
                             {item}
                         </div>
                 </Link>

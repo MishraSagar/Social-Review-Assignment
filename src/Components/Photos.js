@@ -8,7 +8,7 @@ export default function Photos(props){
     const pics = [pic1, pic2, pic3, pic4];
     const picElements = pics.map((pic) => {
         return (
-            <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div className="col-xs-3">
                 <img className="img-responsive images" src={pic} />
             </div>
         );

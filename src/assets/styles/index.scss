@@ -268,9 +268,9 @@ body > #root{
 
                                     img {
                                         display: block;
-                                        width: 4%;
+                                        width: 40px;
                                         position: absolute;
-                                        left: -54px;
+                                        left: -58px;
                                     }
                                 }
 
@@ -384,4 +384,23 @@ body > #root{
             }
         }
     }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    body > #root{
+        .main-container {
+
+                .row {
+                    .profile-content {
+                        top: 20px;
+                    }
+
+                    .about-container {
+                        top: 0px;
+                    }
+                }
+
+                
+            }
+        }
 }

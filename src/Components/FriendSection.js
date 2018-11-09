@@ -11,7 +11,7 @@ export default function FriendSection(props){
         console.log(friendInfo);
 
         return(
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div className="col-xs-12 col-lg-6">
                 <div className="friend-info">
                     
                     <img src={require("../assets/images/profile-girl.png")} class="friend-profile-pic" alt="Image" />
