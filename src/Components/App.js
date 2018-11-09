@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Switch} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 import Header from './Header';
 import avatar from '../assets/images/avatar-1.png'
 import Cover from './Cover';
 import Profile from './Profile';
-import userinfo from './users'
+import userinfo from './users';
+import Routes from '../Routes';
+
 
 
 class App extends Component {
@@ -29,7 +31,7 @@ class App extends Component {
                                 <div className="about-container col-xs-12 col-sm-8 col-md-9 col-lg-9">
                                     <div className="row">
                                         <div className="about-content">
-                                        
+                                            <Routes userID={0} />
                                         </div>
                                     </div>
                                 </div>
