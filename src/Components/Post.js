@@ -52,9 +52,9 @@ export default class Post extends React.Component {
                 </div>
 
                 <div className="button-container">
-                        <a className="button" href=""><i class="fa fa-heart" aria-hidden="true"></i>Like ({`${this.state.likes}`})</a>
-                        <a className="button" href=""><i class="fa fa-comment-o"></i>Comment ({`${this.state.comments}`})</a>
-                        <a className="button" href=""><i class="fa fa-share-alt"></i>Share ({`${this.state.share}`})</a>
+                        <a className="button" href=""><i className="fa fa-heart" aria-hidden="true"></i>Like ({`${this.state.likes}`})</a>
+                        <a className="button" href=""><i className="fa fa-comment-o"></i>Comment ({`${this.state.comments}`})</a>
+                        <a className="button" href=""><i className="fa fa-share-alt"></i>Share ({`${this.state.share}`})</a>
                     </div>   
             </div>
         );

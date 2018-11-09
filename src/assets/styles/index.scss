@@ -348,6 +348,36 @@ body > #root{
                                 
                             }
                         }
+
+                        .friends {
+                            .row {
+                                .friend-info {
+                                    margin-bottom: 10px;
+                                    background-color: white;
+                                    padding: 10px;
+                                    box-shadow: 1px 1px 3px 1px #c5c5c5;
+
+                                    .friend-profile-pic {
+                                        height: 100%;
+                                    }
+
+                                    .friend-content {
+                                        display: inline-block;
+                                        vertical-align: top;
+                                        margin: 30px 0; 
+                                        padding-left: 10px;
+
+                                        .friend-name {
+                                            font-size: 16px;
+                                        }
+
+                                        .work {
+                                            color: grey;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
