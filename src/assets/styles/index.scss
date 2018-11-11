@@ -228,7 +228,7 @@ body > #root{
 
                 .row {
                     .about-content {
-                        margin-right: 15px;
+                        // margin-right: 15px;
                         padding: 15px;
 
                         .post-container {
@@ -392,11 +392,29 @@ body > #root{
 
                 .row {
                     .profile-content {
-                        top: 20px;
+                        top: 100px;
+
+                        .following {
+                            .following-content {
+                                .following-info {
+                                    .following-img {
+                                        width: 10%;
+                                    }
+                                }
+                            }
+                        }
+
+                        .friends-container {
+                            .friends {
+                                img {
+                                    width: 15%;
+                                }
+                            }
+                        }
                     }
 
                     .about-container {
-                        top: 0px;
+                        top: 80px;
                     }
                 }
 

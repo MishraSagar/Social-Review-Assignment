@@ -46,7 +46,7 @@ export default class Post extends React.Component {
                     <p className="headline">
                     {`${this.state.authorName} posted on your timeline`}
                     </p>
-                    <p class="description">
+                    <p className="description">
                         {this.state.description}  
                     </p>
                 </div>
