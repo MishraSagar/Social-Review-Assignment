@@ -12,11 +12,12 @@ export default function User(props) {
 
             <div className="user-stats">
                 <div className="content">
-                    <p className="main-count">{props.following}</p>
+                    <p className="main-count">{props.followings}</p>
                     <p>Followings</p>
                 </div>
                 <div className="content">
-                    <p className="main-count">{(props.followers)/1000+"K"}</p>
+                    {/* <p className="main-count">{(props.followers)/1000+"K"}</p> */}
+                    <p className="main-count">{props.followers}</p>
                     <p>Followers</p>
                 </div>
                 <div className="content">

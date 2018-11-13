@@ -10,9 +10,9 @@
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
         "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
+        "following": 0,
+        "followers": 0,
+        "activities": 0,
         "whoToFollow": [4, 1, 2, 3],
         "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 

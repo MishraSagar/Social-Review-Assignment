@@ -245,6 +245,14 @@ body > #root{
 
                             }
 
+                            .btn-container {
+                                text-align: right;
+                                button {
+                                    padding: 5px 25px;
+                                    margin: 20px 0;
+                                }
+                            }
+
                             .post {
                                 background-color: white;
                                 border-radius: 5px;
@@ -374,6 +382,15 @@ body > #root{
 
                                         .work {
                                             color: grey;
+                                        }
+
+                                        .follow-btn {
+                                            text-decoration: none;
+                                            display: inline-block;
+                                            padding: 5px 15px;
+                                            border-radius: 5px;
+                                            background-color: #1b8bf9;
+                                            color: white;
                                         }
                                     }
                                 }

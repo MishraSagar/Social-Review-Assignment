@@ -19,11 +19,10 @@ export default class Post extends React.Component {
 
     calculateTime(millis){ //will be implemented later.
         let date = new Date();
-        console.log(date.getTime());
     }
 
     render() {
-        console.log(this.calculateTime(12312313));
+
         return (
             <div className="post">
                 <div className="post-header">
@@ -39,7 +38,7 @@ export default class Post extends React.Component {
                 </div>
 
                 <div className="post-img-container">
-                    <img src={require('../assets/images/post-1.jpg')} class="img-responsive" alt="post image"/>
+                    <img src={require('../assets/images/post-1.jpg')} className="img-responsive" alt="post image"/>
                 </div>
 
                 <div className="post-footer">

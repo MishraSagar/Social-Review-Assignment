@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router';
 
-export default class Menu extends React.Component {
+class Menu extends React.Component {
 
     constructor(props) {
         super(props);
@@ -26,9 +27,14 @@ export default class Menu extends React.Component {
         };
 
         let menuItems = this.list.map((item, index) => {
+            let isActive = false;
+
+            if (this.props.location.pathname == ('/'+item.toLowerCase())) {
+                isActive = true;
+            }
             return (
                 <Link to={'/'+item.toLowerCase()} key={item} className="link" onClick={(e) => this.handleClick(e, item)}>
-                        <div className="menu-item col-xs-3" style={item == this.state.active ? activeStyle : {}}>
+                        <div className="menu-item col-xs-3" style={isActive || (this.props.location.pathname == '/' && item == 'Timeline')? activeStyle : {}}>
                             {item}
                         </div>
                 </Link>
@@ -42,3 +48,5 @@ export default class Menu extends React.Component {
         );
     }
 }
+
+export default withRouter(Menu);
