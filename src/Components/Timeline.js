@@ -7,16 +7,23 @@ export default class Timeline extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: [...posts[0]],
             userID: 0,
             show: false
         }
 
-        // localStorage.setItem('posts-'+ this.state.userID, JSON.stringify(this.state.posts));
+        if (localStorage.hasOwnProperty('posts-'+this.state.userID) ){
+            console.log('if');
+            this.posts = JSON.parse(localStorage.getItem('posts-'+this.state.userID));
+        }
+        else {
+            console.log('else');
+            this.posts = [...posts[0]];
+            localStorage.setItem('posts-'+this.state.userID, JSON.stringify(this.posts));
+        }
     }
 
     render() {
-        let postArray = this.state.posts.map((postObj, index) => {
+        let postArray = JSON.parse(localStorage.getItem('posts-'+this.state.userID)).map((postObj, index) => {
             return (
                 <Post {...postObj} userID={this.state.userID} key={"post-"+index} />
             );

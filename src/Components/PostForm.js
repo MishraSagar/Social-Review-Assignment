@@ -90,7 +90,7 @@ export default class PostForm extends React.Component {
         else {
             let newPost = {
                 userID: this.state.userID,
-                authorID: this.state.userID,
+                authorID: 1,
                 authorName: "Sagar Mishra",
                 comments: 0,
                 description: this.state.description,
@@ -99,7 +99,10 @@ export default class PostForm extends React.Component {
                 title: this.state.title,
                 uploadTime: (new Date()).getTime()
             };
-            console.log(newPost);
+
+            let postsArr = JSON.parse(localStorage.getItem('posts-'+this.state.userID));
+            postsArr.unshift(newPost);
+            localStorage.setItem('posts-'+this.state.userID, JSON.stringify(postsArr));
             this.handleClose();
         }
     }
