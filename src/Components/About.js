@@ -8,6 +8,11 @@ export default class About extends React.Component {
         this.state = {
             userID: 0,
         }
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e){
+        e.preventDefault();
     }
 
     render() {
@@ -16,6 +21,7 @@ export default class About extends React.Component {
                 <div className="basic-info">
                     <div className="header">
                         BASIC INFORMATION
+                        <a href="" id="info-button" onClick={this.handleClick}><i className="fa fa-pencil-square-o"></i></a>
                     </div>
                     <div className="content">
                         <div className="row">
@@ -64,6 +70,7 @@ export default class About extends React.Component {
                 <div className="basic-info">
                     <div className="header">
                         WORK
+                        <a href="" id="work-button" onClick={this.handleClick}><i className="fa fa-pencil-square-o"></i></a>
                     </div>
                     <div className="content">
                         <div className="row">

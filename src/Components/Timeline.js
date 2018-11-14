@@ -2,13 +2,18 @@ import React from 'react';
 import posts from './posts';
 import Post from './Post';
 import PostForm from './PostForm';
-export default class Timeline extends React.Component {
+import { connect } from "react-redux";
+
+
+class Timeline extends React.Component {
     
     constructor(props) {
         super(props);
+        console.log("constructor called");
         this.state = {
             userID: 0,
-            show: false
+            show: false,
+            totalPosts: this.props.totalPosts
         }
 
         if (localStorage.hasOwnProperty('posts-'+this.state.userID) ){
@@ -22,8 +27,17 @@ export default class Timeline extends React.Component {
         }
     }
 
+    shouldComponentUpdate(nextProps){
+        return nextProps.totalPosts !== this.props.totalPosts;
+    }
+
+    componentWillUpdate() {
+        this.posts = JSON.parse(localStorage.getItem('posts-'+this.state.userID));
+    }
+
     render() {
-        let postArray = JSON.parse(localStorage.getItem('posts-'+this.state.userID)).map((postObj, index) => {
+        this.posts = JSON.parse(localStorage.getItem('posts-'+this.state.userID));
+        let postArray = this.posts.map((postObj, index) => {
             return (
                 <Post {...postObj} userID={this.state.userID} key={"post-"+index} />
             );
@@ -36,3 +50,12 @@ export default class Timeline extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    console.log(state.posts.totalPosts);
+    return {
+        totalPosts: state.posts.totalPosts
+    };
+}
+
+export default connect(mapStateToProps)(Timeline);

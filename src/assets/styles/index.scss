@@ -323,6 +323,14 @@ body > #root{
                         }
 
                         .about {
+                            %edit-info-button {
+                                display: block;
+                                float: right;
+                                padding: 5px 10px;
+                                background-color: #1b8bf9;
+                                color:white;
+                                border-radius: 5px;
+                            }
 
                             .basic-info {
                                 background-color: white;
@@ -331,6 +339,10 @@ body > #root{
                                 box-shadow: 1px 1px 3px 1px #c5c5c5;
                                 .header {
                                     @extend %profile-header;
+
+                                    a {
+                                        @extend %edit-info-button;
+                                    }
                                 }
 
                                 .content {

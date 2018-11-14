@@ -22,13 +22,9 @@ export default class Post extends React.Component {
         let date = new Date();
         let diffMilliSeconds = date.getTime() - this.state.uploadTime;
         let seconds = diffMilliSeconds / 1000;
-        console.log(seconds);
         let minutes = seconds / 60;
-        console.log(minutes);
         let hours = minutes / 60;
-        console.log(hours);
         let days = hours / 24;
-        console.log(days);
         
         if (days > 30) {
             return `Posted on ${date.toLocaleDateString()}`;

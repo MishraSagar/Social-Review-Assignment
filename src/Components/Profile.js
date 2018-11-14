@@ -17,7 +17,8 @@ class Profile extends React.Component {
                 work: this.props[this.props.userID].work,
                 following: this.props.following,
                 followers: this.props[this.props.userID].followers,
-                activities: this.props[this.props.userID].activities
+                activities: this.props[this.props.userID].activities,
+                image: this.props[this.props.userID].profileImage
             },
             whoToFollow: this.props[this.props.userID].whoToFollow,
             friends: this.props[this.props.userID].friends

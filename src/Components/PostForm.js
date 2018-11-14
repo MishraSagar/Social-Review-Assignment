@@ -1,7 +1,10 @@
 import React from 'react';
 import {Modal, FormGroup, FormControl, Button, ControlLabel, HelpBlock } from 'react-bootstrap';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { refreshWithNewPost } from '../actions';
 
-export default class PostForm extends React.Component {
+class PostForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -101,6 +104,8 @@ export default class PostForm extends React.Component {
             let postsArr = JSON.parse(localStorage.getItem('posts-'+this.state.userID));
             postsArr.unshift(newPost);
             localStorage.setItem('posts-'+this.state.userID, JSON.stringify(postsArr));
+            console.log("storage updated");
+            this.props.updateTotalPosts(this.props.totalPosts + 1);
             this.handleClose();
         }
     }
@@ -172,3 +177,15 @@ export default class PostForm extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        totalPosts: state.posts.totalPosts
+    }
+}
+    
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({updateTotalPosts: refreshWithNewPost}, dispatch);
+}
+    
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm);
