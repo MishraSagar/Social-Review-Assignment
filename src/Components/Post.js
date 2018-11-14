@@ -13,6 +13,7 @@ export default class Post extends React.Component {
             description: this.props.description,
             likes: this.props.likes,
             share: this.props.share,
+            title: this.props.title,
             uploadTime: this.props.time
         }
     }
@@ -44,6 +45,10 @@ export default class Post extends React.Component {
                 <div className="post-footer">
                     <p className="headline">
                     {`${this.state.authorName} posted on your timeline`}
+                    </p>
+
+                    <p className="title">
+                        {this.state.title}
                     </p>
                     <p className="description">
                         {this.state.description}  

@@ -13,6 +13,8 @@ export default class Timeline extends React.Component {
         }
         this.handleClose = this.handleClose.bind(this);
         this.handleShow = this.handleShow.bind(this);
+
+        // localStorage.setItem('posts-'+ this.state.userID, JSON.stringify(this.state.posts));
     }
     handleClose() {
         this.setState({ show: false }); 
