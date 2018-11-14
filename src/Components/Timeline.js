@@ -1,7 +1,7 @@
 import React from 'react';
 import posts from './posts';
 import Post from './Post';
-import {Button, Modal} from 'react-bootstrap';
+import PostForm from './PostForm';
 export default class Timeline extends React.Component {
     
     constructor(props) {
@@ -11,20 +11,8 @@ export default class Timeline extends React.Component {
             userID: 0,
             show: false
         }
-        this.handleClose = this.handleClose.bind(this);
-        this.handleShow = this.handleShow.bind(this);
 
         // localStorage.setItem('posts-'+ this.state.userID, JSON.stringify(this.state.posts));
-    }
-    handleClose() {
-        this.setState({ show: false }); 
-    }
-    
-    handleShow() {
-        this.setState({ 
-            show: true
-        });
-
     }
 
     render() {
@@ -35,20 +23,7 @@ export default class Timeline extends React.Component {
         });
         return (
             <div className="post-container">
-                <div className="btn-container">
-                    <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>Post</Button>
-                </div>
-                <Modal show={this.state.show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Create Post</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button onClick={this.handleClose}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
+                <PostForm userID={this.state.userID}/>
                 {postArray}
             </div>
         );
