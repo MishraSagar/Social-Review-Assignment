@@ -61,7 +61,7 @@ export default class PostForm extends React.Component {
     }
 
     getImageValidationState(){
-        if (this.state.imageUrl.match(/http:\/\/.+\.(gif|png|jpg|jpeg)$/) != null) {
+        if (this.state.imageUrl.match(/https:\/\/.+\.(gif|png|jpg|jpeg)$/) != null) {
             this.isValidUrl = true;
             return 'success';
         }
@@ -91,15 +91,13 @@ export default class PostForm extends React.Component {
             let newPost = {
                 userID: this.state.userID,
                 authorID: 1,
-                authorName: "Sagar Mishra",
-                comments: 0,
+                comment: 0,
                 description: this.state.description,
                 likes: 0,
                 share: 0,
                 title: this.state.title,
-                uploadTime: (new Date()).getTime()
+                time: (new Date()).getTime()
             };
-
             let postsArr = JSON.parse(localStorage.getItem('posts-'+this.state.userID));
             postsArr.unshift(newPost);
             localStorage.setItem('posts-'+this.state.userID, JSON.stringify(postsArr));
@@ -146,7 +144,7 @@ export default class PostForm extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             <FormControl.Feedback />
-                            <HelpBlock>Title should have 10 or more characters</HelpBlock>
+                            <HelpBlock>Image url should be valid</HelpBlock>
                             </FormGroup>
 
                             <FormGroup

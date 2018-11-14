@@ -20,6 +20,34 @@ export default class Post extends React.Component {
 
     calculateTime(millis){ //will be implemented later.
         let date = new Date();
+        let diffMilliSeconds = date.getTime() - this.state.uploadTime;
+        let seconds = diffMilliSeconds / 1000;
+        console.log(seconds);
+        let minutes = seconds / 60;
+        console.log(minutes);
+        let hours = minutes / 60;
+        console.log(hours);
+        let days = hours / 24;
+        console.log(days);
+        
+        if (days > 30) {
+            return `Posted on ${date.toLocaleDateString()}`;
+        }
+        else if (hours > 24) {
+            return `${Math.floor(days)} days ago`;
+        }
+        else if (minutes > 59) {
+            return `${Math.floor(hours)} hours ago`
+        }
+        else if (seconds > 59) {
+            return `${Math.floor(minutes)} minutes ago`
+        }   
+        else if (diffMilliSeconds > 1000) {
+            return `${Math.floor(seconds)} seconds ago`
+        }
+        else {
+            return "Just now";
+        }
     }
 
     render() {
@@ -33,7 +61,7 @@ export default class Post extends React.Component {
                         {`${this.state.authorName} posted on your timeline`}
                     </p>
                     <p className="timestamp">
-                     50 mintues ago
+                     {this.calculateTime(this.state.uploadTime)}
                     </p>
                     
                 </div>
