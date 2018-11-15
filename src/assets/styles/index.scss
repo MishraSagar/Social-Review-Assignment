@@ -326,10 +326,14 @@ body > #root{
                             %edit-info-button {
                                 display: block;
                                 float: right;
-                                padding: 5px 10px;
+                                padding: 10px;
                                 background-color: #1b8bf9;
                                 color:white;
                                 border-radius: 5px;
+
+                                &:hover {
+                                    background-color: #0979c5
+                                }
                             }
 
                             .basic-info {
@@ -340,7 +344,7 @@ body > #root{
                                 .header {
                                     @extend %profile-header;
 
-                                    a {
+                                    i {
                                         @extend %edit-info-button;
                                     }
                                 }
@@ -357,6 +361,10 @@ body > #root{
 
                                         .value {
                                             color: grey;
+
+                                            .form-group {
+                                                margin-bottom: 0;
+                                            }
                                         }
                                     }
                                 }

@@ -17,11 +17,11 @@ class Timeline extends React.Component {
         }
 
         if (localStorage.hasOwnProperty('posts-'+this.state.userID) ){
-            console.log('if');
+            // console.log('if');
             this.posts = JSON.parse(localStorage.getItem('posts-'+this.state.userID));
         }
         else {
-            console.log('else');
+            // console.log('else');
             this.posts = [...posts[0]];
             localStorage.setItem('posts-'+this.state.userID, JSON.stringify(this.posts));
         }

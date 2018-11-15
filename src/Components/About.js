@@ -1,5 +1,9 @@
 import React from 'react';
 import userinfo from './users';
+import BasicInfo from './BasicInfo';
+import BasicInfoForm from './BasicInfoForm';
+import Work from './Work';
+import WorkForm from './WorkForm';
 
 export default class About extends React.Component {
      
@@ -7,13 +11,39 @@ export default class About extends React.Component {
         super(props);
         this.state = {
             userID: 0,
+            isWorkEditClicked: false,
+            isInfoEditClicked: false
         }
         this.handleClick = this.handleClick.bind(this);
+        this.handleWorkCancelClick = this.handleWorkCancelClick.bind(this);
+        this.handleInfoCancelClick = this.handleInfoCancelClick.bind(this);
     }
 
     handleClick(e){
         e.preventDefault();
+        if (e.target.id == "info-button") {
+            this.setState({isInfoEditClicked : !this.state.isInfoEditClicked});
+            //console.log("isInfo",this.state.isInfoEditClicked);
+        }
+        else if (e.target.id == "work-button") {
+            this.setState({isWorkEditClicked : !this.state.isWorkEditClicked});
+            //console.log("isWork",this.state.isWorkEditClicked);
+        }
     }
+
+    handleWorkCancelClick() {
+        this.setState({
+            isWorkEditClicked: false
+        });
+    }
+
+    handleInfoCancelClick() {
+        this.setState({
+            isInfoEditClicked: false
+        });
+    }
+
+
 
     render() {
         return (
@@ -21,83 +51,17 @@ export default class About extends React.Component {
                 <div className="basic-info">
                     <div className="header">
                         BASIC INFORMATION
-                        <a href="" id="info-button" onClick={this.handleClick}><i className="fa fa-pencil-square-o"></i></a>
+                        <i id="info-button" onClick={this.handleClick} className="fa fa-pencil-square-o"></i>
                     </div>
-                    <div className="content">
-                        <div className="row">
-                            <div className="title col-xs-4">
-                                Full Name 
-                            </div>
-                            <div className="value col-xs-8">
-                                {userinfo[this.state.userID].userName}
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="title col-xs-4">
-                                Gender 
-                            </div>
-                            <div className="value col-xs-8">
-                                {userinfo[this.state.userID].gender}
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="title col-xs-4">
-                                Birthdate 
-                            </div>
-                            <div className="value col-xs-8">
-                                {userinfo[this.state.userID].birthdate}
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="title col-xs-4">
-                            Marital Status 
-                            </div>
-                            <div className="value col-xs-8">
-                                {userinfo[this.state.userID].maritalStatus}
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="title col-xs-4">
-                            location 
-                            </div>
-                            <div className="value col-xs-8">
-                                {userinfo[this.state.userID].location}
-                            </div>
-                        </div>
-                    </div>
+                    {this.state.isInfoEditClicked ? <BasicInfoForm userID={this.state.userID} cancel={this.handleInfoCancelClick}/> : <BasicInfo userID={this.state.userID}/>}
                 </div>
 
                 <div className="basic-info">
                     <div className="header">
                         WORK
-                        <a href="" id="work-button" onClick={this.handleClick}><i className="fa fa-pencil-square-o"></i></a>
+                        <i id="work-button" onClick={this.handleClick} className="fa fa-pencil-square-o"></i>
                     </div>
-                    <div className="content">
-                        <div className="row">
-                            <div className="title col-xs-4">
-                                Occupation 
-                            </div>
-                            <div className="value col-xs-8">
-                                {userinfo[this.state.userID].occupation}
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="title col-xs-4">
-                                Skills 
-                            </div>
-                            <div className="value col-xs-8">
-                                {userinfo[this.state.userID].skills}
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="title col-xs-4">
-                                jobs 
-                            </div>
-                            <div className="value col-xs-8">
-                                {userinfo[this.state.userID].organization}
-                            </div>
-                        </div>
-                    </div>
+                    {this.state.isWorkEditClicked ? <WorkForm userID={this.state.userID} cancel={this.handleWorkCancelClick}/> : <Work userID={this.state.userID}/>}
                 </div>
             </div>
         );

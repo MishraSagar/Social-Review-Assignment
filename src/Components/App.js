@@ -12,6 +12,7 @@ import Routes from '../Routes';
 class App extends Component {
 
     render() {
+        console.log({...userinfo[0]});
         return (
             <BrowserRouter>
                 <div>
