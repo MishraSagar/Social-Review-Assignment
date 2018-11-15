@@ -162,6 +162,7 @@ class PostForm extends React.Component {
                                     value={this.state.description}
                                     placeholder="Enter Description"
                                     onChange={this.handleChange}
+                                    componentClass="textarea"
                                 />
                             <FormControl.Feedback />
                             <HelpBlock>Description should have 20 or more characters</HelpBlock>

@@ -1,7 +1,10 @@
 import React from 'react';
-import {FormGroup, FormControl, Button } from 'react-bootstrap';
+import {FormGroup, FormControl, Button, Radio } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { refreshUserInfo } from '../actions';
+import { bindActionCreators } from "redux";
 
-export default class BasicInfoForm extends React.Component {
+class BasicInfoForm extends React.Component {
     constructor(props) {
         super(props);
         if (localStorage.hasOwnProperty('user-'+this.props.userID)) {
@@ -12,45 +15,30 @@ export default class BasicInfoForm extends React.Component {
                 gender: this.userinfo.gender,
                 birthdate: this.userinfo.birthdate,
                 maritalStatus: this.userinfo.maritalStatus,
-                location: this.userinfo.location
+                location: this.userinfo.location,
             }
         }
         else {
             alert("error");
         }
+
         this.handleChange = this.handleChange.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.submitUpdates = this.submitUpdates.bind(this);
     }
 
+    componentDidMount() {
+        this.props.refreshUserInfo(false);
+    }
+
     handleChange(e) {
+        // e.preventDefault();
         let target = e.target;
         let value = target.value;
-
-        if (target.id == "name") {
-            this.setState({
-                name: value
-            });
-        }
-        else if (target.id == "gender") {
-            this.setState({
-                gender: value
-            });
-        }
-        else if (target.id == "birthdate") {
-            this.setState({
-                birthdate: value
-            });
-        }
-        else if (target.id == "marital-status") {
-            this.setState({
-                maritalStatus: value
-            });
-        }
-        else if (target.id == "location") {
-            this.setState({
-                location: value
-            });
+        if (target.id) {
+            this.setState({[target.id]: value})
+        } else {
+            this.setState({[target.name]: e.target.value})
         }
     }
 
@@ -59,7 +47,28 @@ export default class BasicInfoForm extends React.Component {
     }
 
     submitUpdates() {
-
+        let updatedUser = {
+            userID: this.userinfo.userID,
+            profileImage: this.userinfo.profileImage,
+            userName: this.state.name,
+            work: this.userinfo.work,
+            following: this.userinfo.following,
+            followers: this.userinfo.followers,
+            activities: this.userinfo.activities,
+            image: this.userinfo.image,
+            whoToFollow: this.userinfo.whoToFollow,
+            friends: this.userinfo.friends,
+            occupation: this.userinfo.occupation,
+            gender: this.state.gender,
+            birthdate: this.state.birthdate,
+            maritalStatus: this.state.maritalStatus,
+            location: this.state.location,
+            skills: this.userinfo.skills,
+            organization: this.userinfo.organization
+        };
+        localStorage.setItem('user-'+this.props.userID, JSON.stringify(updatedUser));
+        this.props.refreshUserInfo(true);
+        this.props.cancel();
     }
 
     render() {
@@ -90,37 +99,25 @@ export default class BasicInfoForm extends React.Component {
                             Gender 
                         </div>
                         <div className="value col-xs-8">
-                            <FormGroup
-                                controlId="gender"
-                                // validationState={this.getTitleValidationState()}
-                                >
-                                    <FormControl
-                                        type="text"
-                                        value={this.state.gender}
-                                        placeholder=""
-                                        onChange={this.handleChange}
-                                    />
-                                <FormControl.Feedback />
+                            <FormGroup controlId="gender">
+                                <Radio name="gender" value="Male" inline checked={this.state.gender === 'Male'} onChange={this.handleChange} >
+                                    Male
+                                </Radio>{' '}
+                                <Radio name="gender" value="Female" inline checked={this.state.gender === 'Female'} onChange={this.handleChange} >
+                                    Female
+                                </Radio>{' '}
+                                <Radio name="gender" value="Other" inline checked={this.state.gender === 'Other'} onChange={this.handleChange} >
+                                    Other
+                                </Radio>
                             </FormGroup>
                         </div>
                     </div>
                     <div className="row">
                         <div className="title col-xs-4">
-                            Birthdate 
+                            Date of Birth 
                         </div>
                         <div className="value col-xs-8">
-                            <FormGroup
-                                controlId="birthdate"
-                                // validationState={this.getTitleValidationState()}
-                                >
-                                    <FormControl
-                                        type="text"
-                                        value={this.state.birthdate}
-                                        placeholder=""
-                                        onChange={this.handleChange}
-                                    />
-                                <FormControl.Feedback />
-                            </FormGroup>
+                            <input type="date" id="birthdate" value={this.state.birthdate} onChange={this.handleChange}/>
                         </div>
                     </div>
                     <div className="row">
@@ -128,17 +125,11 @@ export default class BasicInfoForm extends React.Component {
                         Marital Status 
                         </div>
                         <div className="value col-xs-8">
-                            <FormGroup
-                                controlId="marital-status"
-                                // validationState={this.getTitleValidationState()}
-                                >
-                                    <FormControl
-                                        type="text"
-                                        value={this.state.maritalStatus}
-                                        placeholder=""
-                                        onChange={this.handleChange}
-                                    />
-                                <FormControl.Feedback />
+                            <FormGroup controlId="maritalStatus">
+                                <FormControl componentClass="select" placeholder="select" onChange={this.handleChange} value={this.state.maritalStatus}>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                </FormControl>
                             </FormGroup>
                         </div>
                     </div>
@@ -169,3 +160,15 @@ export default class BasicInfoForm extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        isUserInfoEdited: state.updateUser.isUpdated
+    };
+}
+    
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({refreshUserInfo}, dispatch);
+}
+    
+export default connect(mapStateToProps, mapDispatchToProps)(BasicInfoForm);

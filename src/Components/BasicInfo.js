@@ -29,10 +29,10 @@ export default function BasicInfo(props) {
             </div>
             <div className="row">
                 <div className="title col-xs-4">
-                    Birthdate 
+                    Date of Birth 
                 </div>
                 <div className="value col-xs-8">
-                    {userinfo.birthdate}
+                    {(new Date(userinfo.birthdate)).toDateString()}
                 </div>
             </div>
             <div className="row">

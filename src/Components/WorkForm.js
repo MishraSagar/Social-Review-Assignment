@@ -1,7 +1,10 @@
 import React from 'react';
 import {FormGroup, FormControl, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { refreshUserInfo } from '../actions';
+import { bindActionCreators } from "redux";
 
-export default class WorkForm extends React.Component {
+class WorkForm extends React.Component {
     constructor(props) {
         super(props);
         if (localStorage.hasOwnProperty('user-'+this.props.userID)) {
@@ -47,9 +50,34 @@ export default class WorkForm extends React.Component {
     }
 
     submitUpdates () {
-
+        let updatedUser = {
+            userID: this.userinfo.userID,
+            profileImage: this.userinfo.profileImage,
+            userName: this.userinfo.userName,
+            work: this.userinfo.work,
+            following: this.userinfo.following,
+            followers: this.userinfo.followers,
+            activities: this.userinfo.activities,
+            image: this.userinfo.image,
+            whoToFollow: this.userinfo.whoToFollow,
+            friends: this.userinfo.friends,
+            occupation: this.state.occupation,
+            gender: this.userinfo.gender,
+            birthdate: this.userinfo.birthdate,
+            maritalStatus: this.userinfo.maritalStatus,
+            location: this.userinfo.location,
+            skills: this.state.skills,
+            organization: this.state.organization
+        };
+        localStorage.setItem('user-'+this.props.userID, JSON.stringify(updatedUser));
+        this.props.refreshUserInfo(true);
+        this.props.cancel();
     }
 
+    componentDidMount() {
+        this.props.refreshUserInfo(false);
+    }
+    
     render() {
         return (
             <div className="content">
@@ -119,3 +147,15 @@ export default class WorkForm extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        isUserInfoEdited: state.updateUser.isUpdated
+    };
+}
+    
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({refreshUserInfo}, dispatch);
+}
+    
+export default connect(mapStateToProps, mapDispatchToProps)(WorkForm);

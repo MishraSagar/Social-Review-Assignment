@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { updateFollowing, refreshWithNewPost } from '../actions';
+import { updateFollowing, refreshWithNewPost, refreshUserInfo } from '../actions';
 
 function updateProfile(state = {following: 0}, action) {
     switch (action.type) {
@@ -10,7 +10,7 @@ function updateProfile(state = {following: 0}, action) {
     return state;
 }
 
-function updatePosts(state = {totalPosts: 5}, action){
+function updatePosts(state = {totalPosts: 5}, action) {
     switch (action.type) {
         case 'UPDATE_POSTS': return Object.assign({}, state, {
             totalPosts: action.totalPosts
@@ -19,9 +19,19 @@ function updatePosts(state = {totalPosts: 5}, action){
     return state;
 }
 
+function updateUserInfo(state = {isUserUpdated: false}, action) {
+    switch (action.type) {
+        case 'REFRESH_USER_PROFILE': return Object.assign({}, state, {
+            isUpdated: action.isUserUpdated
+        });
+    }
+    return state;
+}
+
 const reducer = combineReducers({
     followings: updateProfile,
-    posts: updatePosts
+    posts: updatePosts,
+    updateUser: updateUserInfo
 });
 
 export default reducer;
