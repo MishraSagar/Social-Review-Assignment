@@ -9,8 +9,8 @@ import FriendSection from './Components/FriendSection';
 export default (props) => {
     return (
     <Switch>
-        <Route exact path="/" component={Timeline}/>
-        <Route path="/timeline" component={Timeline} />
+        <Route exact path="/" render={() => <Timeline userID={0}/>}/>
+        <Route path="/timeline" render={() => <Timeline userID={0} />} />
         <Route path="/about" component={About} />
         <Route path="/photos" component={Photos} />
         <Route path="/friends" render={() => <FriendSection userID={0} /> } />

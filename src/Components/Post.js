@@ -14,7 +14,8 @@ export default class Post extends React.Component {
             likes: this.props.likes,
             share: this.props.share,
             title: this.props.title,
-            uploadTime: this.props.time
+            uploadTime: this.props.time,
+            image: this.props.image
         }
     }
 
@@ -47,7 +48,6 @@ export default class Post extends React.Component {
     }
 
     render() {
-
         return (
             <div className="post">
                 <div className="post-header">
@@ -63,7 +63,7 @@ export default class Post extends React.Component {
                 </div>
 
                 <div className="post-img-container">
-                    <img src={require('../assets/images/post-1.jpg')} className="img-responsive" alt="post image"/>
+                    <img src={this.state.image} className="img-responsive" alt="post image"/>
                 </div>
 
                 <div className="post-footer">

@@ -3,16 +3,17 @@ import {Modal, FormGroup, FormControl, Button, ControlLabel, HelpBlock } from 'r
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { refreshWithNewPost } from '../actions';
-
+import { withRouter, Redirect } from 'react-router-dom';
 class PostForm extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         this.state = {
             title: '',
             imageUrl: '',
             description: '',
             show: false,
-            userID: this.props.userID
+            userID: this.props.userID,
+            shouldRefresh: false
         }
         this.isValidUrl = false;
         this.handleClose = this.handleClose.bind(this);
@@ -22,7 +23,13 @@ class PostForm extends React.Component {
     }
 
     handleClose() {
-        this.setState({ show: false }); 
+        this.setState({ 
+            show: false,
+            title: '',
+            description: '',
+            imageUrl: ''  
+        });
+        
     }
     
     handleShow() {
@@ -86,7 +93,9 @@ class PostForm extends React.Component {
         return 'error';
     }
 
-    submitPost() {
+    submitPost(e) {
+        console.log("this.submitPost", e);
+        e.preventDefault();
         if (this.state.description.length < 20 || this.state.title.length < 10 || !this.isValidUrl) {
             alert("Please input valid details");
         }
@@ -99,18 +108,26 @@ class PostForm extends React.Component {
                 likes: 0,
                 share: 0,
                 title: this.state.title,
-                time: (new Date()).getTime()
+                time: (new Date()).getTime(),
+                image: this.state.imageUrl
             };
             let postsArr = JSON.parse(localStorage.getItem('posts-'+this.state.userID));
             postsArr.unshift(newPost);
             localStorage.setItem('posts-'+this.state.userID, JSON.stringify(postsArr));
-            console.log("storage updated");
-            this.props.updateTotalPosts(this.props.totalPosts + 1);
             this.handleClose();
+            console.log(this.props);
+            this.props.history.push("/timeline");
+            this.props.updatePosts(true);
+            // this.setState({shouldRefresh: true});
         }
     }
 
     render() {
+        // if (this.state.shouldRefresh == true) {
+        //     return (
+        //         <Redirect 
+        //     );
+        // }
         return (
             <div className="post-form">
                 <div className="btn-container">
@@ -121,7 +138,7 @@ class PostForm extends React.Component {
                         <Modal.Title>Create Post</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <form>
+                        <form id="my-form" onSubmit={this.submitPost}>
                             <FormGroup
                             controlId="title"
                             validationState={this.getTitleValidationState()}
@@ -170,7 +187,7 @@ class PostForm extends React.Component {
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={this.submitPost} bsStyle="success">Post</Button>
+                        <Button type="submit" bsStyle="success" form="my-form">Post</Button>
                         <Button onClick={this.handleClose} bsStyle="danger">Close</Button>
                     </Modal.Footer>
                 </Modal>
@@ -181,12 +198,12 @@ class PostForm extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        totalPosts: state.posts.totalPosts
+        isNewPostAvailable: state.posts.isNewPostAvailable
     }
 }
     
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({updateTotalPosts: refreshWithNewPost}, dispatch);
+    return bindActionCreators({updatePosts: refreshWithNewPost}, dispatch);
 }
     
-export default connect(mapStateToProps, mapDispatchToProps)(PostForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostForm));

@@ -10,16 +10,16 @@ function updateProfile(state = {following: 0}, action) {
     return state;
 }
 
-function updatePosts(state = {totalPosts: 5}, action) {
+function updatePosts(state = {isNewPostAvailable: false}, action) {
     switch (action.type) {
         case 'UPDATE_POSTS': return Object.assign({}, state, {
-            totalPosts: action.totalPosts
+            isNewPostAvailable: action.isNewPostAvailable
         });
     }
     return state;
 }
 
-function updateUserInfo(state = {isUserUpdated: false}, action) {
+function updateUserInfo(state = {isUpdated: false}, action) {
     switch (action.type) {
         case 'REFRESH_USER_PROFILE': return Object.assign({}, state, {
             isUpdated: action.isUserUpdated

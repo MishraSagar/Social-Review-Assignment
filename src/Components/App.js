@@ -6,6 +6,7 @@ import Cover from './Cover';
 import Profile from './Profile';
 import userinfo from './users';
 import Routes from '../Routes';
+import Login from './Login';
 
 
 
@@ -39,6 +40,7 @@ class App extends Component {
                             </div>
                         </div>
                     </div>
+                    {/* <Login /> */}
                 </div>
             </BrowserRouter>
         );
