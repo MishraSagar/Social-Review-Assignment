@@ -27,16 +27,16 @@ class App extends Component {
                         <div className="main-content">
                             <div className="row">
                                 <div className="profile-content col-xs-12 col-sm-4 col-md-3">
-                                    <Profile {...userinfo} userID={0}/>
+                                    <Profile {...userinfo} userID={"sample1@gmail.com"}/>
                                 </div>
 
-                                <div className="about-container col-xs-12 col-sm-8 col-md-9">
+                                {/* <div className="about-container col-xs-12 col-sm-8 col-md-9">
                                     <div className="row">
                                         <div className="about-content">
                                             <Routes userID={0} />
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

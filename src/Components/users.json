@@ -1,5 +1,5 @@
-[
-    {
+{
+    "sample1@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -9,33 +9,19 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "src/assets/images/profile.jpg",
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
         "following": 0,
+        "password" : "12345",
         "followers": 0,
         "activities": 0,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",
+            "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",
+            "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",
+            "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
-        "userName": "Sagar Mishra",
-        "work": "Software Engineer",
-        "gender": "Male",
-        "birthdate": "2013-01-08",
-        "maritalStatus": "Single",
-        "location": "New York, USA",
-        "occupation": "Developer",
-        "skills": "C#, javascript, Angular",
-        "organization": "phoenixcoded",
-        "profileImage": "src/assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-    },
-    {
+    "sample2@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -45,15 +31,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample3@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -63,15 +50,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample4@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -81,15 +69,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample5@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -99,15 +88,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample6@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -117,15 +107,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample7@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -135,15 +126,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample8@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -153,15 +145,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample9@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -171,15 +164,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample10@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -189,15 +183,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample11@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -207,15 +202,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample12@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -225,15 +221,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample13@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -243,15 +240,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample14@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -261,15 +259,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample15@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -279,15 +278,16 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     },
-    {
+    "sample16@gmail.com" : {
         "userName": "Josephin villa",
         "work": "Software Engineer",
         "gender": "Female",
@@ -297,175 +297,14 @@
         "occupation": "Developer",
         "skills": "C#, javascript, Angular",
         "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-    },
-    {
-        "userName": "Josephin villa",
-        "work": "Software Engineer",
-        "gender": "Female",
-        "birthdate": "2013-01-08",
-        "maritalStatus": "Single",
-        "location": "New York, USA",
-        "occupation": "Developer",
-        "skills": "C#, javascript, Angular",
-        "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-    },
-    {
-        "userName": "Josephin villa",
-        "work": "Software Engineer",
-        "gender": "Female",
-        "birthdate": "2013-01-08",
-        "maritalStatus": "Single",
-        "location": "New York, USA",
-        "occupation": "Developer",
-        "skills": "C#, javascript, Angular",
-        "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-    },
-    {
-        "userName": "Josephin villa",
-        "work": "Software Engineer",
-        "gender": "Female",
-        "birthdate": "2013-01-08",
-        "maritalStatus": "Single",
-        "location": "New York, USA",
-        "occupation": "Developer",
-        "skills": "C#, javascript, Angular",
-        "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-    },
-    {
-        "userName": "Josephin villa",
-        "work": "Software Engineer",
-        "gender": "Female",
-        "birthdate": "2013-01-08",
-        "maritalStatus": "Single",
-        "location": "New York, USA",
-        "occupation": "Developer",
-        "skills": "C#, javascript, Angular",
-        "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-    },
-    {
-        "userName": "Josephin villa",
-        "work": "Software Engineer",
-        "gender": "Female",
-        "birthdate": "2013-01-08",
-        "maritalStatus": "Single",
-        "location": "New York, USA",
-        "occupation": "Developer",
-        "skills": "C#, javascript, Angular",
-        "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-    },
-    {
-        "userName": "Josephin villa",
-        "work": "Software Engineer",
-        "gender": "Female",
-        "birthdate": "2013-01-08",
-        "maritalStatus": "Single",
-        "location": "New York, USA",
-        "occupation": "Developer",
-        "skills": "C#, javascript, Angular",
-        "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-    },
-    {
-        "userName": "Josephin villa",
-        "work": "Software Engineer",
-        "gender": "Female",
-        "birthdate": "2013-01-08",
-        "maritalStatus": "Single",
-        "location": "New York, USA",
-        "occupation": "Developer",
-        "skills": "C#, javascript, Angular",
-        "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-    },
-    {
-        "userName": "Josephin villa",
-        "work": "Software Engineer",
-        "gender": "Female",
-        "birthdate": "2013-01-08",
-        "maritalStatus": "Single",
-        "location": "New York, USA",
-        "occupation": "Developer",
-        "skills": "C#, javascript, Angular",
-        "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-    },
-    {
-        "userName": "Josephin villa",
-        "work": "Software Engineer",
-        "gender": "Female",
-        "birthdate": "2013-01-08",
-        "maritalStatus": "Single",
-        "location": "New York, USA",
-        "occupation": "Developer",
-        "skills": "C#, javascript, Angular",
-        "organization": "phoenixcoded",
-        "profileImage": "../assets/images/profile.jpg",
-        "following": 485,
-        "followers": 2000,
-        "activities": 90,
-        "whoToFollow": [4, 1, 2, 3],
-        "friends": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        "profileImage": "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+        "following": 0,
+        "password" : "12345",
+        "followers": 0,
+        "activities": 0,
+        "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com"],
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com","sample5@gmail.com",             "sample6@gmail.com","sample7@gmail.com","sample8@gmail.com","sample9@gmail.com",             "sample10@gmail.com","sample13@gmail.com","sample14@gmail.com","sample15@gmail.com",             "sample12@gmail.com","sample11@gmail.com","sample16@gmail.com"]
 
     }
-    
-]
+
+}

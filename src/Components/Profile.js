@@ -10,10 +10,10 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         console.log("cons");
-        if (localStorage.hasOwnProperty('user-'+this.props.userID)) {
+        if (localStorage.hasOwnProperty(this.props.userID)) {
             console.log("profile if");
             this.state = {
-                userinfo: JSON.parse(localStorage.getItem('user-'+this.props.userID))
+                userinfo: JSON.parse(localStorage.getItem(this.props.userID))
             }
         }
         else {
@@ -39,14 +39,14 @@ class Profile extends React.Component {
                     organization: this.props[this.props.userID].organization
                 }
             }
-            localStorage.setItem('user-'+this.props.userID, JSON.stringify(this.state.userinfo));
+            localStorage.setItem(this.props.userID, JSON.stringify(this.state.userinfo));
         }
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.isUserInfoEdited == true) {
             return ({
-                userinfo: JSON.parse(localStorage.getItem('user-'+nextProps.userID))
+                userinfo: JSON.parse(localStorage.getItem(nextProps.userID))
             });
         }
         else {

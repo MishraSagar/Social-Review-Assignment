@@ -5,7 +5,7 @@ export default function User(props) {
     return (
         <div className="user-info">
             
-            <img src={require("../assets/images/profile.jpg")} className="img-responsive" alt="Image" />
+            <img src={props.image} className="img-responsive" alt="Image" />
 
             <h4>{props.userName}</h4>
             <p>{props.work}</p>
