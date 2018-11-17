@@ -16,7 +16,6 @@ class PostForm extends React.Component {
             userID: this.props.userID,
             shouldRefresh: false
         }
-        this.authorinfo = userinfo[this.props.authorID];
         this.isValidUrl = false;
         this.handleClose = this.handleClose.bind(this);
         this.handleShow = this.handleShow.bind(this);
@@ -104,8 +103,8 @@ class PostForm extends React.Component {
         else {
             let newPost = {
                 userID: this.state.userID,
-                authorName: this.authorinfo.userName,
-                authorID: 1,
+                authorName: this.author,
+                authorID: this.props.authorID,
                 comment: 0,
                 description: this.state.description,
                 likes: 0,

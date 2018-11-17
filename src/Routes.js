@@ -7,7 +7,7 @@ import Photos from './Components/Photos';
 import FriendSection from './Components/FriendSection';
 
 export default (props) => {
-    let userID= JSON.parse(localStorage.getItem("email"))
+    let userID= JSON.parse(localStorage.getItem("email"));
     return (
     <Switch>
         <Route exact path="/" render={() => <Timeline userID={userID}/>}/>

@@ -16,9 +16,12 @@ class Timeline extends React.Component {
         console.log("constructor called");
         if (localStorage.hasOwnProperty('posts-'+this.props.userID)){
             this.posts = JSON.parse(localStorage.getItem('posts-'+this.props.userID));
+            console.log("if if");
         }
         else {
             this.posts = posts[this.props.userID];
+            console.log(this.posts);
+            debugger;
             localStorage.setItem('posts-'+this.props.userID, JSON.stringify(this.posts));
         }
         this.state = {
@@ -28,10 +31,10 @@ class Timeline extends React.Component {
         }
     }
 
-    componentWillUpdate() {
-        this.posts = JSON.parse(localStorage.getItem('posts-'+ this.props.userID));
-        console.log("component will update", this.posts);
-    }
+    // componentWillUpdate() {
+    //     this.posts = JSON.parse(localStorage.getItem('posts-'+ this.props.userID));
+    //     console.log("component will update", this.posts);
+    // }
 
     // static getDerivedStateFromProps(nextProps, prevState) {
     //     if (nextProps.isNewPostAvailable == true) {
@@ -45,11 +48,11 @@ class Timeline extends React.Component {
     //     }
     // }
 
-    componentDidUpdate() {
-        console.log("component did update", this.posts);
-        this.posts = JSON.parse(localStorage.getItem('posts-'+ this.props.userID));
-        // this.props.updatePosts(false);
-    }
+    // componentDidUpdate() {
+    //     console.log("component did update", this.posts);
+    //     this.posts = JSON.parse(localStorage.getItem('posts-'+ this.props.userID));
+    //     // this.props.updatePosts(false);
+    // }
 
     render() {
         // if (this.props.isNewPostAvailable == true){
@@ -63,7 +66,7 @@ class Timeline extends React.Component {
         });
         return (
             <div className="post-container">
-                <PostForm userID={this.state.userID}/>
+                <PostForm userID={this.state.userID} authorID={"sample2@gmail.com"}/>
                 {postArray}
             </div>
         );
