@@ -1,4 +1,5 @@
 import React from 'react';
+import userinfo from './users';
 import {Modal, FormGroup, FormControl, Button, ControlLabel, HelpBlock } from 'react-bootstrap';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -15,6 +16,7 @@ class PostForm extends React.Component {
             userID: this.props.userID,
             shouldRefresh: false
         }
+        this.authorinfo = userinfo[this.props.authorID];
         this.isValidUrl = false;
         this.handleClose = this.handleClose.bind(this);
         this.handleShow = this.handleShow.bind(this);
@@ -102,6 +104,7 @@ class PostForm extends React.Component {
         else {
             let newPost = {
                 userID: this.state.userID,
+                authorName: this.authorinfo.userName,
                 authorID: 1,
                 comment: 0,
                 description: this.state.description,

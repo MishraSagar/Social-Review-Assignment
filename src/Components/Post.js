@@ -5,10 +5,12 @@ export default class Post extends React.Component {
 
     constructor(props) {
         super(props);
+        this.authorinfo = userinfo[this.props.authorID];
+        console.log(this.authorinfo);
         this.state = {
             userID: this.props.userID,
             authorID: this.props.authorID,
-            authorName: userinfo[this.props.authorID].userName,
+            authorName: this.authorinfo.userName,
             comments: this.props.comment,
             description: this.props.description,
             likes: this.props.likes,

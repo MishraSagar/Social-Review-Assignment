@@ -14,15 +14,15 @@ class Timeline extends React.Component {
         console.log("timeline");
         super(props);
         console.log("constructor called");
-        if (localStorage.hasOwnProperty('posts-'+0)){
-            this.posts = JSON.parse(localStorage.getItem('posts-'+0));
+        if (localStorage.hasOwnProperty('posts-'+this.props.userID)){
+            this.posts = JSON.parse(localStorage.getItem('posts-'+this.props.userID));
         }
         else {
-            this.posts = [...posts[0]];
+            this.posts = posts[this.props.userID];
             localStorage.setItem('posts-'+this.props.userID, JSON.stringify(this.posts));
         }
         this.state = {
-            userID: 0,
+            userID: this.props.userID,
             show: false,
             posts: this.posts
         }
