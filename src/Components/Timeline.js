@@ -21,7 +21,6 @@ class Timeline extends React.Component {
         else {
             this.posts = posts[this.props.userID];
             console.log(this.posts);
-            debugger;
             localStorage.setItem('posts-'+this.props.userID, JSON.stringify(this.posts));
         }
         this.state = {

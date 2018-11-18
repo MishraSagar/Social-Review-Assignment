@@ -18,6 +18,7 @@ class App extends Component {
             isUserLoggedIn : true
         }
         this.userID = null;
+        this.userLogin = this.userLogin.bind(this);
     }
 
     componentWillMount() {
@@ -36,10 +37,22 @@ class App extends Component {
         }
     }
 
+    componentWillUpdate() {
+        if (this.state.isUserLoggedIn == true) {
+            if (localStorage.hasOwnProperty("email")) {
+                this.userID = JSON.parse(localStorage.getItem("email"));
+            }
+        }
+    }
+
+    userLogin() {
+        this.setState({isUserLoggedIn: true});
+    }
+
     render() {
         return (
             <BrowserRouter>
-                <div>
+                {this.state.isUserLoggedIn ? (<div>
                     <Header userName="John Doe" userImage={avatar}/>
                     <div className="container-fluid main-container">
                         <div className="profile-heading">
@@ -63,8 +76,7 @@ class App extends Component {
                             </div>
                         </div>
                     </div>
-                    {/* <Login /> */}
-                </div>
+                </div>) : <Login userLogin={this.userLogin}/> }
             </BrowserRouter>
         );
     }
