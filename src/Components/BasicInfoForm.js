@@ -7,8 +7,8 @@ import { bindActionCreators } from "redux";
 class BasicInfoForm extends React.Component {
     constructor(props) {
         super(props);
-        if (localStorage.hasOwnProperty('user-'+this.props.userID)) {
-            this.userinfo = JSON.parse(localStorage.getItem('user-'+this.props.userID));
+        if (localStorage.hasOwnProperty(this.props.userID)) {
+            this.userinfo = JSON.parse(localStorage.getItem(this.props.userID));
 
             this.state = {
                 name: this.userinfo.userName,
@@ -66,7 +66,7 @@ class BasicInfoForm extends React.Component {
             skills: this.userinfo.skills,
             organization: this.userinfo.organization
         };
-        localStorage.setItem('user-'+this.props.userID, JSON.stringify(updatedUser));
+        localStorage.setItem(this.props.userID, JSON.stringify(updatedUser));
         this.props.refreshUserInfo(true);
         this.props.cancel();
     }

@@ -10,7 +10,7 @@ export default class About extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userID: 0,
+            userID: this.props.userID,
             isWorkEditClicked: false,
             isInfoEditClicked: false
         }

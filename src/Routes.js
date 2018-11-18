@@ -12,9 +12,9 @@ export default (props) => {
     <Switch>
         <Route exact path="/" render={() => <Timeline userID={userID}/>}/>
         <Route path="/timeline" render={() => <Timeline userID={userID}/>} />
-        <Route path="/about" component={About} />
-        <Route path="/photos" component={Photos} />
-        <Route path="/friends" render={() => <FriendSection userID /> } />
+        <Route path="/about" render={() => <About userID={userID} /> } />
+        <Route path="/photos" render={() => <Photos userID={userID} /> } />
+        <Route path="/friends" render={() => <FriendSection userID={userID} /> } />
     </Switch>
     );
 }

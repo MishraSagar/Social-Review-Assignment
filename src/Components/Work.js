@@ -3,8 +3,8 @@ import React from 'react';
 export default function Work(props) {
     let userinfo;
 
-    if (localStorage.hasOwnProperty('user-'+props.userID)) {
-        userinfo = JSON.parse(localStorage.getItem('user-'+props.userID));
+    if (localStorage.hasOwnProperty(props.userID)) {
+        userinfo = JSON.parse(localStorage.getItem(props.userID));
     }
     else {
         alert("error");

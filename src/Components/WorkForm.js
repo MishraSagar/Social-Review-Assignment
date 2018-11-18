@@ -7,8 +7,8 @@ import { bindActionCreators } from "redux";
 class WorkForm extends React.Component {
     constructor(props) {
         super(props);
-        if (localStorage.hasOwnProperty('user-'+this.props.userID)) {
-            this.userinfo = JSON.parse(localStorage.getItem('user-'+this.props.userID));
+        if (localStorage.hasOwnProperty(this.props.userID)) {
+            this.userinfo = JSON.parse(localStorage.getItem(this.props.userID));
 
             this.state = {
                 occupation: this.userinfo.occupation,
@@ -69,7 +69,7 @@ class WorkForm extends React.Component {
             skills: this.state.skills,
             organization: this.state.organization
         };
-        localStorage.setItem('user-'+this.props.userID, JSON.stringify(updatedUser));
+        localStorage.setItem(this.props.userID, JSON.stringify(updatedUser));
         this.props.refreshUserInfo(true);
         this.props.cancel();
     }
