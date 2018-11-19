@@ -57,7 +57,7 @@ export default class Login extends React.Component {
     render() {
         return (
             <div className="login-form-container container-fluid">
-                <div className="form-center">
+                <div className="form-center col-xs-10 col-sm-8 col-md-4">
                         <form>
                         <FormGroup
                         controlId="email"
