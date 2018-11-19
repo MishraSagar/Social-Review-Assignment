@@ -29,7 +29,7 @@ export default function Work(props) {
             </div>
             <div className="row">
                 <div className="title col-xs-4">
-                    jobs 
+                    Jobs 
                 </div>
                 <div className="value col-xs-8">
                     {userinfo.organization}

@@ -3,9 +3,6 @@ import posts from './posts';
 import Post from './Post';
 import PostForm from './PostForm';
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { refreshWithNewPost } from '../actions';
-import { withRouter, Redirect } from 'react-router-dom';
 
 
 class Timeline extends React.Component {

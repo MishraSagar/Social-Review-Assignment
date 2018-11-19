@@ -65,7 +65,7 @@ export default class Login extends React.Component {
             if ( this.users[this.state.email].password == this.state.password) {
                 localStorage.clear();
                 localStorage.setItem("email", JSON.stringify(this.state.email));
-                this.props.userLogin();
+                this.props.userLogin(this.state.email);
             }
             else {
                 alert("Please input valid email and password");

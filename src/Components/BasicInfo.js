@@ -45,7 +45,7 @@ export default function BasicInfo(props) {
             </div>
             <div className="row">
                 <div className="title col-xs-4">
-                location 
+                Location 
                 </div>
                 <div className="value col-xs-8">
                     {userinfo.location}

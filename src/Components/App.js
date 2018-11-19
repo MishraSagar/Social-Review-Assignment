@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter} from 'react-router-dom';
+import { Route, Redirect, Switch} from 'react-router-dom';
 import Header from './Header';
 import avatar from '../assets/images/avatar-1.png'
 import Cover from './Cover';
@@ -15,25 +15,23 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isUserLoggedIn : true
+            isUserLoggedIn : false
         }
         this.userID = null;
         this.userLogin = this.userLogin.bind(this);
     }
 
     componentWillMount() {
-        if (this.state.isUserLoggedIn == true) {
-            if (localStorage.hasOwnProperty("email")) {
-                this.userID = JSON.parse(localStorage.getItem("email"));
-                this.setState({
-                    isUserLoggedIn: true
-                });
-            }
-            else {
-                this.setState({
-                    isUserLoggedIn: false
-                });
-            }
+        if (localStorage.hasOwnProperty("email")) {
+            this.userID = JSON.parse(localStorage.getItem("email"));
+            this.setState({
+                isUserLoggedIn: true
+            });
+        }
+        else {
+            this.setState({
+                isUserLoggedIn: false
+            });
         }
     }
 
@@ -45,15 +43,22 @@ class App extends Component {
         }
     }
 
-    userLogin() {
-        this.setState({isUserLoggedIn: true});
+    userLogin(userEmail) {
+        console.log("userlogin called");
+        this.setState({
+            isUserLoggedIn: true
+        });
+        this.userID = userEmail;
     }
+
 
     render() {
         return (
-            <BrowserRouter>
-                {this.state.isUserLoggedIn ? (<div>
-                    <Header userName="John Doe" userImage={avatar}/>
+            <div>
+                <Switch>
+                    <Route path="/login" render={() => this.state.isUserLoggedIn ? <Redirect to="/"/> : <Login userLogin={this.userLogin}/>} />
+                    <Route path="/" render={() => this.state.isUserLoggedIn ? (<div>
+                    <Header userID={this.userID}/>
                     <div className="container-fluid main-container">
                         <div className="profile-heading">
                           Social Profile
@@ -69,15 +74,16 @@ class App extends Component {
                                 <div className="about-container col-xs-12 col-sm-8 col-md-9">
                                     <div className="row">
                                         <div className="about-content">
-                                            <Routes />
+                                            <Routes userId={this.userID} isUserLoggedIn={this.state.isUserLoggedIn}/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>) : <Login userLogin={this.userLogin}/> }
-            </BrowserRouter>
+                    </div>) : <Redirect from="/" to="/login" />} />
+                </Switch>
+            </div>
         );
     }
 }

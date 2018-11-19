@@ -135,7 +135,7 @@ class BasicInfoForm extends React.Component {
                     </div>
                     <div className="row">
                         <div className="title col-xs-4">
-                        location 
+                        Location 
                         </div>
                         <div className="value col-xs-8">
                             <FormGroup

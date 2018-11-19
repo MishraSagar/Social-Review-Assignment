@@ -43,7 +43,7 @@
     "sample3@gmail.com" : {
         "userName": "John Doe",
         "work": "Software Engineer",
-        "gender": "Female",
+        "gender": "Male",
         "birthdate": "2013-01-08",
         "maritalStatus": "Single",
         "location": "New York, USA",

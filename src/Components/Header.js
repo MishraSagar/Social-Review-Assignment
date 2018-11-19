@@ -1,4 +1,6 @@
 import React from 'react';
+import userinfo from './users';
+import {connect} from 'react-redux';
 
 class Header extends React.Component {
 
@@ -7,6 +9,7 @@ class Header extends React.Component {
     }
 
     render(){
+        let user = this.props.isUserInfoEdited ? JSON.parse(localStorage.getItem(this.props.userID)) : userinfo[this.props.userID];
         return (
             <header>
                 <div className="company-name">
@@ -14,13 +17,19 @@ class Header extends React.Component {
                 </div>
                 <div className="nav-user">
                     <div className="logo">
-                        <img src={this.props.userImage} alt="user image"/>
+                        <img src={user.profileImage} alt="user image"/>
                     </div>
-                    {this.props.userName}
+                    {user.userName}
                 </div>
             </header>
         );
     }
 }
 
-export default Header;
+function mapStateToProps(state) {
+    return {
+        isUserInfoEdited: state.updateUser.isUpdated
+    }
+}
+
+export default connect(mapStateToProps)(Header);
