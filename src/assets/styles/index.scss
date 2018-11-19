@@ -27,8 +27,13 @@ body > #root{
                 border-radius: 50%;
             }
 
-            button.btn {
-                padding: 2px 5px;
+            i.fa {
+                padding: 10px;
+                margin-left: 10px;
+
+                &:hover {
+                    color: #aaaaaa;
+                }
             }
         }
     }

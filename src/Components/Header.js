@@ -22,7 +22,7 @@ class Header extends React.Component {
                     </div>
                     {user.userName}
                     <span> </span>
-                    <Button onClick={this.props.logout} bsStyle="warning">Logout</Button>
+                    <i className="fa fa-sign-out" aria-hidden="true" onClick={this.props.logout}></i>
                 </div>
             </header>
         );
