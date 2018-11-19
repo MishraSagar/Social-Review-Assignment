@@ -1,5 +1,4 @@
 import React from 'react';
-import userinfo from './users';
 import BasicInfo from './BasicInfo';
 import BasicInfoForm from './BasicInfoForm';
 import Work from './Work';
@@ -23,11 +22,9 @@ export default class About extends React.Component {
         e.preventDefault();
         if (e.target.id == "info-button") {
             this.setState({isInfoEditClicked : !this.state.isInfoEditClicked});
-            //console.log("isInfo",this.state.isInfoEditClicked);
         }
         else if (e.target.id == "work-button") {
             this.setState({isWorkEditClicked : !this.state.isWorkEditClicked});
-            //console.log("isWork",this.state.isWorkEditClicked);
         }
     }
 
@@ -42,8 +39,6 @@ export default class About extends React.Component {
             isInfoEditClicked: false
         });
     }
-
-
 
     render() {
         return (

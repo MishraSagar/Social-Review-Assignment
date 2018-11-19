@@ -1,15 +1,15 @@
 import React from 'react';
 import {FormGroup, FormControl, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { refreshUserInfo } from '../actions';
 import { bindActionCreators } from "redux";
+import { refreshUserInfo } from '../actions';
 
 class WorkForm extends React.Component {
     constructor(props) {
         super(props);
+
         if (localStorage.hasOwnProperty(this.props.userID)) {
             this.userinfo = JSON.parse(localStorage.getItem(this.props.userID));
-
             this.state = {
                 occupation: this.userinfo.occupation,
                 skills: this.userinfo.skills,
@@ -19,6 +19,7 @@ class WorkForm extends React.Component {
         else {
             alert("error");
         }
+
         this.handleChange = this.handleChange.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.submitUpdates = this.submitUpdates.bind(this);
@@ -101,6 +102,7 @@ class WorkForm extends React.Component {
                             </FormGroup>
                         </div>
                     </div>
+
                     <div className="row">
                         <div className="title col-xs-4">
                             Skills 
@@ -120,6 +122,7 @@ class WorkForm extends React.Component {
                             </FormGroup>
                         </div>
                     </div>
+
                     <div className="row">
                         <div className="title col-xs-4">
                             Jobs 
@@ -139,6 +142,7 @@ class WorkForm extends React.Component {
                             </FormGroup>
                         </div>
                     </div>
+                    
                     <Button onClick={this.submitUpdates} bsStyle="success">Save</Button>
                     <span> </span>
                     <Button onClick={this.handleCancel} bsStyle="danger">Cancel</Button>

@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateFollowing } from "../actions";
 import { bindActionCreators } from "redux";
-
-
+import { updateFollowing } from "../actions";
 
 class FriendComponent extends React.Component {
 

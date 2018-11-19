@@ -1,7 +1,6 @@
 import React from 'react';
-import userinfo from './users';
-import {Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
+import userinfo from '../JSONs/users';
 
 class Header extends React.Component {
 

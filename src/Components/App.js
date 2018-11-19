@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch} from 'react-router-dom';
 import Header from './Header';
-import avatar from '../assets/images/avatar-1.png'
 import Cover from './Cover';
 import Profile from './Profile';
-import userinfo from './users';
 import Routes from '../Routes';
 import Login from './Login';
-
-
+import userinfo from '../JSONs/users';
 
 class App extends Component {
 
@@ -54,7 +51,9 @@ class App extends Component {
 
     logout() {
         localStorage.clear();
-        this.setState({isUserLoggedIn: false});
+        this.setState({
+            isUserLoggedIn: false
+        });
     }
 
 

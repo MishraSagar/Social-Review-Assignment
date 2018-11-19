@@ -1,6 +1,6 @@
 import React from 'react';
 import {FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
-import userinfo from './users';
+import userinfo from '../JSONs/users';
 
 export default class Login extends React.Component {
     constructor(props) {

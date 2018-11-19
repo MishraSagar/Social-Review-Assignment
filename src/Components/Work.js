@@ -9,6 +9,7 @@ export default function Work(props) {
     else {
         alert("error");
     }
+    
     return (
         <div className="content">
             <div className="row">

@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function Following(props) {
     let list = [];
+
     list = props.following.map((id) => {
         return (
-            <div className="following-info" key={id}>
-                
+            <div className="following-info" key={id}>               
                 <img src={require("../assets/images/avatar-1.png")} className="following-img" alt="Image" />
                 <div className="follower-info">
                     <div className="follower-name">{props.users[id].userName}</div>

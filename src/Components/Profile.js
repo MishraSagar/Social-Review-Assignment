@@ -1,23 +1,18 @@
 import React from 'react';
+import { connect } from "react-redux";
 import User from './User';
 import Following from './Following';
 import Friends from './Friends';
-import { connect } from "react-redux";
-
 
 class Profile extends React.Component {
-
     constructor(props) {
         super(props);
-        console.log("cons");
         if (localStorage.hasOwnProperty(this.props.userID)) {
-            console.log("profile if");
             this.state = {
                 userinfo: JSON.parse(localStorage.getItem(this.props.userID))
             }
         }
         else {
-            console.log("profile else");
             this.state = {
                 userinfo: {
                     userID: this.props.userID,
@@ -67,7 +62,6 @@ class Profile extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state.updateUser.isUpdated);
     return {
         following: state.followings.following,
         isUserInfoEdited: state.updateUser.isUpdated

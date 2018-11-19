@@ -9,6 +9,7 @@ export default function BasicInfo(props) {
     else {
         alert("error");
     }
+    
     return (
         <div className="content">
             <div className="row">
@@ -52,5 +53,5 @@ export default function BasicInfo(props) {
                 </div>
             </div>
         </div>
-        );
+    );
 }

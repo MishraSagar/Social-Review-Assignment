@@ -1,10 +1,11 @@
 import React from 'react';
-import userinfo from './users';
 import {Modal, FormGroup, FormControl, Button, ControlLabel, HelpBlock } from 'react-bootstrap';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { refreshWithNewPost } from '../actions';
 import { withRouter, Redirect } from 'react-router-dom';
+import userinfo from '../JSONs/users';
+import { refreshWithNewPost } from '../actions';
+
 class PostForm extends React.Component {
     constructor(props, context) {
         super(props, context);

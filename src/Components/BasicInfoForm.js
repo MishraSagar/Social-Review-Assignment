@@ -7,9 +7,9 @@ import { bindActionCreators } from "redux";
 class BasicInfoForm extends React.Component {
     constructor(props) {
         super(props);
+
         if (localStorage.hasOwnProperty(this.props.userID)) {
             this.userinfo = JSON.parse(localStorage.getItem(this.props.userID));
-
             this.state = {
                 name: this.userinfo.userName,
                 gender: this.userinfo.gender,
@@ -32,7 +32,6 @@ class BasicInfoForm extends React.Component {
     }
 
     handleChange(e) {
-        // e.preventDefault();
         let target = e.target;
         let value = target.value;
         if (target.id) {
@@ -94,6 +93,7 @@ class BasicInfoForm extends React.Component {
                             </FormGroup>
                         </div>
                     </div>
+
                     <div className="row">
                         <div className="title col-xs-4">
                             Gender 
@@ -112,6 +112,7 @@ class BasicInfoForm extends React.Component {
                             </FormGroup>
                         </div>
                     </div>
+
                     <div className="row">
                         <div className="title col-xs-4">
                             Date of Birth 
@@ -120,6 +121,7 @@ class BasicInfoForm extends React.Component {
                             <input type="date" id="birthdate" value={this.state.birthdate} onChange={this.handleChange}/>
                         </div>
                     </div>
+
                     <div className="row">
                         <div className="title col-xs-4">
                         Marital Status 
@@ -133,6 +135,7 @@ class BasicInfoForm extends React.Component {
                             </FormGroup>
                         </div>
                     </div>
+
                     <div className="row">
                         <div className="title col-xs-4">
                         Location 
@@ -152,6 +155,7 @@ class BasicInfoForm extends React.Component {
                             </FormGroup>
                         </div>
                     </div>
+                    
                     <Button onClick={this.submitUpdates} bsStyle="success">Save</Button>
                     <span> </span>
                     <Button onClick={this.handleCancel} bsStyle="danger">Cancel</Button>

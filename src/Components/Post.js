@@ -1,5 +1,5 @@
 import React from 'react';
-import userinfo from './users';
+import userinfo from '../JSONs/users';
 
 export default class Post extends React.Component {
 
@@ -53,16 +53,14 @@ export default class Post extends React.Component {
     render() {
         return (
             <div className="post">
-                <div className="post-header">
-                    
+                <div className="post-header">               
                     <img src={require("../assets/images/avatar-1.png")} className="img-responsive" alt="Image" />
                     <p className="headline">
                         {`${this.state.authorName} posted on your timeline`}
                     </p>
                     <p className="timestamp">
                      {this.calculateTime(this.state.uploadTime)}
-                    </p>
-                    
+                    </p>   
                 </div>
 
                 <div className="post-img-container">
@@ -73,7 +71,6 @@ export default class Post extends React.Component {
                     <p className="headline">
                     {`${this.state.authorName} posted on your timeline`}
                     </p>
-
                     <p className="title">
                         {this.state.title}
                     </p>
@@ -83,10 +80,10 @@ export default class Post extends React.Component {
                 </div>
 
                 <div className="button-container">
-                        <a className="button" href=""><i className="fa fa-heart" aria-hidden="true"></i>Like ({`${this.state.likes}`})</a>
-                        <a className="button" href=""><i className="fa fa-comment-o"></i>Comment ({`${this.state.comments}`})</a>
-                        <a className="button" href=""><i className="fa fa-share-alt"></i>Share ({`${this.state.share}`})</a>
-                    </div>   
+                    <a className="button" href=""><i className="fa fa-heart" aria-hidden="true"></i>Like ({`${this.state.likes}`})</a>
+                    <a className="button" href=""><i className="fa fa-comment-o"></i>Comment ({`${this.state.comments}`})</a>
+                    <a className="button" href=""><i className="fa fa-share-alt"></i>Share ({`${this.state.share}`})</a>
+                </div>   
             </div>
         );
     }

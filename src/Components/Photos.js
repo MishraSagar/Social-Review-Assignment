@@ -26,7 +26,7 @@ export default class Photos extends React.Component{
     generatePicElement() {
         let picElements = this.pics.map((pic, index) => {
             return (
-                <div className="photo col-xs-6 col-sm-3" key={"pic"+index} onClick={(e) => this.handleShow(e, index)}>
+                <div className="photo col-xs-6 col-sm-3" key={"pic" + index} onClick={(e) => this.handleShow(e, index)}>
                     <img className="img-responsive images" src={pic} />
                 </div>
             );
@@ -37,7 +37,7 @@ export default class Photos extends React.Component{
     generateCarouselItems() {
         let items = this.pics.map((pic, index) => {
             return (
-                <Carousel.Item key={"carousel-"+index}>
+                <Carousel.Item key={"carousel-" + index}>
                     <img width={900} height={500} alt="900x500" src={pic} />
                     <Carousel.Caption>
                         <h3>{`Photo-${index}`}</h3>
@@ -68,8 +68,6 @@ export default class Photos extends React.Component{
             direction: e.direction
         });
     }
-
-
 
     render() {
         return (
