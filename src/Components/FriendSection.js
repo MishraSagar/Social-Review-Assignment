@@ -10,7 +10,7 @@ export default function FriendSection(props){
         let friendInfo = userinfo[friendID];
 
         return(
-            <div className="col-xs-12 col-lg-6" key={"friend-"+friendID}>
+            <div className="col-xs-12 col-md-6 col-lg-6" key={"friend-"+friendID}>
                 <FriendComponent name={friendInfo.userName} work={friendInfo.work} organization={friendInfo.organization} />
                     {/* <img src={require("../assets/images/profile-girl.png")} class="friend-profile-pic" alt="Image" />
                     <div className="friend-content">

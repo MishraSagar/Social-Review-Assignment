@@ -1,5 +1,6 @@
 import React from 'react';
 import userinfo from './users';
+import {Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
 class Header extends React.Component {
@@ -8,7 +9,7 @@ class Header extends React.Component {
         super(props);
     }
 
-    render(){
+    render() {
         let user = this.props.isUserInfoEdited ? JSON.parse(localStorage.getItem(this.props.userID)) : userinfo[this.props.userID];
         return (
             <header>
@@ -20,6 +21,8 @@ class Header extends React.Component {
                         <img src={user.profileImage} alt="user image"/>
                     </div>
                     {user.userName}
+                    <span> </span>
+                    <Button onClick={this.props.logout} bsStyle="warning">Logout</Button>
                 </div>
             </header>
         );

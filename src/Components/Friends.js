@@ -13,15 +13,15 @@ export default class Friends extends React.Component{
     handleClick(e) {
         let remainFriends = this.state.friendCount - 8;
         e.preventDefault();
-            if (this.state.showAll) {
-                e.target.text = `show ${remainFriends} more`;
-                this.setState({showAll: false});
-            }
-            else {
-                e.target.text = 'show less';
-                this.setState({showAll: true});
-            }
+        if (this.state.showAll) {
+            e.target.text = `show ${remainFriends} more`;
+            this.setState({showAll: false});
         }
+        else {
+            e.target.text = 'show less';
+            this.setState({showAll: true});
+        }
+    }
 
     render() {
         let friends = [];

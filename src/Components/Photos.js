@@ -26,7 +26,7 @@ export default class Photos extends React.Component{
     generatePicElement() {
         let picElements = this.pics.map((pic, index) => {
             return (
-                <div className="col-xs-3" key={"pic"+index} onClick={(e) => this.handleShow(e, index)}>
+                <div className="photo col-xs-6 col-sm-3" key={"pic"+index} onClick={(e) => this.handleShow(e, index)}>
                     <img className="img-responsive images" src={pic} />
                 </div>
             );

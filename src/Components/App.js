@@ -19,6 +19,7 @@ class App extends Component {
         }
         this.userID = null;
         this.userLogin = this.userLogin.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
     componentWillMount() {
@@ -51,6 +52,11 @@ class App extends Component {
         this.userID = userEmail;
     }
 
+    logout() {
+        localStorage.clear();
+        this.setState({isUserLoggedIn: false});
+    }
+
 
     render() {
         return (
@@ -58,7 +64,7 @@ class App extends Component {
                 <Switch>
                     <Route path="/login" render={() => this.state.isUserLoggedIn ? <Redirect to="/"/> : <Login userLogin={this.userLogin}/>} />
                     <Route path="/" render={() => this.state.isUserLoggedIn ? (<div>
-                    <Header userID={this.userID}/>
+                    <Header userID={this.userID} logout={this.logout}/>
                     <div className="container-fluid main-container">
                         <div className="profile-heading">
                           Social Profile

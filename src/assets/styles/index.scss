@@ -26,6 +26,10 @@ body > #root{
                 margin-right: 5px;
                 border-radius: 50%;
             }
+
+            button.btn {
+                padding: 2px 5px;
+            }
         }
     }
 
@@ -53,6 +57,8 @@ body > #root{
             background-image: url("../images/hero-img.jpg");
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+            background-origin: border-box;
             height: 325px;
             position: relative;
             box-shadow: 1px 1px 3px 1px #c5c5c5;
@@ -398,8 +404,9 @@ body > #root{
                                     .friend-content {
                                         display: inline-block;
                                         vertical-align: top;
-                                        margin: 30px 0; 
+                                        margin: 15px 0; 
                                         padding-left: 10px;
+                                        font-size: 12px;
 
                                         .friend-name {
                                             font-size: 16px;
@@ -447,39 +454,120 @@ body > #root{
     }
 }
 
-@media only screen and (min-width: 480px) and (max-width: 767px){
+@media only screen and (min-width: 320px) and (max-width: 767px){
     body > #root{
+
+        header {
+            height: 40px;
+    
+            .company-name {
+                font-size: 24px;
+                margin-left: 5%;
+            }
+    
+            .nav-user {
+                margin-right: 2%;
+                font-size: 16px;
+    
+                img {
+                    width: 30px;
+                    margin-right: 5px;
+                    border-radius: 50%;
+                }
+            }
+        }
+
         .main-container {
+            .cover {
+                height: 150px;
+                .menu {
+                    height: 50px;
+                    bottom: -50px;
+                    .menu-item {
+                        font-size: 14px;
+                        padding-top: 15px;
+                        height: 50px;
+                    }
+                }
+            }
 
-                .row {
-                    .profile-content {
-                        top: 100px;
+            .row {
+                .profile-content {
+                    top: 100px;
 
-                        .following {
-                            .following-content {
-                                .following-info {
-                                    .following-img {
-                                        width: 10%;
+                    .following {
+                        .following-content {
+                            .following-info {
+                                .following-img {
+                                    width: 10%;
+                                }
+                            }
+                        }
+                    }
+
+                    .friends-container {
+                        .friends {
+                            img {
+                                width: 15%;
+                            }
+                        }
+                    }
+                }
+
+                .about-container {
+                    top: 80px;
+
+                    .row {
+                        .about-content {
+
+                            .about {
+                                .basic-info {
+                                    .content {
+                                        font-size: 14px;
+                                        padding: 10px;
+                                    }
+                                }
+                            }
+
+                            .photos-container {
+                                .photo {
+                                    margin-bottom: 10px;
+                                }
+                            }
+
+                            .post-container {
+                                &::before {
+                                    left: -25px;
+                                }
+                                .post {
+                                    .post-header {
+                                        img {
+                                            left: -44px;
+                                        }
+                                    }
+                                    .button-container {
+                                        padding: 3%;
+                                        
+                                        .button {
+                                            padding: 0 2%px;
+                                            font-size: 14px;
+    
+                                            &::after {
+                                                content: '|';
+                                                margin-left: 2%;
+                                            }
+    
+                                            i {
+                                                display: none;
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
-
-                        .friends-container {
-                            .friends {
-                                img {
-                                    width: 15%;
-                                }
-                            }
-                        }
-                    }
-
-                    .about-container {
-                        top: 80px;
-                    }
+                    }    
                 }
-
-                
-            }
+            }            
         }
+    }
 }
