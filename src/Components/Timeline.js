@@ -26,33 +26,7 @@ class Timeline extends React.Component {
         }
     }
 
-    // componentWillUpdate() {
-    //     this.posts = JSON.parse(localStorage.getItem('posts-'+ this.props.userID));
-    //     console.log("component will update", this.posts);
-    // }
-
-    // static getDerivedStateFromProps(nextProps, prevState) {
-    //     if (nextProps.isNewPostAvailable == true) {
-    //         console.log("getDerived");
-    //         return ({
-    //             posts: JSON.parse(localStorage.getItem('posts-'+nextProps.userID))
-    //         });
-    //     }
-    //     else {
-    //         return prevState;
-    //     }
-    // }
-
-    // componentDidUpdate() {
-    //     console.log("component did update", this.posts);
-    //     this.posts = JSON.parse(localStorage.getItem('posts-'+ this.props.userID));
-    //     // this.props.updatePosts(false);
-    // }
-
     render() {
-        // if (this.props.isNewPostAvailable == true){
-        //     console.log("render render called");
-        // }
         let posts = this.posts.map((postObj, index) => {
             return (
                 <Post {...postObj} userID={this.state.userID} key={"post-" + index} />
@@ -67,10 +41,6 @@ class Timeline extends React.Component {
         );
     }
 }
-
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({updatePosts: refreshWithNewPost}, dispatch);
-// }
 
 function mapStateToProps(state) {
     console.log("state", state);

@@ -114,6 +114,7 @@ class PostForm extends React.Component {
                 time: (new Date()).getTime(),
                 image: this.state.imageUrl
             };
+            
             let postsArr = JSON.parse(localStorage.getItem('posts-'+this.state.userID));
             postsArr.unshift(newPost);
             localStorage.setItem('posts-'+this.state.userID, JSON.stringify(postsArr));
