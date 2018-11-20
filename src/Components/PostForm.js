@@ -66,10 +66,9 @@ class PostForm extends React.Component {
         if (this.state.title == '') {
             return null;
         }
-        else if (this.state.title.length >= 10) {
-            return 'success';
+        else {
+            return (this.getLengthValidated(this.state.title, 10)) ? 'success' : 'error';
         }
-        return 'error';
     }
 
     getImageValidationState(){
@@ -89,19 +88,19 @@ class PostForm extends React.Component {
         if (this.state.description == '') {
             return null;
         }
-        else if (this.state.description.length >= 20) {
-            return 'success';
+        else {
+            return (this.getLengthValidated(this.state.description, 20)) ? 'success' : 'error';
         }
-        return 'error';
+    }
+
+    getLengthValidated(str, minLength) {
+        return str.length >= minLength ? true : false;
     }
 
     submitPost(e) {
         console.log("this.submitPost", e);
         e.preventDefault();
-        if (this.state.description.length < 20 || this.state.title.length < 10 || !this.isValidUrl) {
-            alert("Please input valid details");
-        }
-        else {
+        if (this.getLengthValidated(this.state.title, 10) || this.getLengthValidated(this.state.description, 20) || this.isValidUrl) {
             let newPost = {
                 userID: this.state.userID,
                 authorName: this.author,
@@ -121,9 +120,9 @@ class PostForm extends React.Component {
             this.handleClose();
             console.log(this.props);
             window.location.reload();
-
-            
-            // this.setState({shouldRefresh: true});
+        }
+        else {
+            alert("Please input valid details");
         }
     }
 

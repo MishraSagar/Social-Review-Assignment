@@ -16,8 +16,12 @@ export default class Login extends React.Component {
         this.getValidationState = this.getValidationState.bind(this);
     }
 
+    validateEmail(email) {
+        return email.match(/\S+@\S+\.\S+/);
+    }
+
     getValidationState() {
-        if (this.state.email.match(/\S+@\S+\.\S+/)) {
+        if (this.validateEmail(this.state.email)) {
             return 'success';
         } else {
             return (this.state.email == '') ? null : 'error';
@@ -33,7 +37,7 @@ export default class Login extends React.Component {
     }
 
     login() {
-        if (this.state.email.match(/\S+@\S+\.\S+/)) {
+        if (this.validateEmail(this.state.email)) {
             if (userinfo[this.state.email] == undefined) {
                 alert("Email not found");
             }
@@ -48,10 +52,6 @@ export default class Login extends React.Component {
                 }
             }
         }
-    }
-
-    fbLogin() {
-
     }
 
     render() {
