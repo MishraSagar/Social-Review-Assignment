@@ -45,7 +45,7 @@ class FriendComponent extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        following: state.followings.following
+        following: state.followings.numberOfFollowing
     }
 }
     

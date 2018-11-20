@@ -114,14 +114,15 @@ class PostForm extends React.Component {
                 time: (new Date()).getTime(),
                 image: this.state.imageUrl
             };
-            
-            let postsArr = JSON.parse(localStorage.getItem('posts-'+this.state.userID));
+            let postsArr = JSON.parse(localStorage.getItem('posts-' + this.state.userID));
             postsArr.unshift(newPost);
-            localStorage.setItem('posts-'+this.state.userID, JSON.stringify(postsArr));
+            localStorage.setItem('posts-' + this.state.userID, JSON.stringify(postsArr));
+            this.props.updatePosts(true);
             this.handleClose();
             console.log(this.props);
-            this.props.history.push("/timeline");
-            this.props.updatePosts(true);
+            window.location.reload();
+
+            
             // this.setState({shouldRefresh: true});
         }
     }
@@ -166,7 +167,7 @@ class PostForm extends React.Component {
                                 <FormControl
                                     type="text"
                                     value={this.state.imageUrl}
-                                    placeholder="Enter title"
+                                    placeholder="Enter image url"
                                     onChange={this.handleChange}
                                 />
                             <FormControl.Feedback />

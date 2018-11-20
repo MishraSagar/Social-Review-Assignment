@@ -15,35 +15,48 @@ class Timeline extends React.Component {
         else {
             this.posts = posts[this.props.userID];
             console.log(this.posts);
-            debugger;
             localStorage.setItem('posts-' + this.props.userID, JSON.stringify(this.posts));
         }
 
         this.state = {
             userID: this.props.userID,
             show: false,
-            posts: this.posts
+            posts: this.posts,
+            newPost: false
         }
+
+        this.generatePosts = this.generatePosts.bind(this);
     }
 
-    render() {
-        let posts = this.posts.map((postObj, index) => {
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.isNewPostAvailable === true) {
+            return ({
+                posts: JSON.parse(localStorage.getItem('posts-' + prevState.userID))
+            });
+        }
+        return null;
+    }
+
+    generatePosts() {
+        let posts = this.state.posts.map((postObj, index) => {
             return (
                 <Post {...postObj} userID={this.state.userID} key={"post-" + index} />
             );
         });
-
+        return posts;
+    }
+    
+    render() {
         return (
             <div className="post-container">
                 <PostForm userID={this.state.userID} authorID={"sample2@gmail.com"}/>
-                {posts}
+                {this.generatePosts()}
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    console.log("state", state);
     return {
         isNewPostAvailable: state.posts.isNewPostAvailable
     };

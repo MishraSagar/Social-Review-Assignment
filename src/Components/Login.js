@@ -68,7 +68,7 @@ export default class Login extends React.Component {
                                 name="email"
                                 type="email"
                                 value={this.state.email}
-                                placeholder="Enter text"
+                                placeholder="Enter your email"
                                 onChange={this.handleChange}
                             />
                             <FormControl.Feedback />
@@ -82,7 +82,7 @@ export default class Login extends React.Component {
                                 name="password"
                                 type="password"
                                 value={this.state.password}
-                                placeholder="Enter text"
+                                placeholder="Enter your password"
                                 onChange={this.handleChange}
                             />
                             <FormControl.Feedback />

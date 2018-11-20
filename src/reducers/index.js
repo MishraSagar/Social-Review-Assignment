@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
-import { updateFollowing, refreshWithNewPost, refreshUserInfo } from '../actions';
 
-function updateProfile(state = {following: 0}, action) {
+function updateProfile(state = {numberOfFollowing: 0}, action) {
     switch (action.type) {
         case 'UPDATE_FOLLOWING': return Object.assign({}, state, {
-            following: action.following
+            numberOfFollowing: action.following
         });
     }
     return state;
