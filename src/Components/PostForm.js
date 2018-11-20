@@ -63,34 +63,34 @@ class PostForm extends React.Component {
     }
 
     getTitleValidationState(){
-        if (this.state.title.length >= 10) {
-            return 'success';
-        }
-        else if (this.state.title == '') {
+        if (this.state.title == '') {
             return null;
+        }
+        else if (this.state.title.length >= 10) {
+            return 'success';
         }
         return 'error';
     }
 
     getImageValidationState(){
-        if (this.state.imageUrl.match(/https:\/\/.+\.(gif|png|jpg|jpeg)$/) != null) {
-            this.isValidUrl = true;
-            return 'success';
-        }
-        else if (this.state.imageUrl == '') {
+        if (this.state.imageUrl == '') {
             this.isValidUrl = false;
             return null;
+        }
+        else if (this.state.imageUrl.match(/https:\/\/.+\.(gif|png|jpg|jpeg)$/) != null) {
+            this.isValidUrl = true;
+            return 'success';
         }
         this.isValidUrl = false;
         return 'error';
     }
 
     getDescriptionValidationState(){
-        if (this.state.description.length >= 20) {
-            return 'success';
-        }
-        else if (this.state.description == '') {
+        if (this.state.description == '') {
             return null;
+        }
+        else if (this.state.description.length >= 20) {
+            return 'success';
         }
         return 'error';
     }
