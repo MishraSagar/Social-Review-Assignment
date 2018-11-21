@@ -8,12 +8,18 @@ export default class Login extends React.Component {
         this.state = {
             email: '',
             password: '',
+            isEmailInvalid: false,
+            isPasswordInvalid: false,
             userLoggedIn: false
         }
         this.users = userinfo;
         this.handleChange = this.handleChange.bind(this);
         this.login = this.login.bind(this);
         this.getValidationState = this.getValidationState.bind(this);
+        this.errorStyle = {
+            fontWeight: '500',
+            color: 'red'
+        }  
     }
 
     validateEmail(email) {
@@ -32,14 +38,16 @@ export default class Login extends React.Component {
         let target = e.target;
         let value = target.value;
         this.setState({
-            [target.id]: value
+            [target.id]: value,
+            isEmailInvalid: false,
+            isPasswordInvalid: false
         });
     }
 
     login() {
         if (this.validateEmail(this.state.email)) {
             if (userinfo[this.state.email] == undefined) {
-                alert("Email not found");
+                this.setState({isEmailInvalid: true});
             }
             else {
                 if ( this.users[this.state.email].password == this.state.password) {
@@ -48,7 +56,8 @@ export default class Login extends React.Component {
                     this.props.userLogin(this.state.email);
                 }
                 else {
-                    alert("Please input valid email and password");
+                    this.passInputStyle += ".input-error";
+                    this.setState({isPasswordInvalid: true});
                 }
             }
         }
@@ -72,6 +81,8 @@ export default class Login extends React.Component {
                                 onChange={this.handleChange}
                             />
                             <FormControl.Feedback />
+                            { this.state.isEmailInvalid ? <div style={this.errorStyle}>Email not found</div> : <div></div> }
+                            { !this.validateEmail(this.state.email) ? <div style={this.errorStyle}>Email is incorrect</div> : <div></div> } 
                         </FormGroup>
                         <FormGroup
                         controlId="password"
@@ -86,9 +97,9 @@ export default class Login extends React.Component {
                                 onChange={this.handleChange}
                             />
                             <FormControl.Feedback />
+                            { this.state.isPasswordInvalid ? <div style={this.errorStyle}>Password is incorrect</div> : <div></div> } 
                         </FormGroup>
                         <Button onClick={this.login} bsStyle="success">Login</Button>
-                        <span> </span>
                         </form>
                 </div>
             </div>

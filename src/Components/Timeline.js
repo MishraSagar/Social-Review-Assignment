@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import posts from '../JSONs/posts';
 import Post from './Post';
 import PostForm from './PostForm';
+import { refreshWithNewPost } from '../actions';
 
 class Timeline extends React.Component {
     
@@ -14,7 +16,6 @@ class Timeline extends React.Component {
         }
         else {
             this.posts = posts[this.props.userID];
-            console.log(this.posts);
             localStorage.setItem('posts-' + this.props.userID, JSON.stringify(this.posts));
         }
 
@@ -28,17 +29,38 @@ class Timeline extends React.Component {
         this.generatePosts = this.generatePosts.bind(this);
     }
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.isNewPostAvailable === true) {
-            return ({
-                posts: JSON.parse(localStorage.getItem('posts-' + prevState.userID))
-            });
-        }
-        return null;
+    // componentWillUpdate() {
+    //     if (this.props.isNewPostAvailable == true) {
+    //         this.setState({newPost: true}, () => {
+    //             this.posts = JSON.parse(localStorage.getItem('posts-' + this.state.userID));
+    //         });
+    //     }
+    // }
+
+    getUserData() {
+        return JSON.parse(localStorage.getItem('posts-' + this.state.userID));
     }
 
+    componentDidUpdate() {
+        if (this.props.isNewPostAvailable == true) {
+            this.setState({newPost: true}, () => {
+                this.posts = this.getUserData();
+                this.props.updatePosts(false);
+            });
+        }
+    }
+
+    // static getDerivedStateFromProps(nextProps, prevState) {
+    //     if (nextProps.isNewPostAvailable === true) {
+    //         return ({
+    //             posts: JSON.parse(localStorage.getItem('posts-' + prevState.userID))
+    //         });
+    //     }
+    //     return null;
+    // }
+
     generatePosts() {
-        let posts = this.state.posts.map((postObj, index) => {
+        let posts = this.posts.map((postObj, index) => {
             return (
                 <Post {...postObj} userID={this.state.userID} key={"post-" + index} />
             );
@@ -59,7 +81,11 @@ class Timeline extends React.Component {
 function mapStateToProps(state) {
     return {
         isNewPostAvailable: state.posts.isNewPostAvailable
-    };
+    }
 }
 
-export default connect(mapStateToProps)(Timeline);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({updatePosts: refreshWithNewPost}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timeline);

@@ -18,10 +18,20 @@ class PostForm extends React.Component {
             shouldRefresh: false
         }
         this.isValidUrl = false;
+        this.isAllInvalid = false;
         this.handleClose = this.handleClose.bind(this);
         this.handleShow = this.handleShow.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.submitPost = this.submitPost.bind(this);
+        this.errorStyle = {
+            fontWeight: '500',
+            color: 'red'
+        }
+        
+        this.validStyle = {
+            color: '500',
+            color: 'green'
+        }
     }
 
     handleClose() {
@@ -29,9 +39,9 @@ class PostForm extends React.Component {
             show: false,
             title: '',
             description: '',
-            imageUrl: ''  
-        });
-        
+            imageUrl: '',
+            isAllInvalid: false  
+        });  
     }
     
     handleShow() {
@@ -67,7 +77,7 @@ class PostForm extends React.Component {
             return null;
         }
         else {
-            return (this.getLengthValidated(this.state.title, 10)) ? 'success' : 'error';
+            return (this.getLengthAndValueValidated(this.state.title, 10) && this.state.title.match(/^[a-zA-Z][a-zA-Z0-9]+$/) !== null) ? 'success' : 'error';
         }
     }
 
@@ -89,18 +99,17 @@ class PostForm extends React.Component {
             return null;
         }
         else {
-            return (this.getLengthValidated(this.state.description, 20)) ? 'success' : 'error';
+            return (this.getLengthAndValueValidated(this.state.description, 20)) ? 'success' : 'error';
         }
     }
 
-    getLengthValidated(str, minLength) {
-        return str.length >= minLength ? true : false;
+    getLengthAndValueValidated(str, minLength) {
+        return (str.length >= minLength && str.match(/^[a-zA-Z][a-zA-Z0-9]+$/)) ? true : false;
     }
 
     submitPost(e) {
-        console.log("this.submitPost", e);
         e.preventDefault();
-        if (this.getLengthValidated(this.state.title, 10) || this.getLengthValidated(this.state.description, 20) || this.isValidUrl) {
+        if (this.getLengthAndValueValidated(this.state.title, 10) && this.getLengthAndValueValidated(this.state.description, 20) && this.isValidUrl) {
             let newPost = {
                 userID: this.state.userID,
                 authorName: this.author,
@@ -117,21 +126,18 @@ class PostForm extends React.Component {
             postsArr.unshift(newPost);
             localStorage.setItem('posts-' + this.state.userID, JSON.stringify(postsArr));
             this.props.updatePosts(true);
+            this.props.history.push("/");
             this.handleClose();
-            console.log(this.props);
-            window.location.reload();
+            // window.location.reload();
         }
         else {
-            alert("Please input valid details");
+            this.setState({
+                isAllInvalid: true
+            });
         }
     }
 
     render() {
-        // if (this.state.shouldRefresh == true) {
-        //     return (
-        //         <Redirect 
-        //     );
-        // }
         return (
             <div className="post-form">
                 <div className="btn-container">
@@ -142,6 +148,7 @@ class PostForm extends React.Component {
                         <Modal.Title>Create Post</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                    { this.state.isAllInvalid ? <div style={this.errorStyle}>Please input correct information</div> : <div></div> }
                         <form id="my-form" onSubmit={this.submitPost}>
                             <FormGroup
                             controlId="title"
@@ -155,7 +162,7 @@ class PostForm extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             <FormControl.Feedback />
-                            <HelpBlock>Title should have 10 or more characters</HelpBlock>
+                            { this.getLengthAndValueValidated(this.state.title, 10) || this.state.title == ''? <div></div> : <div style={this.errorStyle}>Title must have 10 or more characters and should be alphanumeric</div> }
                             </FormGroup>
 
                             <FormGroup
@@ -170,7 +177,7 @@ class PostForm extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             <FormControl.Feedback />
-                            <HelpBlock>Image url should be valid</HelpBlock>
+                            { this.isValidUrl || this.state.imageUrl == ''? <div></div> : <div style={this.errorStyle}>Image Url is invalid</div> }
                             </FormGroup>
 
                             <FormGroup
@@ -186,7 +193,7 @@ class PostForm extends React.Component {
                                     componentClass="textarea"
                                 />
                             <FormControl.Feedback />
-                            <HelpBlock>Description should have 20 or more characters</HelpBlock>
+                            { this.getLengthAndValueValidated(this.state.description, 20) || this.state.description == ''? <div></div> : <div style={this.errorStyle}>Description must have 20 or more characters and should be alphanumeric</div> }
                             </FormGroup>
                         </form>
                     </Modal.Body>

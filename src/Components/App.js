@@ -42,7 +42,6 @@ class App extends Component {
     }
 
     userLogin(userEmail) {
-        console.log("userlogin called");
         this.setState({
             isUserLoggedIn: true
         });
