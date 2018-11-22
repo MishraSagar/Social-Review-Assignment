@@ -35,7 +35,7 @@ function User(props) {
                     <p>Activities</p>
                 </div>
             </div>
-            <Link className="add-friend-button" to="/addFriend"><i className="fa fa-user"></i>ADD AS FRIEND</Link>
+            <a className="add-friend-button" ><i className="fa fa-user"></i>ADD AS FRIEND</a>
         </div>
     );
 }
