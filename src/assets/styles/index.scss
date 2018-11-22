@@ -8,13 +8,13 @@ body > #root{
     }
 
     .input-error {
-        display: block;
         color: red;
+        display: block;
         font-weight: 500;
     }
     header {
-        height: 50px;
         background-color: $blue-main;
+        height: 50px;
 
         div {
             display: inline-block;
@@ -27,33 +27,33 @@ body > #root{
         }
 
         .nav-user {
-            float: right;
             color: white;
+            float: right;
             font-size: 18px;
             padding: 5px;
 
             img {
-                width: 40px;
-                margin-right: 5px;
                 border-radius: 50%;
+                margin-right: 5px;
+                width: 40px;
             }
 
             i.fa {
-                padding: 10px;
                 margin-left: 10px;
+                padding: 10px;
                 &:hover {
-                    color: #aaaaaa;
+                    color: #FB8469;
                 }
             }
         }
     }
 
     %profile-header {
-        height: 64px;
         border-bottom: 1px solid #CCCCCC;
         color: #747474;
         font-size: 16px;
         font-weight: 500;
+        height: 64px;
         padding: 22px 15px;
     }
 
@@ -69,22 +69,22 @@ body > #root{
 
         .cover {
             background-image: url("../images/hero-img.jpg");
-            background-size: cover;
+            background-origin: border-box;
             background-position: center;
             background-repeat: no-repeat;
-            background-origin: border-box;
+            background-size: cover;
+            box-shadow: $shadow;
             height: 325px;
             position: relative;
-            box-shadow: $shadow;
 
             .menu { 
-                height: 70px;
                 background-color: white;
-                color: black;
-                position: absolute;
-                right: 0;
                 bottom: -70px;
                 box-shadow: $shadow;
+                color: black;
+                height: 70px;
+                position: absolute;
+                right: 0;
 
                 .menu-item {
                     text-align: center;
@@ -107,11 +107,11 @@ body > #root{
                 top: -200px;
 
                 %share-profile {
-                    padding: 15px;
                     border-radius: 5px;
                     background-color: white;
-                    text-align: center;
                     margin-bottom: 30px;
+                    padding: 15px; 
+                    text-align: center;
                 }
                 
                 .user-info {
@@ -123,8 +123,8 @@ body > #root{
                     }
 
                     h4 {
-                        padding-top: 15px;
                         font-weight: 400;
+                        padding-top: 15px;
                     }
 
                     p {
@@ -135,28 +135,28 @@ body > #root{
                         margin: 30px 0;
                         width: 100%;
                         .content {
-                            width: 33%;
                             display: inline-block;
+                            width: 33%;
                             .main-count {
-                                font-size: 22px;
                                 color: #2b93ff;
+                                font-size: 22px;
                             }
                         }
                     }
 
                     .add-friend-button {
-                        display: inline-block;
-                        text-decoration: none;
-                        color: #747474;
-                        padding: 10px;
-                        margin-bottom: 10px;
                         border: 1px solid #747474;
                         border-radius: 2px;
+                        color: #747474;
+                        display: inline-block;
+                        margin-bottom: 10px;
+                        padding: 10px;
+                        text-decoration: none;
                         transition: background-color 0.5s, color 0.5s;
 
                         &:hover {
-                            color: white;
                             background-color: $blue-main;
+                            color: white;
                         }
 
                         i {
@@ -167,9 +167,9 @@ body > #root{
 
                 .following {
                     @extend %share-profile;
+                    box-shadow: $shadow;
                     padding: 0px;
                     text-align: left;
-                    box-shadow: $shadow;
                     .following-header {
                         @extend %profile-header;
                     }
@@ -179,10 +179,10 @@ body > #root{
                         .following-info {
                             margin: 10px 10px;
                             .following-img {
-                                display: inline-block;
-                                width: 25%;
                                 border-radius: 50%;
+                                display: inline-block;
                                 vertical-align: top;
+                                width: 25%;
                             }
 
                             .follower-info {
@@ -203,30 +203,30 @@ body > #root{
 
                 .friends-container {
                     @extend %share-profile;
+                    box-shadow: $shadow;
                     padding: 0px;
                     text-align: left;
-                    box-shadow: $shadow;
                     .following-header {
                         @extend %profile-header;
                         .show-friends-button {
+                            background-color: #3198fe;
+                            border-radius: 5px;
+                            color: white;
                             display: inline-block;
                             float: right;
                             font-size: 12px;
-                            text-decoration: none;
-                            background-color: #3198fe;
-                            color: white;
                             padding: 2px 5px;
-                            border-radius: 5px;
+                            text-decoration: none;
                         }
                     }
 
                     .friends {
                         padding: 20px;
                         img {
-                            display: inline-block;
                             border-radius: 50%;
-                            width: 22%;
+                            display: inline-block;
                             margin: 5px 5px;
+                            width: 22%;
                         }
                     }
 
@@ -240,23 +240,23 @@ body > #root{
                     .about-content {
                         padding: 15px;
                         .post-container {
-                            width: 90%;
                             margin-left: 10%;
                             position: relative;
+                            width: 90%;
                             &::before {
-                                content: '';
                                 border: 2px solid #cccccc;
-                                position: absolute;
+                                content: '';
                                 height: 100%;
                                 left: -40px;
+                                position: absolute;
 
                             }
 
                             .btn-container {
                                 text-align: right;
                                 button {
-                                    padding: 5px 25px;
                                     margin: 20px 0;
+                                    padding: 5px 25px;
                                 }
                             }
 
@@ -266,9 +266,9 @@ body > #root{
                                 box-shadow: $shadow;
                                 margin-bottom: 40px;     
                                 .post-header {
-                                    position: relative;
-                                    padding: 20px;
                                     border-bottom: 1px solid #CCCCCC;
+                                    padding: 20px;
+                                    position: relative;
                                     .headline {
                                         font-size: 16px;
                                         margin-bottom: 0px;
@@ -281,15 +281,15 @@ body > #root{
 
                                     img {
                                         display: block;
-                                        width: 40px;
-                                        position: absolute;
                                         left: -58px;
+                                        position: absolute;
+                                        width: 40px;
                                     }
                                 }
 
                                 .post-footer {
-                                    padding: 20px;
                                     border-top: 1px solid #CCCCCC;
+                                    padding: 20px;
                                     .headline {
                                         font-size: 16px;
                                     }
@@ -307,10 +307,10 @@ body > #root{
                                     border-top: 1px solid #CCCCCC;
                                     padding: 20px;   
                                     .button {
-                                        padding: 0 10px;
-                                        font-size: 16px;
-                                        text-decoration: none;
                                         color: grey;
+                                        font-size: 16px;
+                                        padding: 0 10px;
+                                        text-decoration: none;
                                         &::after {
                                             content: '|';
                                             margin-left: 10px;
@@ -326,12 +326,12 @@ body > #root{
 
                         .about {
                             %edit-info-button {
+                                background-color: $blue-main;
+                                border-radius: 5px;
+                                color:white;
                                 display: block;
                                 float: right;
                                 padding: 10px;
-                                background-color: $blue-main;
-                                color:white;
-                                border-radius: 5px;
                                 &:hover {
                                     background-color: #0979c5
                                 }
@@ -340,8 +340,8 @@ body > #root{
                             .basic-info {
                                 background-color: white;
                                 border-radius: 5px;
-                                margin-bottom: 40px;
                                 box-shadow: $shadow;
+                                margin-bottom: 40px;
                                 .header {
                                     @extend %profile-header;
                                     i {
@@ -350,8 +350,8 @@ body > #root{
                                 }
 
                                 .content {
-                                    padding: 20px;
                                     font-size: 16px;
+                                    padding: 20px;
                                     .row {
                                         margin: 20px 5px;
                                         .title {
@@ -370,9 +370,9 @@ body > #root{
 
                         .photos-container {
                             background-color: white;
-                            padding: 20px;
-                            box-shadow: $shadow;
                             border-radius: 5px;
+                            box-shadow: $shadow;
+                            padding: 20px;
                             .image {
                                 width: 24%;
                                 
@@ -382,20 +382,20 @@ body > #root{
                         .friends {
                             .row {
                                 .friend-info {
-                                    margin-bottom: 10px;
                                     background-color: white;
-                                    padding: 10px;
                                     box-shadow: $shadow;
+                                    margin-bottom: 10px;
+                                    padding: 10px;
                                     .friend-profile-pic {
                                         height: 100%;
                                     }
 
                                     .friend-content {
                                         display: inline-block;
-                                        vertical-align: top;
+                                        font-size: 12px;
                                         margin: 15px 0; 
                                         padding-left: 10px;
-                                        font-size: 12px;
+                                        vertical-align: top; 
                                         width: 50%;
                                         .friend-name {
                                             font-size: 16px;
@@ -406,12 +406,12 @@ body > #root{
                                         }
 
                                         .follow-btn {
-                                            text-decoration: none;
+                                            background-color: $blue-main;
+                                            border-radius: 5px;
+                                            color: white;
                                             display: inline-block;
                                             padding: 5px 15px;
-                                            border-radius: 5px;
-                                            background-color: $blue-main;
-                                            color: white;
+                                            text-decoration: none;
                                         }
                                     }
                                 }
@@ -424,17 +424,17 @@ body > #root{
     }
 
     .login-form-container {
-        height: 800px;
         background-color: #3198fe;
+        height: 800px;
         position: relative;
         .form-center {
-            border-radius: 15px;
             background-color: white;
+            border-radius: 15px;
+            left: 50%;
+            padding: 15px;
             position: absolute;
             top: 30%;
-            left: 50%;
             transform: translate(-50%, -30%);
-            padding: 15px;
         }
     }
 }
@@ -449,12 +449,12 @@ body > #root{
                 margin-left: 5%;
             } 
             .nav-user {
-                padding: 0;
                 font-size: 16px; 
+                padding: 0;
                 img {
-                    width: 30px;
-                    margin-right: 5px;
                     border-radius: 50%;
+                    margin-right: 5px;
+                    width: 30px;
                 }
             }
         }
@@ -463,12 +463,12 @@ body > #root{
             .cover {
                 height: 150px;
                 .menu {
-                    height: 50px;
                     bottom: -50px;
+                    height: 50px;
                     .menu-item {
                         font-size: 14px;
-                        padding-top: 15px;
                         height: 50px;
+                        padding-top: 15px;
                     }
                 }
             }
@@ -530,8 +530,8 @@ body > #root{
                                         padding: 3%;
                                         
                                         .button {
-                                            padding: 0 2%px;
                                             font-size: 14px;
+                                            padding: 0 2%px;
                                             &::after {
                                                 content: '|';
                                                 margin-left: 2%;

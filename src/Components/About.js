@@ -18,7 +18,7 @@ export default class About extends React.Component {
         this.handleInfoCancelClick = this.handleInfoCancelClick.bind(this);
     }
 
-    handleClick(e){
+    handleClick(e) {
         e.preventDefault();
         if (e.target.id == "info-button") {
             this.setState({isInfoEditClicked : !this.state.isInfoEditClicked});
