@@ -17,6 +17,7 @@ class App extends Component {
         this.userID = null;
         this.userLogin = this.userLogin.bind(this);
         this.logout = this.logout.bind(this);
+        this.login = this.login.bind(this);
     }
 
     componentWillMount() {
@@ -55,14 +56,20 @@ class App extends Component {
         });
     }
 
+    login() {
+        this.setState({
+            isUserLoggedIn: true
+        });
+    }
+
 
     render() {
         return (
             <div>
+                <Header userID={this.userID} logout={this.logout} isLoggedIn={this.state.isUserLoggedIn}/>
                 <Switch>
-                    <Route path="/login" render={() => this.state.isUserLoggedIn ? <Redirect to="/"/> : <Login userLogin={this.userLogin}/>} />
+                    <Route path="/login" render={() => this.state.isUserLoggedIn ? <Redirect to="/"/> : <Login userLogin={this.userLogin} />} />
                     <Route path="/" render={() => this.state.isUserLoggedIn ? (<div>
-                    <Header userID={this.userID} logout={this.logout}/>
                     <div className="container-fluid main-container">
                         <div className="profile-heading">
                           Social Profile
@@ -71,7 +78,7 @@ class App extends Component {
 
                         <div className="main-content">
                             <div className="row">
-                                <div className="about-container col-xs-12 col-sm-8 col-sm-push-4 col-md-9 col-md-push-3">
+                                <div className="about-container col-sm-8 col-sm-push-4 col-md-9 col-md-push-3">
                                     <div className="row">
                                         <div className="about-content">
                                             <Routes userId={this.userID} isUserLoggedIn={this.state.isUserLoggedIn}/>
@@ -79,7 +86,7 @@ class App extends Component {
                                     </div>
                                 </div>
 
-                                <div className="profile-content col-xs-12 col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9">
+                                <div className="profile-content col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9">
                                     <Profile {...userinfo} userID={this.userID}/>
                                 </div>
                             </div>

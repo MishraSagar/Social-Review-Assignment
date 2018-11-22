@@ -82,11 +82,10 @@ export default class Login extends React.Component {
                             />
                             <FormControl.Feedback />
                             { this.state.isEmailInvalid ? <div style={this.errorStyle}>Email not found</div> : <div></div> }
-                            { !this.validateEmail(this.state.email) ? <div style={this.errorStyle}>Email is incorrect</div> : <div></div> } 
+                            { !this.validateEmail(this.state.email) && this.state.email != '' ? <div style={this.errorStyle}>Email is incorrect</div> : <div></div> } 
                         </FormGroup>
                         <FormGroup
                         controlId="password"
-                        //validationState={this.getValidationState()}
                         >
                             <ControlLabel>Password</ControlLabel>
                             <FormControl
