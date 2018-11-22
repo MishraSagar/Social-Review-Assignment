@@ -28,7 +28,6 @@ body > #root{
 
         .nav-user {
             float: right;
-            margin-right: 5%;
             color: white;
             font-size: 18px;
             padding: 5px;
@@ -59,7 +58,6 @@ body > #root{
     }
 
     .main-container {
-        padding-top: 50px;
         background-color: #e5e5e5;
         padding-bottom: 100px;
 
@@ -477,6 +475,7 @@ body > #root{
 
             .row {
                 .profile-content {
+                    position: relative;
                     top: 100px;
                     .following {
                         .following-content {

@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateFollowing } from "../actions";
 import User from './User';
 import Following from './Following';
 import Friends from './Friends';
@@ -14,6 +16,7 @@ class Profile extends React.Component {
         }
         else {
             this.state = {
+                followings: JSON.parse(localStorage.getItem("followingCount")),
                 userinfo: {
                     userID: this.props.userID,
                     profileImage: this.props[this.props.userID].profileImage,
@@ -53,7 +56,7 @@ class Profile extends React.Component {
     render() {
         return (
             <div>
-                <User followings={this.props.following} {...this.state.userinfo} />
+                <User {...this.state.userinfo} />
                 <Following following={this.state.userinfo.whoToFollow} users={this.props}/>
                 <Friends friends={this.state.userinfo.friends} users={this.props} />
             </div>
@@ -68,4 +71,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Profile);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({follow: updateFollowing}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

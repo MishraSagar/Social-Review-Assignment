@@ -71,16 +71,16 @@ class App extends Component {
 
                         <div className="main-content">
                             <div className="row">
-                                <div className="profile-content col-xs-12 col-sm-4 col-md-3">
-                                    <Profile {...userinfo} userID={this.userID}/>
-                                </div>
-
-                                <div className="about-container col-xs-12 col-sm-8 col-md-9">
+                                <div className="about-container col-xs-12 col-sm-8 col-sm-push-4 col-md-9 col-md-push-3">
                                     <div className="row">
                                         <div className="about-content">
                                             <Routes userId={this.userID} isUserLoggedIn={this.state.isUserLoggedIn}/>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div className="profile-content col-xs-12 col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9">
+                                    <Profile {...userinfo} userID={this.userID}/>
                                 </div>
                             </div>
                         </div>

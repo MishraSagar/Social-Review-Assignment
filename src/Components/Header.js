@@ -1,11 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { bindActionCreators } from "redux";
+import { updateFollowing } from "../actions";
 import userinfo from '../JSONs/users';
 
 class Header extends React.Component {
 
     constructor(props){
         super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.props.follow(0);
+        this.props.logout();
     }
 
     render() {
@@ -21,7 +29,7 @@ class Header extends React.Component {
                     </div>
                     {user.userName}
                     <span> </span>
-                    <i className="fa fa-sign-out" aria-hidden="true" onClick={this.props.logout}></i>
+                    <i className="fa fa-sign-out" aria-hidden="true" onClick={this.handleClick}></i>
                 </div>
             </header>
         );
@@ -34,4 +42,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Header);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({follow: updateFollowing}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

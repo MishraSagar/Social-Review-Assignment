@@ -40,7 +40,7 @@ export default class Photos extends React.Component{
                 <Carousel.Item key={"carousel-" + index}>
                     <img width={900} height={500} alt="900x500" src={pic} />
                     <Carousel.Caption>
-                        <h3>{`Photo-${index}`}</h3>
+                        <h3>{`Photo-${index+1}`}</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
             );

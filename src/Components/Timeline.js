@@ -25,7 +25,6 @@ class Timeline extends React.Component {
             posts: this.posts,
             newPost: false
         }
-
         this.generatePosts = this.generatePosts.bind(this);
     }
 

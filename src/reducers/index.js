@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-function updateProfile(state = {numberOfFollowing: 0}, action) {
+function updateProfile(state = {numberOfFollowing: JSON.parse(localStorage.getItem("followingCount"))}, action) {
     switch (action.type) {
         case 'UPDATE_FOLLOWING': return Object.assign({}, state, {
             numberOfFollowing: action.following
@@ -10,6 +10,7 @@ function updateProfile(state = {numberOfFollowing: 0}, action) {
 }
 
 function updatePosts(state = {isNewPostAvailable: false}, action) {
+    console.log("called");
     switch (action.type) {
         case 'UPDATE_POSTS': return Object.assign({}, state, {
             isNewPostAvailable: action.isNewPostAvailable

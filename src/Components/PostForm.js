@@ -25,7 +25,8 @@ class PostForm extends React.Component {
         this.submitPost = this.submitPost.bind(this);
         this.errorStyle = {
             fontWeight: '500',
-            color: 'red'
+            color: 'red',
+            fontSize: '12px'
         }
         
         this.validStyle = {
@@ -77,7 +78,7 @@ class PostForm extends React.Component {
             return null;
         }
         else {
-            return (this.getLengthAndValueValidated(this.state.title, 10) && this.state.title.match(/^[a-zA-Z][a-zA-Z0-9]+$/) !== null) ? 'success' : 'error';
+            return (this.getLengthAndValueValidated(this.state.title, 10)) ? 'success' : 'error';
         }
     }
 
@@ -104,7 +105,7 @@ class PostForm extends React.Component {
     }
 
     getLengthAndValueValidated(str, minLength) {
-        return (str.length >= minLength && str.match(/^[a-zA-Z][a-zA-Z0-9]+$/)) ? true : false;
+        return (str.length >= minLength && (str.match(/^[a-zA-Z\s][a-zA-Z0-9\s.?,:;@#']+$/) != null)) ? true : false;
     }
 
     submitPost(e) {
@@ -162,7 +163,7 @@ class PostForm extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             <FormControl.Feedback />
-                            { this.getLengthAndValueValidated(this.state.title, 10) || this.state.title == ''? <div></div> : <div style={this.errorStyle}>Title must have 10 or more characters and should be alphanumeric</div> }
+                            { this.getLengthAndValueValidated(this.state.title, 10) || this.state.title == ''? <div></div> : <div style={this.errorStyle}>Title must have 10 or more characters.</div> }
                             </FormGroup>
 
                             <FormGroup
@@ -193,7 +194,7 @@ class PostForm extends React.Component {
                                     componentClass="textarea"
                                 />
                             <FormControl.Feedback />
-                            { this.getLengthAndValueValidated(this.state.description, 20) || this.state.description == ''? <div></div> : <div style={this.errorStyle}>Description must have 20 or more characters and should be alphanumeric</div> }
+                            { this.getLengthAndValueValidated(this.state.description, 20) || this.state.description == ''? <div></div> : <div style={this.errorStyle}>Description must have 20 or more characters.</div> }
                             </FormGroup>
                         </form>
                     </Modal.Body>
