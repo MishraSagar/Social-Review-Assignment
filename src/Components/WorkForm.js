@@ -90,7 +90,6 @@ class WorkForm extends React.Component {
                         <div className="value col-xs-8">
                             <FormGroup
                                 controlId="occupation"
-                                // validationState={this.getTitleValidationState()}
                                 >
                                     <FormControl
                                         type="text"
@@ -110,7 +109,6 @@ class WorkForm extends React.Component {
                         <div className="value col-xs-8">
                             <FormGroup
                                 controlId="skills"
-                                // validationState={this.getTitleValidationState()}
                                 >
                                     <FormControl
                                         type="text"
@@ -130,7 +128,6 @@ class WorkForm extends React.Component {
                         <div className="value col-xs-8">
                             <FormGroup
                                 controlId="jobs"
-                                // validationState={this.getTitleValidationState()}
                                 >
                                     <FormControl
                                         type="text"

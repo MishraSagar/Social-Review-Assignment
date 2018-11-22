@@ -129,7 +129,6 @@ class PostForm extends React.Component {
             this.props.updatePosts(true);
             this.props.history.push("/");
             this.handleClose();
-            // window.location.reload();
         }
         else {
             this.setState({

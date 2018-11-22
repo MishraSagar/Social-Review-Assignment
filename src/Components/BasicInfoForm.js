@@ -81,7 +81,6 @@ class BasicInfoForm extends React.Component {
                         <div className="value col-xs-8">
                             <FormGroup
                                 controlId="name"
-                                // validationState={this.getTitleValidationState()}
                                 >
                                     <FormControl
                                         type="text"
@@ -143,7 +142,6 @@ class BasicInfoForm extends React.Component {
                         <div className="value col-xs-8">
                             <FormGroup
                                 controlId="location"
-                                // validationState={this.getTitleValidationState()}
                                 >
                                     <FormControl
                                         type="text"

@@ -13,11 +13,11 @@ class Menu extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(event, item){
+    handleClick(event, item) {
         this.setState({active: item});
     }
 
-    render(){
+    render() {
         const activeStyle = { 
             color: '#258aff',
             borderBottomWidth: '5px',
@@ -33,8 +33,8 @@ class Menu extends React.Component {
                 isActive = true;
             }
             return (
-                <Link to={'/'+item.toLowerCase()} key={item} className="link" onClick={(e) => this.handleClick(e, item)}>
-                        <div className="menu-item col-xs-3" style={isActive || (this.props.location.pathname == '/' && item == 'Timeline')? activeStyle : {}}>
+                <Link to={'/' + item.toLowerCase()} key={item} className="link" onClick={(e) => this.handleClick(e, item)}>
+                        <div className="menu-item col-xs-3" style={isActive || (this.props.location.pathname == '/' && item == 'Timeline') ? activeStyle : {}}>
                             {item}
                         </div>
                 </Link>

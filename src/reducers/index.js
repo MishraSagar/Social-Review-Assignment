@@ -10,7 +10,6 @@ function updateProfile(state = {numberOfFollowing: JSON.parse(localStorage.getIt
 }
 
 function updatePosts(state = {isNewPostAvailable: false}, action) {
-    console.log("called");
     switch (action.type) {
         case 'UPDATE_POSTS': return Object.assign({}, state, {
             isNewPostAvailable: action.isNewPostAvailable

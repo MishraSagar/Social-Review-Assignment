@@ -28,14 +28,6 @@ class Timeline extends React.Component {
         this.generatePosts = this.generatePosts.bind(this);
     }
 
-    // componentWillUpdate() {
-    //     if (this.props.isNewPostAvailable == true) {
-    //         this.setState({newPost: true}, () => {
-    //             this.posts = JSON.parse(localStorage.getItem('posts-' + this.state.userID));
-    //         });
-    //     }
-    // }
-
     getUserData() {
         return JSON.parse(localStorage.getItem('posts-' + this.state.userID));
     }
@@ -48,15 +40,6 @@ class Timeline extends React.Component {
             });
         }
     }
-
-    // static getDerivedStateFromProps(nextProps, prevState) {
-    //     if (nextProps.isNewPostAvailable === true) {
-    //         return ({
-    //             posts: JSON.parse(localStorage.getItem('posts-' + prevState.userID))
-    //         });
-    //     }
-    //     return null;
-    // }
 
     generatePosts() {
         let posts = this.posts.map((postObj, index) => {
