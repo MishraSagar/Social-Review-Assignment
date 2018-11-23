@@ -29,12 +29,12 @@ class Menu extends React.Component {
         let menuItems = this.list.map((item, index) => {
             let isActive = false;
 
-            if (this.props.location.pathname == ('/'+item.toLowerCase())) {
+            if (this.props.location.pathname == ('/dashboard/'+item.toLowerCase())) {
                 isActive = true;
             }
             return (
-                <Link to={'/' + item.toLowerCase()} key={item} className="link" onClick={(e) => this.handleClick(e, item)}>
-                        <div className="menu-item col-xs-3" style={isActive || (this.props.location.pathname == '/' && item == 'Timeline') ? activeStyle : {}}>
+                <Link to={'/dashboard/' + item.toLowerCase()} key={item} className="link" onClick={(e) => this.handleClick(e, item)}>
+                        <div className="menu-item col-xs-3" style={isActive || (this.props.location.pathname == '/dashboard' && item == 'Timeline') ? activeStyle : {}}>
                             {item}
                         </div>
                 </Link>

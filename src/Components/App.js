@@ -67,33 +67,37 @@ class App extends Component {
         return (
             <div>
                 <Header userID={this.userID} logout={this.logout} isLoggedIn={this.state.isUserLoggedIn}/>
+                <Routes userLogin={this.userLogin} isUserLoggedIn={this.state.isUserLoggedIn} login={this.login} usersData={userinfo} userID={this.userID}/>
+                   
+                    {/* <Routes userId={this.userID} isUserLoggedIn={this.state.isUserLoggedIn}/>   
                 <Switch>
                     <Route path="/login" render={() => this.state.isUserLoggedIn ? <Redirect to="/"/> : <Login userLogin={this.userLogin} />} />
-                    <Route path="/" render={() => this.state.isUserLoggedIn ? (<div>
-                    <div className="container-fluid main-container">
-                        <div className="profile-heading">
-                          Social Profile
-                        </div>
-                        <Cover />
+                    <Route path="/" render={() => this.state.isUserLoggedIn ? (
+                    <div>
+                        <div className="container-fluid main-container">
+                            <div className="profile-heading">
+                            Social Profile
+                            </div>
+                            <Cover />
 
-                        <div className="main-content">
-                            <div className="row">
-                                <div className="about-container col-sm-8 col-sm-push-4 col-md-9 col-md-push-3">
-                                    <div className="row">
-                                        <div className="about-content">
-                                            <Routes userId={this.userID} isUserLoggedIn={this.state.isUserLoggedIn}/>
+                            <div className="main-content">
+                                <div className="row">
+                                    <div className="about-container col-sm-8 col-sm-push-4 col-md-9 col-md-push-3">
+                                        <div className="row">
+                                            <div className="about-content">
+                                                <Routes userId={this.userID} isUserLoggedIn={this.state.isUserLoggedIn}/>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className="profile-content col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9">
-                                    <Profile {...userinfo} userID={this.userID}/>
+                                    <div className="profile-content col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9">
+                                        <Profile {...userinfo} userID={this.userID}/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>) : <Redirect from="/" to="/login" />} />
-                </Switch>
+                </Switch> */}
             </div>
         );
     }
