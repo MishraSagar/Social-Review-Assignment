@@ -18,7 +18,9 @@ export default class Login extends React.Component {
         this.getValidationState = this.getValidationState.bind(this);
         this.errorStyle = {
             fontWeight: '500',
-            color: 'red'
+            color: '#a64540',
+            fontSize: '12px',
+            height: '14px'
         }  
     }
 
@@ -79,10 +81,13 @@ export default class Login extends React.Component {
                                 value={this.state.email}
                                 placeholder="Enter your email"
                                 onChange={this.handleChange}
+                                autoComplete="off"
                             />
                             <FormControl.Feedback />
-                            { this.state.isEmailInvalid ? <div style={this.errorStyle}>Email not found</div> : <div></div> }
-                            { !this.validateEmail(this.state.email) && this.state.email != '' ? <div style={this.errorStyle}>Email is incorrect</div> : <div></div> } 
+                            <div style={this.errorStyle}>
+                            { this.state.isEmailInvalid ? 'Email not found' : ''}
+                            { !this.validateEmail(this.state.email) && this.state.email != ''? 'Email is incorrect': ''}
+                            </div>
                         </FormGroup>
                         <FormGroup
                         controlId="password"
@@ -96,7 +101,9 @@ export default class Login extends React.Component {
                                 onChange={this.handleChange}
                             />
                             <FormControl.Feedback />
-                            { this.state.isPasswordInvalid ? <div style={this.errorStyle}>Password is incorrect</div> : <div></div> } 
+                            <div style={this.errorStyle}>
+                            { this.state.isPasswordInvalid ? 'Password is invalid' : ''}
+                            </div>
                         </FormGroup>
                         <Button onClick={this.login} bsStyle="success">Login</Button>
                         </form>

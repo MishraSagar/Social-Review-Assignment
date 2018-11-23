@@ -51,13 +51,7 @@ class Header extends React.Component {
                             </NavItem>
                         </Nav>
                     </Navbar.Collapse>) : (
-                    <Navbar.Collapse>
-                        <Nav pullRight>
-                            <NavItem eventKey={1} href="#">
-                                <span style={{color: 'white'}}>About Us</span>
-                            </NavItem>
-                        </Nav>
-                    </Navbar.Collapse>
+                    <div></div>
                     )}
                 </Navbar>              
         );

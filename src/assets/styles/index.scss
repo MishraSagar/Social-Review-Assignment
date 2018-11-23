@@ -2,16 +2,6 @@ $shadow: 1px 1px 3px 1px #c5c5c5;
 $blue-main: #1b8bf9;
 
 body > #root{
-    .input {
-        display: none;
-    }
-
-    .input-error {
-        color: red;
-        display: block;
-        font-weight: 500;
-    }
-
     .navbar, .navbar-default {
         background-image: none !important;
         background-color: $blue-main;
