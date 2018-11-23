@@ -10,9 +10,11 @@ import Login from './Components/Login';
 export default (props) => {
     return (
         <div>
+            <Switch>
         <Route exact path="/login" render={() => props.isUserLoggedIn ? <Redirect to="/dashboard" /> : <Login userLogin={props.userLogin} />} />
-        <Route exact path="/" render={() => props.isUserLoggedIn ? <Redirect to="/dashboard"/> : <Redirect to="/login"/>}/>
         <Route path="/dashboard/:content" render={() => props.isUserLoggedIn ? <Dashboard usersData={props.usersData} userID={props.userID}/> : <Redirect to="/login" />} />
+        <Route path="/" render={() => props.isUserLoggedIn ? <Redirect to="/dashboard/timeline"/> : <Redirect to="/login"/>}/>
+        </Switch>
             </div>
     )
 }

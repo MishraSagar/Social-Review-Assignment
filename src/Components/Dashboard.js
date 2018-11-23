@@ -21,7 +21,7 @@ function Dashboard(props) {
                     <div className="about-container col-sm-8 col-sm-push-4 col-md-9 col-md-push-3">
                         <div className="row">
                             <div className="about-content">
-                                {props.children}
+                                {generateComponent(props)}
                             </div>
                         </div>
                     </div>
@@ -34,6 +34,20 @@ function Dashboard(props) {
         </div>
     </div> 
     );
+}
+
+function generateComponent(props) {
+    switch(props.match.params.content) {
+        case 'timeline': return <Timeline userID={props.userID}/>
+        break;
+        case 'about': return <About userID={props.userID}/>
+        break;
+        case 'photos': return <Photos userID={props.userID}/>
+        break;
+        case 'friends': return <FriendSection userID={props.userID}/>
+        break;
+        //default: props.history.push("/");
+    }
 }
 
 export default withRouter(Dashboard);
