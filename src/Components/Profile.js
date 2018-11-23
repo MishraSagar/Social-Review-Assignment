@@ -1,0 +1,78 @@
+import React from 'react';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { updateFollowing } from "../actions";
+import User from './User';
+import Following from './Following';
+import Friends from './Friends';
+
+class Profile extends React.Component {
+    constructor(props) {
+        super(props);
+        if (localStorage.hasOwnProperty(this.props.userID)) {
+            this.state = {
+                userinfo: JSON.parse(localStorage.getItem(this.props.userID))
+            }
+        }
+        else {
+            this.state = {
+                followings: JSON.parse(localStorage.getItem("followingCount")),
+                userinfo: {
+                    userID: this.props.userID,
+                    profileImage: this.props[this.props.userID].profileImage,
+                    userName: this.props[this.props.userID].userName,
+                    work: this.props[this.props.userID].work,
+                    following: this.props.following,
+                    followers: this.props[this.props.userID].followers,
+                    activities: this.props[this.props.userID].activities,
+                    image: this.props[this.props.userID].profileImage,
+                    whoToFollow: this.props[this.props.userID].whoToFollow,
+                    friends: this.props[this.props.userID].friends,
+                    occupation: this.props[this.props.userID].occupation,
+                    gender: this.props[this.props.userID].gender,
+                    birthdate: this.props[this.props.userID].birthdate,
+                    maritalStatus: this.props[this.props.userID].maritalStatus,
+                    location: this.props[this.props.userID].location,
+                    skills: this.props[this.props.userID].skills,
+                    organization: this.props[this.props.userID].organization,
+                    password: this.props[this.props.userID].password
+                }
+            }
+            localStorage.setItem(this.props.userID, JSON.stringify(this.state.userinfo));
+        }
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.isUserInfoEdited == true) {
+            return ({
+                userinfo: JSON.parse(localStorage.getItem(nextProps.userID))
+            });
+        }
+        else {
+            return prevState;
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <User {...this.state.userinfo} />
+                <Following following={this.state.userinfo.whoToFollow} users={this.props}/>
+                <Friends friends={this.state.userinfo.friends} users={this.props} />
+            </div>
+        );
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        following: state.followings.numberOfFollowing,
+        isUserInfoEdited: state.updateUser.isUpdated
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({follow: updateFollowing}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

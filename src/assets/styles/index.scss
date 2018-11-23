@@ -1,0 +1,557 @@
+$shadow: 1px 1px 3px 1px #c5c5c5;
+$blue-main: #1b8bf9;
+
+body > #root{
+    .navbar, .navbar-default {
+        background-image: none !important;
+        background-color: $blue-main;
+        border: none;
+        .navbar-toggle {
+            color: white;
+            .icon-bar {
+                background-color: white;
+            }
+        }
+
+        .navbar-toggle:hover {
+            background-color: $blue-main;
+        }
+
+        .navbar-toggle:focus {
+            background-color: $blue-main;
+        }
+
+        .navbar-collapse {
+            nav {
+                li {
+                    a {
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: 400;
+            font-size: 28px;
+        }
+    }
+
+    nav {
+        background-color: $blue-main;
+        margin: 0;
+        .logo {
+            img {
+                border-radius: 50%;
+                margin-top: 0;
+                width: 30px;
+            }
+        }
+        .navbar-brand {
+            font-size: 24px;
+        }
+    }
+
+    %profile-header {
+        border-bottom: 1px solid #CCCCCC;
+        color: #747474;
+        font-size: 16px;
+        font-weight: 500;
+        height: 64px;
+        padding: 22px 15px;
+    }
+
+    .main-container {
+        background-color: #e5e5e5;
+        padding-bottom: 100px;
+
+        .profile-heading {
+            font-size: 24px;
+            font-weight: 500;
+            margin: 25px 0;
+        }
+
+        .cover {
+            background-image: url("../images/hero-img.jpg");
+            background-origin: border-box;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-shadow: $shadow;
+            height: 325px;
+            position: relative;
+
+            .menu { 
+                background-color: white;
+                bottom: -70px;
+                box-shadow: $shadow;
+                color: black;
+                height: 70px;
+                position: absolute;
+                right: 0;
+
+                .menu-item {
+                    text-align: center;
+                    font-size: 18px;
+                    padding-top: 20px;
+                    height: 70px;
+                }
+
+                .link {
+                    color: #626461;
+                }
+            }
+        }
+
+        .row {
+            
+            .profile-content {
+                height: 100%;
+                position: relative;
+                top: -200px;
+
+                %share-profile {
+                    border-radius: 5px;
+                    background-color: white;
+                    margin-bottom: 30px;
+                    padding: 15px; 
+                    text-align: center;
+                }
+                
+                .user-info {
+                    @extend %share-profile;
+                    box-shadow: 1px 1px 1px 1px #c5c5c5;
+
+                    img {
+                        width: 100%;
+                    }
+
+                    h4 {
+                        font-weight: 400;
+                        padding-top: 15px;
+                    }
+
+                    p {
+                        font-weight: 400;
+                    }
+
+                    .user-stats {
+                        margin: 30px 0;
+                        width: 100%;
+                        .content {
+                            display: inline-block;
+                            width: 33%;
+                            .main-count {
+                                color: #2b93ff;
+                                font-size: 22px;
+                            }
+                        }
+                    }
+
+                    .add-friend-button {
+                        border: 1px solid #747474;
+                        border-radius: 2px;
+                        color: #747474;
+                        display: inline-block;
+                        margin-bottom: 10px;
+                        padding: 10px;
+                        text-decoration: none;
+                        transition: background-color 0.5s, color 0.5s;
+
+                        &:hover {
+                            background-color: $blue-main;
+                            color: white;
+                        }
+
+                        i {
+                            padding-right: 10px;
+                        }
+                    }
+                }
+
+                .following {
+                    @extend %share-profile;
+                    box-shadow: $shadow;
+                    padding: 0px;
+                    text-align: left;
+                    .following-header {
+                        @extend %profile-header;
+                    }
+
+                    .following-content {
+                        padding: 15px;
+                        .following-info {
+                            margin: 10px 10px;
+                            .following-img {
+                                border-radius: 50%;
+                                display: inline-block;
+                                vertical-align: top;
+                                width: 25%;
+                            }
+
+                            .follower-info {
+                                display: inline-block;
+                                padding: 0 10px;
+                                width: 75%;              
+                                .follower-name {
+                                    font-size: 16px;
+                                }
+                                .follower-work {
+                                    color: #747474;
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .friends-container {
+                    @extend %share-profile;
+                    box-shadow: $shadow;
+                    padding: 0px;
+                    text-align: left;
+                    .following-header {
+                        @extend %profile-header;
+                        .show-friends-button {
+                            background-color: #3198fe;
+                            border-radius: 5px;
+                            color: white;
+                            display: inline-block;
+                            float: right;
+                            font-size: 12px;
+                            padding: 2px 5px;
+                            text-decoration: none;
+                        }
+                    }
+
+                    .friends {
+                        padding: 20px;
+                        img {
+                            border-radius: 50%;
+                            display: inline-block;
+                            margin: 5px 5px;
+                            width: 22%;
+                        }
+                    }
+
+                }
+            }
+
+            .about-container {
+                position: relative;
+                top: 100px;
+                .row {
+                    .about-content {
+                        padding: 15px;
+                        .post-container {
+                            margin-left: 10%;
+                            position: relative;
+                            width: 90%;
+                            &::before {
+                                border: 2px solid #cccccc;
+                                content: '';
+                                height: 100%;
+                                left: -40px;
+                                position: absolute;
+
+                            }
+
+                            .btn-container {
+                                text-align: right;
+                                button {
+                                    margin: 20px 0;
+                                    padding: 5px 25px;
+                                }
+                            }
+
+                            .post {
+                                background-color: white;
+                                border-radius: 5px;
+                                box-shadow: $shadow;
+                                margin-bottom: 40px;     
+                                .post-header {
+                                    border-bottom: 1px solid #CCCCCC;
+                                    padding: 20px;
+                                    position: relative;
+                                    .headline {
+                                        font-size: 16px;
+                                        margin-bottom: 0px;
+                                    }
+                                    
+                                    .timestamp {
+                                        color: grey;
+                                        margin-bottom: 0px;
+                                    }
+
+                                    img {
+                                        display: block;
+                                        left: -58px;
+                                        position: absolute;
+                                        width: 40px;
+                                    }
+                                }
+
+                                .post-footer {
+                                    border-top: 1px solid #CCCCCC;
+                                    padding: 20px;
+                                    .headline {
+                                        font-size: 16px;
+                                    }
+
+                                    .description {
+                                        color: grey;
+                                    }
+
+                                    .title {
+                                        font-weight: 500;
+                                    }
+                                }
+
+                                .button-container {
+                                    border-top: 1px solid #CCCCCC;
+                                    padding: 20px;   
+                                    .button {
+                                        color: grey;
+                                        font-size: 16px;
+                                        padding: 0 10px;
+                                        text-decoration: none;
+                                        &::after {
+                                            content: '|';
+                                            margin-left: 10px;
+                                        }
+
+                                        i {
+                                            padding-right: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .about {
+                            %edit-info-button {
+                                background-color: $blue-main;
+                                border-radius: 5px;
+                                color:white;
+                                display: block;
+                                float: right;
+                                padding: 10px;
+                                &:hover {
+                                    background-color: #0979c5
+                                }
+                            }
+
+                            .basic-info {
+                                background-color: white;
+                                border-radius: 5px;
+                                box-shadow: $shadow;
+                                margin-bottom: 40px;
+                                .header {
+                                    @extend %profile-header;
+                                    i {
+                                        @extend %edit-info-button;
+                                    }
+                                }
+
+                                .content {
+                                    font-size: 16px;
+                                    padding: 20px;
+                                    .row {
+                                        margin: 20px 5px;
+                                        .title {
+                                            font-weight: 500;    
+                                        }
+                                        .value {
+                                            color: grey;
+                                            .form-group {
+                                                margin-bottom: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .photos-container {
+                            background-color: white;
+                            border-radius: 5px;
+                            box-shadow: $shadow;
+                            padding: 20px;
+                            .image {
+                                width: 24%;
+                                
+                            }
+                        }
+
+                        .friends {
+                            .row {
+                                .friend-info {
+                                    background-color: white;
+                                    box-shadow: $shadow;
+                                    margin-bottom: 10px;
+                                    padding: 10px;
+                                    .friend-profile-pic {
+                                        height: 100%;
+                                    }
+
+                                    .friend-content {
+                                        display: inline-block;
+                                        font-size: 12px;
+                                        margin: 15px 0; 
+                                        padding-left: 10px;
+                                        vertical-align: top; 
+                                        width: 50%;
+                                        .friend-name {
+                                            font-size: 16px;
+                                        }
+
+                                        .work {
+                                            color: grey;
+                                        }
+
+                                        .follow-btn {
+                                            background-color: $blue-main;
+                                            border-radius: 5px;
+                                            color: white;
+                                            display: inline-block;
+                                            padding: 5px 15px;
+                                            text-decoration: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .login-form-container {
+        background-color: #3198fe;
+        height: 800px;
+        position: relative;
+        .form-center {
+            background-color: white;
+            border-radius: 15px;
+            left: 50%;
+            padding: 15px;
+            position: absolute;
+            top: 20%;
+            transform: translate(-50%, -30%);
+        }
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px){
+    body > #root{
+        header {
+            height: 40px;
+            .company-name {
+                font-size: 24px;
+                margin-left: 5%;
+            } 
+            .nav-user {
+                font-size: 16px; 
+                padding: 0;
+                img {
+                    border-radius: 50%;
+                    margin-right: 5px;
+                    width: 30px;
+                }
+            }
+        }
+
+        .main-container {
+            .cover {
+                height: 150px;
+                .menu {
+                    bottom: -50px;
+                    height: 50px;
+                    .menu-item {
+                        font-size: 14px;
+                        height: 50px;
+                        padding-top: 15px;
+                    }
+                }
+            }
+
+            .row {
+                .profile-content {
+                    position: relative;
+                    top: 100px;
+                    .following {
+                        .following-content {
+                            .following-info {
+                                .following-img {
+                                    width: 10%;
+                                }
+                            }
+                        }
+                    }
+
+                    .friends-container {
+                        .friends {
+                            img {
+                                width: 15%;
+                            }
+                        }
+                    }
+                }
+
+                .about-container {
+                    top: 80px;
+                    .row {
+                        .about-content {
+                            .about {
+                                .basic-info {
+                                    .content {
+                                        font-size: 14px;
+                                        padding: 10px;
+                                    }
+                                }
+                            }
+
+                            .photos-container {
+                                .photo {
+                                    margin-bottom: 10px;
+                                }
+                            }
+
+                            .post-container {
+                                &::before {
+                                    left: -25px;
+                                }
+                                .post {
+                                    .post-header {
+                                        img {
+                                            left: -44px;
+                                        }
+                                    }
+
+                                    .button-container {
+                                        padding: 3%;
+                                        
+                                        .button {
+                                            font-size: 14px;
+                                            padding: 0 2%px;
+                                            &::after {
+                                                content: '|';
+                                                margin-left: 2%;
+                                            }
+
+                                            i {
+                                                display: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }    
+                }
+            }            
+        }
+    }
+}
