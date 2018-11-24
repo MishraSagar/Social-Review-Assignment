@@ -5,6 +5,7 @@ import { updateFollowing } from "../actions";
 import User from './User';
 import Following from './Following';
 import Friends from './Friends';
+import userinfo from '../JSONs/users';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -19,23 +20,23 @@ class Profile extends React.Component {
                 followings: JSON.parse(localStorage.getItem("followingCount")),
                 userinfo: {
                     userID: this.props.userID,
-                    profileImage: this.props[this.props.userID].profileImage,
-                    userName: this.props[this.props.userID].userName,
-                    work: this.props[this.props.userID].work,
+                    profileImage: userinfo[this.props.userID].profileImage,
+                    userName: userinfo[this.props.userID].userName,
+                    work: userinfo[this.props.userID].work,
                     following: this.props.following,
-                    followers: this.props[this.props.userID].followers,
-                    activities: this.props[this.props.userID].activities,
-                    image: this.props[this.props.userID].profileImage,
-                    whoToFollow: this.props[this.props.userID].whoToFollow,
-                    friends: this.props[this.props.userID].friends,
-                    occupation: this.props[this.props.userID].occupation,
-                    gender: this.props[this.props.userID].gender,
-                    birthdate: this.props[this.props.userID].birthdate,
-                    maritalStatus: this.props[this.props.userID].maritalStatus,
-                    location: this.props[this.props.userID].location,
-                    skills: this.props[this.props.userID].skills,
-                    organization: this.props[this.props.userID].organization,
-                    password: this.props[this.props.userID].password
+                    followers: userinfo[this.props.userID].followers,
+                    activities: userinfo[this.props.userID].activities,
+                    image: userinfo[this.props.userID].profileImage,
+                    whoToFollow: userinfo[this.props.userID].whoToFollow,
+                    friends: userinfo[this.props.userID].friends,
+                    occupation: userinfo[this.props.userID].occupation,
+                    gender: userinfo[this.props.userID].gender,
+                    birthdate: userinfo[this.props.userID].birthdate,
+                    maritalStatus: userinfo[this.props.userID].maritalStatus,
+                    location: userinfo[this.props.userID].location,
+                    skills: userinfo[this.props.userID].skills,
+                    organization: userinfo[this.props.userID].organization,
+                    password: userinfo[this.props.userID].password
                 }
             }
             localStorage.setItem(this.props.userID, JSON.stringify(this.state.userinfo));
@@ -57,8 +58,8 @@ class Profile extends React.Component {
         return (
             <div>
                 <User {...this.state.userinfo} />
-                <Following following={this.state.userinfo.whoToFollow} users={this.props}/>
-                <Friends friends={this.state.userinfo.friends} users={this.props} />
+                <Following following={this.state.userinfo.whoToFollow} />
+                <Friends friends={this.state.userinfo.friends} />
             </div>
         );
     }

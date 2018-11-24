@@ -1,4 +1,5 @@
 import React from 'react';
+import userinfo from '../JSONs/users';
 
 export default function Following(props) {
     let list = [];
@@ -8,8 +9,8 @@ export default function Following(props) {
             <div className="following-info" key={id}>               
                 <img src={require("../assets/images/avatar-1.png")} className="following-img" alt="Image" />
                 <div className="follower-info">
-                    <div className="follower-name">{props.users[id].userName}</div>
-                    <div className="follower-work">{props.users[id].work}</div>
+                    <div className="follower-name">{userinfo[id].userName}</div>
+                    <div className="follower-work">{userinfo[id].work}</div>
                 </div>
             </div>
         );

@@ -27,7 +27,7 @@ function Dashboard(props) {
                     </div>
 
                     <div className="profile-content col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9">
-                        <Profile {...props.usersData} userID={props.userID}/>
+                        <Profile userID={props.userID}/>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@ function generateComponent(props) {
         break;
         case 'friends': return <FriendSection userID={props.userID}/>
         break;
-        //default: props.history.push("/");
+        default: props.history.push("/dashboard/timeline");
     }
 }
 
