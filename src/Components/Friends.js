@@ -1,5 +1,4 @@
 import React from 'react';
-import userinfo from '../JSONs/users';
 
 export default class Friends extends React.Component{
     
@@ -27,16 +26,16 @@ export default class Friends extends React.Component{
     render() {
         let friends = [];
 
-        friends = this.props.friends.map((id, index) => {
+        friends = this.props.friends.map((name, index) => {
             if (this.state.showAll) {
                 return (
-                    <img key={"user" + id} src={require("../assets/images/avatar-1.png")} alt="friend" title={userinfo[id].userName} />
+                    <img key={"user-img" + index} src={require("../assets/images/avatar-1.png")} alt="friend" title={name} />
                 );
             }
             else {
                 if (index < 8) {
                     return (
-                        <img key={"user" + id} src={require("../assets/images/avatar-1.png")} alt="friend" title={userinfo[id].userName} />
+                        <img key={"user-img" + index} src={require("../assets/images/avatar-1.png")} alt="friend" title={name} />
                     );
                 }
             }

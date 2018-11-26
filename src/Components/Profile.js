@@ -54,12 +54,34 @@ class Profile extends React.Component {
         }
     }
 
+    getFollowingInfo = () => {
+        let list = [];
+
+        list = this.state.userinfo.whoToFollow.map((id) => {
+            return ({
+                userName: userinfo[id].userName,
+                work: userinfo[id].work
+            });
+        });
+        return list;
+    }
+
+    getFriendsName = () => {
+        let friends = [];
+
+        friends = this.state.userinfo.friends.map((id, index) => {
+            return userinfo[id].userName;
+        });
+
+        return friends;
+    }
+
     render() {
         return (
             <div>
                 <User {...this.state.userinfo} />
-                <Following following={this.state.userinfo.whoToFollow} />
-                <Friends friends={this.state.userinfo.friends} />
+                <Following whoToFollow={this.getFollowingInfo()} />
+                <Friends friends={this.getFriendsName()} />
             </div>
         );
     }

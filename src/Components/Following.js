@@ -1,16 +1,15 @@
 import React from 'react';
-import userinfo from '../JSONs/users';
 
 export default function Following(props) {
     let list = [];
 
-    list = props.following.map((id) => {
+    list = props.whoToFollow.map((obj, index) => {
         return (
-            <div className="following-info" key={id}>               
+            <div className="following-info" key={"follow-"+index}>               
                 <img src={require("../assets/images/avatar-1.png")} className="following-img" alt="Image" />
                 <div className="follower-info">
-                    <div className="follower-name">{userinfo[id].userName}</div>
-                    <div className="follower-work">{userinfo[id].work}</div>
+                    <div className="follower-name">{obj.userName}</div>
+                    <div className="follower-work">{obj.work}</div>
                 </div>
             </div>
         );
