@@ -26,7 +26,8 @@ class PostForm extends React.Component {
         this.errorStyle = {
             fontWeight: '500',
             color: 'red',
-            fontSize: '12px'
+            fontSize: '12px',
+            height: '14px'
         }
         
         this.validStyle = {
@@ -162,7 +163,9 @@ class PostForm extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             <FormControl.Feedback />
-                            { this.getLengthAndValueValidated(this.state.title, 10) || this.state.title == ''? <div></div> : <div style={this.errorStyle}>Title must have 10 or more characters.</div> }
+                            <div style={this.errorStyle}>
+                            { this.getLengthAndValueValidated(this.state.title, 10) || this.state.title == '' ? '' : 'Title should have 10 or more characters.'}
+                            </div>
                             </FormGroup>
 
                             <FormGroup
@@ -177,7 +180,9 @@ class PostForm extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             <FormControl.Feedback />
-                            { this.isValidUrl || this.state.imageUrl == ''? <div></div> : <div style={this.errorStyle}>Image Url is invalid</div> }
+                            <div style={this.errorStyle}>
+                            { this.isValidUrl || this.state.imageUrl == ''? '' : 'Image Url is invalid'}
+                            </div>
                             </FormGroup>
 
                             <FormGroup
@@ -193,7 +198,9 @@ class PostForm extends React.Component {
                                     componentClass="textarea"
                                 />
                             <FormControl.Feedback />
-                            { this.getLengthAndValueValidated(this.state.description, 20) || this.state.description == ''? <div></div> : <div style={this.errorStyle}>Description must have 20 or more characters.</div> }
+                            <div style={this.errorStyle}>
+                            { this.getLengthAndValueValidated(this.state.description, 20) || this.state.description == ''? '' : 'Description must have 20 or more characters.'}
+                            </div>
                             </FormGroup>
                         </form>
                     </Modal.Body>
