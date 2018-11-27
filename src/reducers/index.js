@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
 function updateProfile(state = {numberOfFollowing: JSON.parse(localStorage.getItem("followingCount"))}, action) {
     switch (action.type) {
@@ -30,7 +31,8 @@ function updateUserInfo(state = {isUpdated: false}, action) {
 const reducer = combineReducers({
     followings: updateProfile,
     posts: updatePosts,
-    updateUser: updateUserInfo
+    updateUser: updateUserInfo,
+    form: formReducer
 });
 
 export default reducer;

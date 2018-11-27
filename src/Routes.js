@@ -6,6 +6,7 @@ import Photos from './Components/Photos';
 import FriendSection from './Components/FriendSection';
 import Dashboard from './Components/Dashboard';
 import Login from './Components/Login';
+import Registration from './Components/Registration';
 
 export default (props) => {
     return (
@@ -13,31 +14,9 @@ export default (props) => {
             <Switch>
         <Route exact path="/login" render={() => props.isUserLoggedIn ? <Redirect to="/dashboard" /> : <Login userLogin={props.userLogin} />} />
         <Route path="/dashboard/:content" render={() => props.isUserLoggedIn ? <Dashboard usersData={props.usersData} userID={props.userID}/> : <Redirect to="/login" />} />
+        <Route path="/registration" component={Registration} />
         <Route path="/" render={() => props.isUserLoggedIn ? <Redirect to="/dashboard/timeline"/> : <Redirect to="/login"/>}/>
         </Switch>
             </div>
     )
 }
-
-
-// export default routes = (
-//     <App>
-//         <Route exact path="/login" render={() => <Login userLogin={this.userLogin} />} />
-//         <Route path="/dashboard" /*render={() => <Redirect to="/profile/timeline"/>}*/ render={() => isUserLoggedIn() ?<Redirect to="/dashboard/timeline" /> : <Redirect to="/login" }>
-//             <Route exact path="/dashboard/timeline" render={() => <Timeline userID={userID}/>} />
-//             <Route exact path="/dashboard/about" render={() => <About userID={userID} /> } />
-//             <Route exact path="/dashboard/photos" render={() => <Photos userID={userID} /> } />
-//             <Route exact path="/dashboard/friends" render={() => <FriendSection userID={userID} /> } />
-//         </Route>
-//     </App>
-// );
-
-
-// function isUserLoggedIn() {
-//     if (localStorage.hasOwnProperty("email")) {
-//         return true;
-//     }
-//     else {
-//         return false;
-//     }
-// }

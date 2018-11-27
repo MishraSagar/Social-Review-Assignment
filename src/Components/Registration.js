@@ -1,0 +1,262 @@
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+
+class Registration extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    renderInputField = (field) => {
+        const { type, meta: { pristine, touched, error}} = field;
+        const className = `col-xs-6 form-group ${touched && error ? 'has-error' : '' }`;
+
+        return (
+            <div className={className}>
+                <label>{field.label}</label>
+                <input type={type} className="form-control" {...field.input}/>
+                <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
+            </div>
+        );
+    }
+
+    FileInput = ({ 
+    input: { value: omitValue, onChange, onBlur, ...inputProps }, 
+    meta: {error, touched}, 
+    ...props 
+    }) => {
+        const className = `col-xs-6 form-group ${error ? 'has-error' : '' }`;
+    return (
+        <div>
+            <input
+            onChange={adaptFileEventToValue(onChange)}
+            onBlur={adaptFileEventToValue(onBlur)}
+            type="file"
+            {...props.input}
+            {...props}
+        />
+        <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
+        </div>
+    );
+    };
+
+    renderSelectField = (field) => {
+        const { meta: { pristine, touched, error}} = field;
+        const className = `col-xs-6 form-group ${touched && error ? 'has-error' : '' }`;
+
+        return (
+            <div className={className}>
+                <label>{field.label}</label>
+                <select {...field.input} className="form-control">
+                    <option value="">------------Select State------------</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Orissa">Orissa</option>
+                    <option value="Pondicherry">Pondicherry</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttaranchal">Uttaranchal</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="West Bengal">West Bengal</option>
+                </select>
+                <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
+            </div>
+        );
+    }
+
+    onSubmit(values) {
+        console.log(values);
+    }
+
+    render() {
+        const { handleSubmit } = this.props;
+        return (
+            <div>
+                <div className="login-form-container container-fluid">
+                    <div style={{textAlign: 'center', color: 'white'}}><h1>Registration</h1></div>
+                    <div className="registration-center col-xs-10 col-sm-9 col-md-6">
+                        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+
+                            <fieldset>
+                                <legend>Basic Information</legend>
+                                <Field label="Username" name="username" component={this.renderInputField} type="text" />
+                                <Field label="Name" name="name" component={this.renderInputField} type="text"
+                                />
+                                <Field label="Email" name="email" component={this.renderInputField} type="email"
+                                />
+                                <Field label="DOB" name="dob" component={this.renderInputField} type="date" />
+
+                                <div className="col-xs-6 form-group">
+                                    <label style={{display: 'block'}}>Gender</label>
+                                    <Field label="Gender" name="gender" component="input" type="radio" value="Male" checked/> <span style={{padding: '10px 25px 10px 5px'}}>  Male </span> 
+                                    <Field label="Gender" name="gender" component="input" type="radio" value="Female"/> <span style={{padding: '10px 25px 10px 5px'}}>  Female </span> 
+                                </div>
+
+                                <div className="form-group col-xs-6">
+                                    <label>Marital Status</label>
+                                    <Field className="form-control" name="maritalStatus" component="select" >
+                                        <option value="Single">Single</option>
+                                        <option value="Married">Married</option>
+                                    </Field>
+                                </div>
+
+                                <Field label="Address" name="address" component={this.renderSelectField} />
+                                <Field label="State" name="state" component={this.renderSelectField} />
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Work</legend>
+                                <div className="form-group col-xs-6">
+                                    <label>Occupation</label>
+                                    <Field className="form-control" name="occupation" component="select" >
+                                        <option>----------Select an occupation----------</option>
+                                        <option value="developer">Developer</option>
+                                        <option value="System Engineer">System Engineer</option>
+                                        <option value="IT specialist">IT specialist</option>
+                                        <option value="QA">QA</option>
+                                        <option value="Architect">Architect</option>
+                                    </Field>
+                                </div>
+                                <Field label="Designation" name="designation" component={this.renderInputField} type="text"/>
+                                <div className="col-xs-12 form-group">
+                                <label className="checkbox-inline">
+                                    <Field name="C" component="input" type="checkbox" /> <span>C</span>
+                                </label>
+                                <label className="checkbox-inline">
+                                    <Field name="C++" component="input" type="checkbox" /> <span>C++</span>
+                                </label>
+                                <label className="checkbox-inline">
+                                    <Field name="Java" component="input" type="checkbox" /> <span>Java</span>
+                                </label>
+                                <label className="checkbox-inline">
+                                    <Field name="Python" component="input" type="checkbox" /> <span>Python</span>
+                                </label>
+                                <label className="checkbox-inline">
+                                    <Field name="Javascript" component="input" type="checkbox" /> <span>Javascript</span>
+                                </label>
+                                </div>
+                                
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Profile Image</legend>
+                                <label>Choose a profile picture:</label>
+                                <Field type="file"
+                                name="image" component={this.FileInput}
+                                />
+                            </fieldset>
+
+                            <div className="col-xs-12 form-group">
+                                <button style={{display: 'block', marginTop: '15px'}} className="btn btn-success" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+function validate(values) {
+    const errors = {};
+
+    if (values.username) {
+        let username = values.username;
+
+        if (!username.match(/^[a-zA-Z0-9\-_]{10,20}$/)) {
+            errors.username = 'Username should be alphanumerica and should have 10 to 20 characters';
+        }
+    }
+    else {
+        errors.username = 'Please enter username';
+    }
+
+    if (!values.gender) {
+        errors.gender = "Please select your gender";
+    }
+
+    if (values.name) {
+        let name = values.name;
+        if (name.length < 5) {
+            errors.name = 'There should be 5 or more characters in your name.';
+        }
+    }
+    else {
+        errors.name = 'Please enter your name';
+    }
+
+    if (values.email) {
+        let email = values.email;
+        if (!email.match(/\S+@\S+\.\S+/)) {
+            errors.email = 'Please enter valid email.';
+        }
+    }
+    else {
+        errors.email = 'Please enter your email';
+    }
+
+    if (values.address) {
+        let address = values.address;
+        if (address.length < 15) {
+            errors.address = 'Address should have 15 or more characters.';
+        }
+    }
+    else {
+        errors.address = 'Please enter your address';
+    }
+
+    if (!values.state) {
+        errors.state = 'Please select your state';
+    }
+
+    if (!values.image) {
+        errors.image = 'Please select your profile image';
+    }
+
+    if (values.dob) {
+        let dateOfBirth = new Date(values.dob);
+        let today = new Date();
+        let years = Math.floor((today.getTime() - dateOfBirth.getTime()) / (1000 * 60 * 60 * 24 * 365));
+        if (years < 18) {
+            errors.dob = 'You are not 18 years old.'
+        }
+    }
+    else {
+        errors.dob = 'Please enter your date of birth';
+    }
+
+    return errors;
+}
+
+const adaptFileEventToValue = delegate => e => delegate(e.target.files[0]);
+
+export default reduxForm({
+    form: 'RegistrationForm',
+    validate
+})(Registration);

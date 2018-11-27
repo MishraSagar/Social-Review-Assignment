@@ -430,9 +430,9 @@ body > #root{
 
     .login-form-container {
         background-color: #3198fe;
-        height: 800px;
+        height: 1000px;
         position: relative;
-        .form-center {
+        %form {
             background-color: white;
             border-radius: 15px;
             left: 50%;
@@ -440,6 +440,15 @@ body > #root{
             position: absolute;
             top: 20%;
             transform: translate(-50%, -30%);
+        }
+
+        .form-center {
+           @extend %form; 
+        }
+
+        .registration-center {
+            @extend %form;
+            transform: translate(-50%, -15%);
         }
     }
 }
