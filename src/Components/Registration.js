@@ -41,49 +41,14 @@ class Registration extends React.Component {
     };
 
     renderSelectField = (field) => {
-        const { meta: { pristine, touched, error}} = field;
+        const { children, meta: { pristine, touched, error}} = field;
         const className = `col-xs-6 form-group ${touched && error ? 'has-error' : '' }`;
 
         return (
             <div className={className}>
                 <label>{field.label}</label>
                 <select {...field.input} className="form-control">
-                    <option value="">------------Select State------------</option>
-                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                    <option value="Andhra Pradesh">Andhra Pradesh</option>
-                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                    <option value="Assam">Assam</option>
-                    <option value="Bihar">Bihar</option>
-                    <option value="Chandigarh">Chandigarh</option>
-                    <option value="Chhattisgarh">Chhattisgarh</option>
-                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-                    <option value="Daman and Diu">Daman and Diu</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Goa">Goa</option>
-                    <option value="Gujarat">Gujarat</option>
-                    <option value="Haryana">Haryana</option>
-                    <option value="Himachal Pradesh">Himachal Pradesh</option>
-                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                    <option value="Jharkhand">Jharkhand</option>
-                    <option value="Karnataka">Karnataka</option>
-                    <option value="Kerala">Kerala</option>
-                    <option value="Lakshadweep">Lakshadweep</option>
-                    <option value="Madhya Pradesh">Madhya Pradesh</option>
-                    <option value="Maharashtra">Maharashtra</option>
-                    <option value="Manipur">Manipur</option>
-                    <option value="Meghalaya">Meghalaya</option>
-                    <option value="Mizoram">Mizoram</option>
-                    <option value="Nagaland">Nagaland</option>
-                    <option value="Orissa">Orissa</option>
-                    <option value="Pondicherry">Pondicherry</option>
-                    <option value="Punjab">Punjab</option>
-                    <option value="Rajasthan">Rajasthan</option>
-                    <option value="Sikkim">Sikkim</option>
-                    <option value="Tamil Nadu">Tamil Nadu</option>
-                    <option value="Tripura">Tripura</option>
-                    <option value="Uttaranchal">Uttaranchal</option>
-                    <option value="Uttar Pradesh">Uttar Pradesh</option>
-                    <option value="West Bengal">West Bengal</option>
+                    {children}
                 </select>
                 <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
             </div>
@@ -118,31 +83,65 @@ class Registration extends React.Component {
                                     <Field label="Gender" name="gender" component="input" type="radio" value="Female"/> <span style={{padding: '10px 25px 10px 5px'}}>  Female </span> 
                                 </div>
 
-                                <div className="form-group col-xs-6">
-                                    <label>Marital Status</label>
-                                    <Field className="form-control" name="maritalStatus" component="select" >
-                                        <option value="Single">Single</option>
-                                        <option value="Married">Married</option>
-                                    </Field>
-                                </div>
+                                <Field label="Marital Status" className="form-control" name="maritalStatus" component={this.renderSelectField}>
+                                    <option value="">------------Select Status-----------</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                </Field>
 
-                                <Field label="Address" name="address" component={this.renderSelectField} />
-                                <Field label="State" name="state" component={this.renderSelectField} />
+                                <Field label="Address" name="address" component={this.renderInputField} type="text"/>
+                                <Field label="State" name="state" component={this.renderSelectField} >
+                                    <option value="">------------Select State------------</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Orissa">Orissa</option>
+                                    <option value="Pondicherry">Pondicherry</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttaranchal">Uttaranchal</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    </Field>
                             </fieldset>
 
                             <fieldset>
                                 <legend>Work</legend>
-                                <div className="form-group col-xs-6">
-                                    <label>Occupation</label>
-                                    <Field className="form-control" name="occupation" component="select" >
-                                        <option>----------Select an occupation----------</option>
+                                    <Field className="form-control" name="occupation" component={this.renderSelectField} >
+                                        <option value="">----------Select an occupation----------</option>
                                         <option value="developer">Developer</option>
                                         <option value="System Engineer">System Engineer</option>
                                         <option value="IT specialist">IT specialist</option>
                                         <option value="QA">QA</option>
                                         <option value="Architect">Architect</option>
                                     </Field>
-                                </div>
+
+
                                 <Field label="Designation" name="designation" component={this.renderInputField} type="text"/>
                                 <div className="col-xs-12 form-group">
                                 <label className="checkbox-inline">
@@ -201,6 +200,10 @@ function validate(values) {
         errors.gender = "Please select your gender";
     }
 
+    if (!values.maritalStatus) {
+        errors.maritalStatus = "Please select your marital status";
+    }
+
     if (values.name) {
         let name = values.name;
         if (name.length < 5) {
@@ -209,6 +212,20 @@ function validate(values) {
     }
     else {
         errors.name = 'Please enter your name';
+    }
+
+    if (!values.occupation) {
+        errors.occupation = "Please select occupation";
+    }
+
+    if (values.designation) {
+        let designation = values.designation;
+        if (designation.length < 10) {
+            errors.designation = "Designation should have 10 or more characters";
+        }
+    }
+    else {
+        errors.designation = "Please enter your designation"
     }
 
     if (values.email) {
