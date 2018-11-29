@@ -217,7 +217,7 @@ function validate(values) {
     }
 
     if (!values.gender) {
-        errors.gender = "Please select your gender";
+        values.gender = "male";
     }
 
     if (!values.maritalStatus) {
@@ -287,7 +287,7 @@ function validate(values) {
     else {
         errors.dob = 'Please enter your date of birth';
     }
-
+    
     return errors;
 }
 
