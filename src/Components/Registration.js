@@ -2,6 +2,7 @@ import React from 'react';
 import DatePicker from "react-datepicker";
 import { Field, reduxForm } from 'redux-form';
 import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment';
 
 class Registration extends React.Component {
 
@@ -65,7 +66,9 @@ class Registration extends React.Component {
         return (
             <div className={className}>
                 <label>{field.label}</label><br/>
-                <DatePicker className="form-control" peekNextMonth showMonthDropdown showYearDropdown dropdownMode="select" {...field.input} dateForm="MM/DD/YYYY" selected={field.input.value ? field.input.value : null} />
+                <DatePicker className="form-control" peekNextMonth showMonthDropdown showYearDropdown dropdownMode="select" {...field.input} dateForm="MM/DD/YYYY" selected={field.input.value ? field.input.value : null} 
+                value = {field.input.value !== ''? moment(field.input.value).format('DD/MM/YYYY') : null} 
+                />
                 <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
             </div>
         );
