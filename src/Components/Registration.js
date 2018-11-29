@@ -11,7 +11,7 @@ class Registration extends React.Component {
 
     renderInputField = (field) => {
         const { type, meta: { pristine, touched, error}} = field;
-        const className = `col-xs-6 form-group ${touched && error ? 'has-error' : '' }`;
+        const className = `col-xs-12 col-sm-6 form-group ${touched && error ? 'has-error' : '' }`;
 
         return (
             <div className={className}>
@@ -27,7 +27,7 @@ class Registration extends React.Component {
     meta: {error, touched}, 
     ...props 
     }) => {
-        const className = `col-xs-6 form-group ${error ? 'has-error' : '' }`;
+        const className = `col-xs-12 col-sm-6 form-group ${error ? 'has-error' : '' }`;
     return (
         <div>
             <input
@@ -45,7 +45,7 @@ class Registration extends React.Component {
 
     renderSelectField = (field) => {
         const { children, meta: { pristine, touched, error}} = field;
-        const className = `col-xs-6 form-group ${touched && error ? 'has-error' : '' }`;
+        const className = `col-xs-12 col-sm-6 form-group ${touched && error ? 'has-error' : '' }`;
 
         return (
             <div className={className}>
@@ -60,7 +60,7 @@ class Registration extends React.Component {
 
     renderDatePicker = (field) => {
         const { meta: { touched, error}} = field;
-        const className = `col-xs-6 form-group ${touched && error ? 'has-error' : '' }`;
+        const className = `col-xs-12 col-sm-6 form-group ${touched && error ? 'has-error' : '' }`;
 
         return (
             <div className={className}>
@@ -94,7 +94,7 @@ class Registration extends React.Component {
                                 <Field label="Date of Birth" name="dob" component={this.renderDatePicker} showYearDropdown={true} />
 
 
-                                <div className="col-xs-6 form-group">
+                                <div className="col-xs-12 col-sm-6 form-group">
                                     <label style={{display: 'block'}}>Gender</label>
                                     <Field label="Gender" name="gender" component="input" type="radio" value="Male" checked/> <span style={{padding: '10px 25px 10px 5px'}}>  Male </span> 
                                     <Field label="Gender" name="gender" component="input" type="radio" value="Female"/> <span style={{padding: '10px 25px 10px 5px'}}>  Female </span> 
