@@ -12,11 +12,11 @@ export default (props) => {
     return (
         <div>
             <Switch>
-        <Route exact path="/login" render={() => props.isUserLoggedIn ? <Redirect to="/dashboard" /> : <Login userLogin={props.userLogin} />} />
-        <Route path="/dashboard/:content" render={() => props.isUserLoggedIn ? <Dashboard usersData={props.usersData} userID={props.userID}/> : <Redirect to="/login" />} />
-        <Route path="/registration" component={Registration} />
-        <Route path="/" render={() => props.isUserLoggedIn ? <Redirect to="/dashboard/timeline"/> : <Redirect to="/login"/>}/>
-        </Switch>
-            </div>
+                <Route exact path="/login" render={() => props.isUserLoggedIn ? <Redirect to="/dashboard" /> : <Login userLogin={props.userLogin} />} />
+                <Route path="/dashboard/:content" render={() => props.isUserLoggedIn ? <Dashboard usersData={props.usersData} userID={props.userID}/> : <Redirect to="/login" />} />
+                <Route path="/registration" render={() => props.isUserLoggedIn ? <Redirect to="/dashboard" /> : <Registration />}/>
+                <Route path="/" render={() => props.isUserLoggedIn ? <Redirect to="/dashboard/timeline"/> : <Redirect to="/login"/>}/>
+            </Switch>
+        </div>
     )
 }

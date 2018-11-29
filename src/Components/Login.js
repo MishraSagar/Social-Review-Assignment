@@ -1,8 +1,9 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import {FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
 import userinfo from '../JSONs/users';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -44,6 +45,10 @@ export default class Login extends React.Component {
             isEmailInvalid: false,
             isPasswordInvalid: false
         });
+    }
+
+    register = () => {
+        this.props.history.push('/registration');
     }
 
     login() {
@@ -105,10 +110,13 @@ export default class Login extends React.Component {
                             { this.state.isPasswordInvalid ? 'Password is invalid' : ''}
                             </div>
                         </FormGroup>
-                        <Button onClick={this.login} bsStyle="success">Login</Button>
+                        <Button onClick={this.login} bsStyle="success">Login</Button><span> </span>
+                        <Button onClick={this.register} bsStyle="primary">Register</Button>
                         </form>
                 </div>
             </div>
         );
     }
 }
+
+export default withRouter(Login);
