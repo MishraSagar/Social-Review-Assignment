@@ -1,5 +1,7 @@
 import React from 'react';
+import DatePicker from "react-datepicker";
 import { Field, reduxForm } from 'redux-form';
+import "react-datepicker/dist/react-datepicker.css";
 
 class Registration extends React.Component {
 
@@ -32,6 +34,7 @@ class Registration extends React.Component {
             onChange={adaptFileEventToValue(onChange)}
             onBlur={adaptFileEventToValue(onBlur)}
             type="file"
+            accept="image/jpg, image/gif, image/png, image/jpeg"
             {...props.input}
             {...props}
         />
@@ -50,6 +53,19 @@ class Registration extends React.Component {
                 <select {...field.input} className="form-control">
                     {children}
                 </select>
+                <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
+            </div>
+        );
+    }
+
+    renderDatePicker = (field) => {
+        const { meta: { touched, error}} = field;
+        const className = `col-xs-6 form-group ${touched && error ? 'has-error' : '' }`;
+
+        return (
+            <div className={className}>
+                <label>{field.label}</label><br/>
+                <DatePicker className="form-control" peekNextMonth showMonthDropdown showYearDropdown dropdownMode="select" {...field.input} dateForm="MM/DD/YYYY" selected={field.input.value ? field.input.value : null} />
                 <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
             </div>
         );
@@ -75,7 +91,8 @@ class Registration extends React.Component {
                                 />
                                 <Field label="Email" name="email" component={this.renderInputField} type="email"
                                 />
-                                <Field label="DOB" name="dob" component={this.renderInputField} type="date" />
+                                <Field label="Date of Birth" name="dob" component={this.renderDatePicker} showYearDropdown={true} />
+
 
                                 <div className="col-xs-6 form-group">
                                     <label style={{display: 'block'}}>Gender</label>
