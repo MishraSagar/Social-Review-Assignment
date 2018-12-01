@@ -13,7 +13,14 @@ class Login extends React.Component {
             isPasswordInvalid: false,
             userLoggedIn: false
         }
-        this.users = userinfo;
+
+        if (localStorage.hasOwnProperty("users")) {
+            this.users = JSON.parse(localStorage.getItem("users"));
+        }
+        else {
+            this.users = userinfo;
+        }
+
         this.handleChange = this.handleChange.bind(this);
         this.login = this.login.bind(this);
         this.getValidationState = this.getValidationState.bind(this);
@@ -53,12 +60,11 @@ class Login extends React.Component {
 
     login() {
         if (this.validateEmail(this.state.email)) {
-            if (userinfo[this.state.email] == undefined) {
+            if (this.users[this.state.email] == undefined) {
                 this.setState({isEmailInvalid: true});
             }
             else {
                 if ( this.users[this.state.email].password == this.state.password) {
-                    localStorage.clear();
                     localStorage.setItem("email", JSON.stringify(this.state.email));
                     this.props.userLogin(this.state.email);
                 }
@@ -74,7 +80,7 @@ class Login extends React.Component {
         return (
             <div className="login-form-container container-fluid">
                 <div className="form-center col-xs-10 col-sm-8 col-md-4">
-                        <form>
+                    <form>
                         <FormGroup
                         controlId="email"
                         validationState={this.getValidationState()}
@@ -112,7 +118,7 @@ class Login extends React.Component {
                         </FormGroup>
                         <Button onClick={this.login} bsStyle="success">Login</Button><span> </span>
                         <Button onClick={this.register} bsStyle="primary">Register</Button>
-                        </form>
+                    </form>
                 </div>
             </div>
         );

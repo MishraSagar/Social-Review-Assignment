@@ -11,11 +11,11 @@ class Timeline extends React.Component {
     constructor(props) {
         super(props);
 
-        if (localStorage.hasOwnProperty('posts-' + this.props.userID)){
+        if (localStorage.hasOwnProperty('posts-' + this.props.userID)) {
             this.posts = JSON.parse(localStorage.getItem('posts-' + this.props.userID));
         }
         else {
-            this.posts = posts[this.props.userID];
+            this.posts = ( posts[this.props.userID] == undefined ) ? [] : posts[this.props.userID];
             localStorage.setItem('posts-' + this.props.userID, JSON.stringify(this.posts));
         }
 

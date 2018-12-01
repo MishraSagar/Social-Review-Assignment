@@ -21,13 +21,20 @@ class Header extends React.Component {
     }
 
     handleClick() {
-        this.props.follow(0);
         this.props.logout();
         this.setState({isLoggedOut: true});
     }
 
     render() {
-        let user = this.props.isUserInfoEdited ? JSON.parse(localStorage.getItem(this.props.userID)) : userinfo[this.props.userID];
+        let users;
+        if (localStorage.hasOwnProperty("users")) {
+            users = JSON.parse(localStorage.getItem("users"));
+        }
+        else {
+            users = userinfo;
+        }
+        
+        let user = this.props.isUserInfoEdited ? JSON.parse(localStorage.getItem(this.props.userID)) : users[this.props.userID];
         return (
                 <Navbar collapseOnSelect={true}>
                     <Navbar.Header>

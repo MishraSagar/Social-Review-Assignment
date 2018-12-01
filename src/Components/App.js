@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Redirect, Switch} from 'react-router-dom';
+import users from '../JSONs/users'
 import Header from './Header';
 import Cover from './Cover';
 import Profile from './Profile';
@@ -20,6 +21,10 @@ class App extends Component {
     }
 
     componentWillMount() {
+        if (localStorage.hasOwnProperty("users") == false) {
+            localStorage.setItem("users", JSON.stringify(users));
+        }
+
         if (localStorage.hasOwnProperty("email")) {
             this.userID = JSON.parse(localStorage.getItem("email"));
             this.setState({
@@ -49,7 +54,6 @@ class App extends Component {
     }
 
     logout() {
-        localStorage.clear();
         this.setState({
             isUserLoggedIn: false
         });

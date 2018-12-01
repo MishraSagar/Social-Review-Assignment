@@ -1,6 +1,7 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
 import { Field, reduxForm } from 'redux-form';
+import { withRouter } from 'react-router-dom';
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
 
@@ -12,7 +13,7 @@ class Registration extends React.Component {
 
     renderInputField = (field) => {
         const { type, meta: { pristine, touched, error}} = field;
-        const className = `col-xs-12 col-sm-6 form-group ${touched && error ? 'has-error' : '' }`;
+        const className = `col-sm-6 form-group ${touched && error ? 'has-error' : '' }`;
 
         return (
             <div className={className}>
@@ -28,7 +29,7 @@ class Registration extends React.Component {
     meta: {error, touched}, 
     ...props 
     }) => {
-        const className = `col-xs-12 col-sm-6 form-group ${error ? 'has-error' : '' }`;
+        const className = `col-sm-6 form-group ${error ? 'has-error' : '' }`;
     return (
         <div>
             <input
@@ -46,7 +47,7 @@ class Registration extends React.Component {
 
     renderSelectField = (field) => {
         const { children, meta: { pristine, touched, error}} = field;
-        const className = `col-xs-12 col-sm-6 form-group ${touched && error ? 'has-error' : '' }`;
+        const className = `col-sm-6 form-group ${touched && error ? 'has-error' : '' }`;
 
         return (
             <div className={className}>
@@ -61,7 +62,7 @@ class Registration extends React.Component {
 
     renderDatePicker = (field) => {
         const { meta: { touched, error}} = field;
-        const className = `col-xs-12 col-sm-6 form-group ${touched && error ? 'has-error' : '' }`;
+        const className = `col-sm-6 form-group ${touched && error ? 'has-error' : '' }`;
 
         return (
             <div className={className}>
@@ -76,6 +77,32 @@ class Registration extends React.Component {
 
     onSubmit(values) {
         console.log(values);
+        let userID = values.email;
+
+        let newUser = {
+            userID: values.email,
+            profileImage: "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+            userName: values.name,
+            work: 'Software Engineer',
+            following: 0,
+            followers: 0,
+            activities: 0,
+            image: "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+            whoToFollow: [],
+            friends: [],
+            occupation: values.occupation,
+            gender: values.gender,
+            birthdate: values.birthdate,
+            maritalStatus: values.maritalStatus,
+            location: values.address,
+            skills: '',
+            organization: 'pheanixcoded',
+            password: '12345'
+        }
+        let users = JSON.parse(localStorage.getItem("users"));
+        users[userID] = newUser;
+        localStorage.setItem("users", JSON.stringify(users));
+        this.props.history.push('/login');
     }
 
     render() {
@@ -85,7 +112,7 @@ class Registration extends React.Component {
                 <div className="login-form-container container-fluid">
                     <div style={{textAlign: 'center', color: 'white'}}><h1>Registration</h1></div>
                     <div className="registration-center col-xs-10 col-sm-9 col-md-6">
-                        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                        <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
 
                             <fieldset>
                                 <legend>Basic Information</legend>
@@ -97,7 +124,7 @@ class Registration extends React.Component {
                                 <Field label="Date of Birth" name="dob" component={this.renderDatePicker} showYearDropdown={true} />
 
 
-                                <div className="col-xs-12 col-sm-6 form-group">
+                                <div className="col-sm-6 form-group">
                                     <label style={{display: 'block'}}>Gender</label>
                                     <Field label="Gender" name="gender" component="input" type="radio" value="Male" checked/> <span style={{padding: '10px 25px 10px 5px'}}>  Male </span> 
                                     <Field label="Gender" name="gender" component="input" type="radio" value="Female"/> <span style={{padding: '10px 25px 10px 5px'}}>  Female </span> 
@@ -293,7 +320,7 @@ function validate(values) {
 
 const adaptFileEventToValue = delegate => e => delegate(e.target.files[0]);
 
-export default reduxForm({
+export default withRouter(reduxForm({
     form: 'RegistrationForm',
     validate
-})(Registration);
+})(Registration));

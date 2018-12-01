@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
-function updateProfile(state = {numberOfFollowing: JSON.parse(localStorage.getItem("followingCount"))}, action) {
+function updateProfile(state = {}, action) {
     switch (action.type) {
         case 'UPDATE_FOLLOWING': return Object.assign({}, state, {
             numberOfFollowing: action.following

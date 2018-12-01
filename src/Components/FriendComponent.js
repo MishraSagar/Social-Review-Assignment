@@ -12,25 +12,31 @@ class FriendComponent extends React.Component {
             name: props.name,
             work: props.work,
             organization: props.organization,
-            isFollowing: (localStorage.hasOwnProperty("following-" + this.props.friendID) ? true : false)
+            isFollowing: (localStorage.hasOwnProperty(this.props.userID+"-following-" + this.props.friendID) ? true : false)
         }
     }
 
     handleClick(e) {
         e.preventDefault();
         if(this.state.isFollowing) {
-            localStorage.removeItem("following-" + this.state.friendID);
-            localStorage.setItem("followingCount", JSON.stringify(this.props.following - 1));
+            localStorage.removeItem(this.props.userID + "-following-" + this.state.friendID);
+            localStorage.setItem(this.props.userID + "followingCount", JSON.stringify(this.props.following - 1));
             this.props.follow(this.props.following - 1);
             this.state.isFollowing = false;
         }
         else {
-            localStorage.setItem("following-" + this.state.friendID, true);
-            localStorage.setItem("followingCount", JSON.stringify(this.props.following + 1));
+            localStorage.setItem(this.props.userID + "-following-" + this.state.friendID, true);
+            localStorage.setItem(this.props.userID + "followingCount", JSON.stringify(this.props.following + 1));
             this.props.follow(this.props.following + 1);
             this.state.isFollowing = true;
         }
     }
+
+    // componentDidMount() {
+    //     if (this.state.isFollowing == true) {
+    //         this.props.follow(this.props.following + 1);
+    //     }
+    // }
 
     render() {
         return (

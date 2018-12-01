@@ -4,14 +4,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { updateFollowing } from "../actions";
 
-function User(props) {
-    let followings = 0;
-    if (localStorage.hasOwnProperty("followingCount")) {   
-        followings = JSON.parse(localStorage.getItem("followingCount"));
-    }
-    else {
-        localStorage.setItem("followingCount", JSON.stringify(followings));
-    }
+export default function User(props) {
+
     return (
         <div className="user-info">           
             <img src={props.image} className="img-responsive" alt="Image" />
@@ -21,8 +15,8 @@ function User(props) {
 
             <div className="user-stats">
                 <div className="content">
-                    <p className="main-count">{followings}</p>
-                    <p>Followings</p>
+                    <p className="main-count">{props.followings}</p>
+                    <p>followings</p>
                 </div>
 
                 <div className="content">
@@ -39,15 +33,3 @@ function User(props) {
         </div>
     );
 }
-
-function mapStateToProps(state) {
-    return {
-        followings: state.followings.numberOfFollowing,
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({follow: updateFollowing}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(User);

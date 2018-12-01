@@ -45,7 +45,7 @@ export default class Friends extends React.Component{
             <div className="friends-container">
                 <div className="following-header">
                     FRIENDS
-                    <a href="" className="show-friends-button" onClick={(e) => this.handleClick(e)}>show {this.state.friendCount - 8} more</a>
+                    { this.props.friends.length <= 8 ? '' : <a href="" className="show-friends-button" onClick={(e) => this.handleClick(e)}>show {this.state.friendCount - 8} more</a>}
                 </div>
                 <div className="friends">
                     {friends}
