@@ -67,7 +67,7 @@ class Registration extends React.Component {
         return (
             <div className={className}>
                 <label>{field.label}</label><br/>
-                <DatePicker className="form-control" peekNextMonth showMonthDropdown showYearDropdown dropdownMode="select" {...field.input} dateForm="MM/DD/YYYY" selected={field.input.value ? field.input.value : null} 
+                <DatePicker className="form-control" peekNextMonth showMonthDropdown showYearDropdown dropdownMode="select" {...field.input} dateForm="DD/MM/YYYY" selected={field.input.value ? field.input.value : null} 
                 value = {field.input.value !== ''? moment(field.input.value).format('DD/MM/YYYY') : null} 
                 />
                 <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
@@ -75,34 +75,72 @@ class Registration extends React.Component {
         );
     }
 
+    setImageData = (values) => {
+        return new Promise(function (resolve, reject) {
+            var fr = new FileReader();
+            fr.onload = () => {
+                localStorage.setItem('user-image-' + values.email, fr.result)
+                resolve("image saved");
+            }
+            fr.readAsDataURL(values.image);
+        });
+    }
+
     onSubmit(values) {
         console.log(values);
+
         let userID = values.email;
+        let checked = [];
+
+        if (values.C == true) {
+            checked[checked.length] = "C";
+        }
+        if (values.C++ == true) {
+            checked[checked.length] = "C++";
+        }
+        if (values.Java == true) {
+            checked[checked.length] = "Java";
+        }
+        if (values.Python == true) {
+            checked[checked.length] = "Python";
+        }
+        if (values.Javascript == true) {
+            checked[checked.length] = "Javascript";
+        }
 
         let newUser = {
             userID: values.email,
-            profileImage: "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+            profileImage: '',
             userName: values.name,
             work: 'Software Engineer',
             following: 0,
             followers: 0,
             activities: 0,
-            image: "https://modeltheme.com/html-templates/cryptic/assets/images/profile-pic.jpg",
+            image: '',
             whoToFollow: [],
             friends: [],
             occupation: values.occupation,
             gender: values.gender,
-            birthdate: values.birthdate,
+            birthdate: this.getDateString(values.dob),
             maritalStatus: values.maritalStatus,
             location: values.address,
-            skills: '',
+            skills: checked.join(', '),
             organization: 'pheanixcoded',
             password: '12345'
         }
-        let users = JSON.parse(localStorage.getItem("users"));
-        users[userID] = newUser;
-        localStorage.setItem("users", JSON.stringify(users));
-        this.props.history.push('/login');
+        this.setImageData(values).then((result) => {
+            let users = JSON.parse(localStorage.getItem("users"));
+            users[userID] = newUser;
+            localStorage.setItem("users", JSON.stringify(users));
+            localStorage.setItem("email", JSON.stringify(values.email));
+            this.props.userLogin(values.email);
+            this.props.history.push('/dashboard/timeline');
+        });
+        
+    }
+
+    getDateString(date) {
+        return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
     }
 
     render() {
@@ -179,7 +217,7 @@ class Registration extends React.Component {
 
                             <fieldset>
                                 <legend>Work</legend>
-                                    <Field className="form-control" name="occupation" component={this.renderSelectField} >
+                                    <Field label="Occupation" className="form-control" name="occupation" component={this.renderSelectField} >
                                         <option value="">----------Select an occupation----------</option>
                                         <option value="developer">Developer</option>
                                         <option value="System Engineer">System Engineer</option>
@@ -191,6 +229,7 @@ class Registration extends React.Component {
 
                                 <Field label="Designation" name="designation" component={this.renderInputField} type="text"/>
                                 <div className="col-xs-12 form-group">
+                                <label>Skills</label><br />
                                 <label className="checkbox-inline">
                                     <Field name="C" component="input" type="checkbox" /> <span>C</span>
                                 </label>

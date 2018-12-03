@@ -57,6 +57,9 @@ class App extends Component {
         this.setState({
             isUserLoggedIn: false
         });
+        localStorage.removeItem('email');
+        localStorage.removeItem(this.userID);
+        localStorage.removeItem('posts-' + this.userID);
     }
 
     login() {

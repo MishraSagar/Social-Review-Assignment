@@ -5,10 +5,10 @@ import { bindActionCreators } from "redux";
 import { updateFollowing } from "../actions";
 
 export default function User(props) {
-
+    let image = props.image == ''? localStorage.getItem('user-image-'+props.userID) : props.image;
     return (
-        <div className="user-info">           
-            <img src={props.image} className="img-responsive" alt="Image" />
+        <div className="user-info">          
+            <img src={image} className="img-responsive" alt="Image" />
             <h4>{props.userName}</h4>
             <p>{props.work}</p>
             <p>{props.occupation}</p>

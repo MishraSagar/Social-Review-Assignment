@@ -48,7 +48,7 @@ class Header extends React.Component {
                         <Nav pullRight>
                             <NavItem >
                                 <div className="logo">
-                                    <img src={user.profileImage} alt="user image"/>
+                                    <img src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/>
                                 </div>
                             </NavItem>
                             <NavItem>
