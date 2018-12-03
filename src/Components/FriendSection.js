@@ -18,7 +18,7 @@ export default function FriendSection(props){
 
         return (
             <div className="col-xs-12 col-md-6 col-lg-6" key={"friend-" + friendID}>
-                <FriendComponent userID={props.userID} friendID={friendID} name={friendInfo.userName} work={friendInfo.work} organization={friendInfo.organization} />
+                <FriendComponent userID={props.userID} friendID={friendID} name={friendInfo.userName} work={friendInfo.work} organization={friendInfo.organization} image={friendInfo.profileImage}/>
             </div>
         );
     });

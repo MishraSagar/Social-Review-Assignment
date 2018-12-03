@@ -22,6 +22,14 @@ export default function Work(props) {
             </div>
             <div className="row">
                 <div className="title col-xs-4">
+                    Designation 
+                </div>
+                <div className="value col-xs-8">
+                    {userinfo.designation}
+                </div>
+            </div>
+            <div className="row">
+                <div className="title col-xs-4">
                     Skills 
                 </div>
                 <div className="value col-xs-8">

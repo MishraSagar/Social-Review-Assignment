@@ -45,7 +45,8 @@ class Profile extends React.Component {
                     location: this.userinfo[this.props.userID].location,
                     skills: this.userinfo[this.props.userID].skills,
                     organization: this.userinfo[this.props.userID].organization,
-                    password: this.userinfo[this.props.userID].password
+                    password: this.userinfo[this.props.userID].password,
+                    designation: this.userinfo[this.props.userID].designation
                 }
             }
             localStorage.setItem(this.props.userID, JSON.stringify(this.state.userinfo));

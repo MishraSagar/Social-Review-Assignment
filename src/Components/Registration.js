@@ -125,8 +125,9 @@ class Registration extends React.Component {
             maritalStatus: values.maritalStatus,
             location: values.address,
             skills: checked.join(', '),
-            organization: 'pheanixcoded',
-            password: '12345'
+            organization: values.organization,
+            password: values.password,
+            designation: values.designation
         }
         this.setImageData(values).then((result) => {
             let users = JSON.parse(localStorage.getItem("users"));
@@ -160,6 +161,10 @@ class Registration extends React.Component {
                                 <Field label="Email" name="email" component={this.renderInputField} type="email"
                                 />
                                 <Field label="Date of Birth" name="dob" component={this.renderDatePicker} showYearDropdown={true} />
+                                <Field label="Password" name="password" component={this.renderInputField} type="password"
+                                />
+                                <Field label="Confirm Password" name="cPassword" component={this.renderInputField} type="password"
+                                />
 
 
                                 <div className="col-sm-6 form-group">
@@ -228,6 +233,7 @@ class Registration extends React.Component {
 
 
                                 <Field label="Designation" name="designation" component={this.renderInputField} type="text"/>
+                                <Field label="Organization" name="organization" component={this.renderInputField} type="text"/>
                                 <div className="col-xs-12 form-group">
                                 <label>Skills</label><br />
                                 <label className="checkbox-inline">
@@ -311,7 +317,34 @@ function validate(values) {
         }
     }
     else {
-        errors.designation = "Please enter your designation"
+        errors.designation = "Please enter your designation";
+    }
+
+    if (!values.organization) {
+        errors.organization = "Please enter organization";
+    }
+
+    if (values.password) {
+        let password = values.password;
+        if (password.length < 8) {
+            errors.password = "Password should be 8 or more characters long"
+        }
+        else if (!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)) {
+            errors.password = "Password should be alphanumeric with atleast one letter, one number and one special character";
+        }
+    }
+    else {
+        errors.password = "Please enter password";
+    }
+
+    if (values.cPassword) {
+        let cPassword = values.cPassword;
+        if (cPassword !== values.password) {
+            errors.cPassword = "Password do not match";
+        }
+    }
+    else {
+        errors.cPassword = "Please confirm password";
     }
 
     if (values.email) {

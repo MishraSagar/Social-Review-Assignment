@@ -42,6 +42,11 @@ class Timeline extends React.Component {
     }
 
     generatePosts() {
+        if (this.posts.length == 0 ) {
+            return (
+                <div className="no-data-block">No Data</div>
+            );
+        }
         let posts = this.posts.map((postObj, index) => {
             return (
                 <Post {...postObj} userID={this.state.userID} key={"post-" + index} />

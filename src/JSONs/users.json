@@ -15,7 +15,8 @@
         "followers": 0,
         "activities": 0,
         "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"],
-        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"]
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"],
+        "designation": "Trainee Developer"
 
     },
     "sample2@gmail.com" : {
@@ -34,7 +35,8 @@
         "followers": 0,
         "activities": 0,
         "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"],
-        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"]
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"],
+        "designation": "Trainee Developer"
     },
     "sample3@gmail.com" : {
         "userName": "John Doe",
@@ -52,7 +54,8 @@
         "followers": 0,
         "activities": 0,
         "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"],
-        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"]
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"],
+        "designation": "Trainee Developer"
     },
     "sample4@gmail.com" : {
         "userName": "Josephin villa",
@@ -70,6 +73,7 @@
         "followers": 0,
         "activities": 0,
         "whoToFollow": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"],
-        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"]
+        "friends": ["sample2@gmail.com","sample3@gmail.com","sample4@gmail.com"],
+        "designation": "Trainee Developer"
     }
 }

@@ -41,7 +41,7 @@ class FriendComponent extends React.Component {
     render() {
         return (
             <div className="friend-info">
-                <img src={require("../assets/images/profile-girl.png")} className="friend-profile-pic" alt="Image" />
+                <img src={this.props.image == ''? localStorage.getItem('user-image-' + this.props.friendID) : this.props.image} className="friend-profile-pic" alt="Image" />
                 <div className="friend-content">
                     <p className="friend-name">{this.state.name}</p>
                     <p className="work">{this.state.work} at {this.state.organization}</p>

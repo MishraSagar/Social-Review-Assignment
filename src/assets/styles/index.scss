@@ -53,6 +53,14 @@ body > #root{
         }
     }
 
+    %no-data-block {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 18px;
+    }
+
     %profile-header {
         border-bottom: 1px solid #CCCCCC;
         color: #747474;
@@ -181,6 +189,11 @@ body > #root{
 
                     .following-content {
                         padding: 15px;
+                        .no-data-block {
+                            @extend %no-data-block;
+                            padding: 5px;
+                        }
+
                         .following-info {
                             margin: 10px 10px;
                             .following-img {
@@ -227,6 +240,11 @@ body > #root{
 
                     .friends {
                         padding: 20px;
+                        .no-data-block {
+                            @extend %no-data-block;
+                            padding: 5px;
+                        }
+
                         img {
                             border-radius: 50%;
                             display: inline-block;
@@ -254,7 +272,10 @@ body > #root{
                                 height: 100%;
                                 left: -40px;
                                 position: absolute;
+                            }
 
+                            .no-data-block {
+                                @extend %no-data-block;
                             }
 
                             .btn-container {
@@ -391,8 +412,10 @@ body > #root{
                                     box-shadow: $shadow;
                                     margin-bottom: 10px;
                                     padding: 10px;
+                                    height: 150px;
                                     .friend-profile-pic {
                                         height: 100%;
+                                        border-radius: 50%;
                                     }
 
                                     .friend-content {
@@ -430,7 +453,7 @@ body > #root{
 
     .login-form-container {
         background-color: #3198fe;
-        height: 1000px;
+        height: 1200px;
         position: relative;
         %form {
             background-color: white;
@@ -583,7 +606,7 @@ body > #root{
             }            
         }
         .login-form-container {
-            height: 1500px;
+            height: 1700px;
         }
     }
 }

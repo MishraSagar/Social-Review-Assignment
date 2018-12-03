@@ -57,6 +57,11 @@ class App extends Component {
         this.setState({
             isUserLoggedIn: false
         });
+        let users = JSON.parse(localStorage.getItem("users"));
+        let user = JSON.parse(localStorage.getItem(this.userID));
+        debugger;
+        users[this.userID] = user;
+        localStorage.setItem("users", JSON.stringify(users));
         localStorage.removeItem('email');
         localStorage.removeItem(this.userID);
         localStorage.removeItem('posts-' + this.userID);

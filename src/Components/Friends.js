@@ -48,7 +48,7 @@ export default class Friends extends React.Component{
                     { this.props.friends.length <= 8 ? '' : <a href="" className="show-friends-button" onClick={(e) => this.handleClick(e)}>show {this.state.friendCount - 8} more</a>}
                 </div>
                 <div className="friends">
-                    {friends}
+                    {this.props.friends.length == 0 ? <div className="no-data-block">No Data</div> : friends}
                 </div>
             </div>
         );

@@ -63,7 +63,9 @@ class BasicInfoForm extends React.Component {
             maritalStatus: this.state.maritalStatus,
             location: this.state.location,
             skills: this.userinfo.skills,
-            organization: this.userinfo.organization
+            organization: this.userinfo.organization,
+            designation: this.userinfo.designation,
+            password: this.userinfo.password
         };
         localStorage.setItem(this.props.userID, JSON.stringify(updatedUser));
         this.props.refreshUserInfo(true);
@@ -99,13 +101,13 @@ class BasicInfoForm extends React.Component {
                         </div>
                         <div className="value col-xs-8">
                             <FormGroup controlId="gender">
-                                <Radio name="gender" value="Male" inline checked={this.state.gender === 'Male'} onChange={this.handleChange} >
+                                <Radio name="gender" value="Male" inline checked={this.state.gender == 'Male'} onChange={this.handleChange} >
                                     Male
                                 </Radio>{' '}
-                                <Radio name="gender" value="Female" inline checked={this.state.gender === 'Female'} onChange={this.handleChange} >
+                                <Radio name="gender" value="Female" inline checked={this.state.gender == 'Female'} onChange={this.handleChange} >
                                     Female
                                 </Radio>{' '}
-                                <Radio name="gender" value="Other" inline checked={this.state.gender === 'Other'} onChange={this.handleChange} >
+                                <Radio name="gender" value="Other" inline checked={this.state.gender == 'Other'} onChange={this.handleChange} >
                                     Other
                                 </Radio>
                             </FormGroup>

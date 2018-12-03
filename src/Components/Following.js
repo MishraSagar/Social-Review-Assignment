@@ -21,7 +21,7 @@ export default function Following(props) {
                 WHO TO FOLLOW
             </div>
             <div className="following-content">
-            {list}
+            {props.whoToFollow.length == 0 ? <div className="no-data-block">No Data</div> : list}
             </div>
         </div>
     );
