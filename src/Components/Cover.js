@@ -6,7 +6,7 @@ export default function Cover(props) {
         <div className="cover">
             <div className="row">
                 <div className="menu col-xs-12 col-sm-8 col-md-9">
-                    <Menu />
+                    <Menu list={['Timeline', 'About', 'Photos', 'Friends']} active='Timeline' parentPath={'/dashboard'}/>
                 </div>
             </div>
         </div>

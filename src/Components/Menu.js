@@ -6,9 +6,10 @@ class Menu extends React.Component {
 
     constructor(props) {
         super(props);
-        this.list = ['Timeline', 'About', 'Photos', 'Friends'];
+        this.list = this.props.list;
+        this.parentPath = this.props.parentPath;
         this.state = {
-            active: 'Timeline'
+            active: this.props.active
         };
         this.handleClick = this.handleClick.bind(this);
     }
@@ -29,12 +30,12 @@ class Menu extends React.Component {
         let menuItems = this.list.map((item, index) => {
             let isActive = false;
 
-            if (this.props.location.pathname == ('/dashboard/'+item.toLowerCase())) {
+            if (this.props.location.pathname == (this.parentPath + '/' + item.toLowerCase())) {
                 isActive = true;
             }
             return (
-                <Link to={'/dashboard/' + item.toLowerCase()} key={item} className="link" onClick={(e) => this.handleClick(e, item)}>
-                        <div className="menu-item col-xs-3" style={isActive || (this.props.location.pathname == '/dashboard' && item == 'Timeline') ? activeStyle : {}}>
+                <Link to={this.parentPath + '/' + item.toLowerCase()} key={item} className="link" onClick={(e) => this.handleClick(e, item)}>
+                        <div className="menu-item col-xs-3" style={isActive || (this.props.location.pathname == this.parentPath && item == this.props.active) ? activeStyle : {}}>
                             {item}
                         </div>
                 </Link>
