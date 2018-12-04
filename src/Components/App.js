@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Redirect, Switch} from 'react-router-dom';
 import users from '../JSONs/users'
 import Header from './Header';
-import Cover from './Cover';
-import Profile from './Profile';
 import Routes from '../Routes';
-import Login from './Login';
 
 class App extends Component {
 
@@ -59,7 +55,6 @@ class App extends Component {
         });
         let users = JSON.parse(localStorage.getItem("users"));
         let user = JSON.parse(localStorage.getItem(this.userID));
-        debugger;
         users[this.userID] = user;
         localStorage.setItem("users", JSON.stringify(users));
         localStorage.removeItem('email');

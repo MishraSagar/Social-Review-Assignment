@@ -1,8 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { updateFollowing } from "../actions";
 
 export default function User(props) {
     let image = props.image == ''? localStorage.getItem('user-image-'+props.userID) : props.image;

@@ -3,7 +3,6 @@ import {Modal, FormGroup, FormControl, Button, ControlLabel, HelpBlock } from 'r
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withRouter, Redirect } from 'react-router-dom';
-import userinfo from '../JSONs/users';
 import { refreshWithNewPost } from '../actions';
 
 class PostForm extends React.Component {
