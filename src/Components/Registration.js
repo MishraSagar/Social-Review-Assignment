@@ -169,8 +169,9 @@ class Registration extends React.Component {
 
                                 <div className="col-sm-6 form-group">
                                     <label style={{display: 'block'}}>Gender</label>
-                                    <Field label="Gender" name="gender" component="input" type="radio" value="Male" checked/> <span style={{padding: '10px 25px 10px 5px'}}>  Male </span> 
-                                    <Field label="Gender" name="gender" component="input" type="radio" value="Female"/> <span style={{padding: '10px 25px 10px 5px'}}>  Female </span> 
+                                    <Field label="Gender" name="gender" component="input" type="radio" value="Male" /> <span style={{padding: '10px 25px 10px 5px'}}>  Male </span> 
+                                    <Field label="Gender" name="gender" component="input" type="radio" value="Female"/> <span style={{padding: '10px 25px 10px 5px'}}>  Female </span>
+                                    <Field label="Gender" name="gender" component="input" type="radio" value="Other"/> <span style={{padding: '10px 25px 10px 5px'}}>  Other </span> 
                                 </div>
 
                                 <Field label="Marital Status" className="form-control" name="maritalStatus" component={this.renderSelectField}>

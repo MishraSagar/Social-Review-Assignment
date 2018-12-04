@@ -10,7 +10,6 @@ export default function User(props) {
         <div className="user-info">          
             <img src={image} className="img-responsive" alt="Image" />
             <h4>{props.userName}</h4>
-            <p>{props.work}</p>
             <p>{props.occupation}</p>
 
             <div className="user-stats">

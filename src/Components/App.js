@@ -38,7 +38,7 @@ class App extends Component {
         }
     }
 
-    componentWillUpdate() {
+    componentDidUpdate() {
         if (this.state.isUserLoggedIn == true) {
             if (localStorage.hasOwnProperty("email")) {
                 this.userID = JSON.parse(localStorage.getItem("email"));

@@ -7,7 +7,7 @@ import { bindActionCreators } from "redux";
 class BasicInfoForm extends React.Component {
     constructor(props) {
         super(props);
-
+        console.log("constructor called");
         if (localStorage.hasOwnProperty(this.props.userID)) {
             this.userinfo = JSON.parse(localStorage.getItem(this.props.userID));
             this.state = {
