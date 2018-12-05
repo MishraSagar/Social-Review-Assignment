@@ -1,123 +1,67 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import {FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
+import { Field, reduxForm } from 'redux-form';
 import userinfo from '../JSONs/users';
 
 class Login extends React.Component {
+
     constructor(props) {
         super(props);
+
         this.state = {
-            email: '',
-            password: '',
-            isEmailInvalid: false,
-            isPasswordInvalid: false,
-            userLoggedIn: false
+            isUserValid: true
         }
-
-        if (localStorage.hasOwnProperty("users")) {
-            this.users = JSON.parse(localStorage.getItem("users"));
-        }
-        else {
-            this.users = userinfo;
-        }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.login = this.login.bind(this);
-        this.getValidationState = this.getValidationState.bind(this);
+        this.users = JSON.parse(localStorage.getItem("users"));
         this.errorStyle = {
-            fontWeight: '500',
-            color: '#a64540',
-            fontSize: '12px',
-            height: '14px'
-        }  
-    }
-
-    validateEmail(email) {
-        return email.match(/\S+@\S+\.\S+/);
-    }
-
-    getValidationState() {
-        if (this.validateEmail(this.state.email)) {
-            return 'success';
-        } else {
-            return (this.state.email == '') ? null : 'error';
+            height: '14px',
+            fontSize: '12px', 
+            color: '#a64540'
         }
     }
+    renderInputField = (field) => {
+        const { type, meta: { pristine, touched, error}} = field;
+        const className = `form-group ${touched && error ? 'has-error' : '' }`;
 
-    handleChange(e) {
-        let target = e.target;
-        let value = target.value;
-        this.setState({
-            [target.id]: value,
-            isEmailInvalid: false,
-            isPasswordInvalid: false
-        });
+        return (
+            <div className={className}>
+                <label>{field.label}</label>
+                <input type={type} className="form-control" {...field.input}/>
+                <div style={this.errorStyle}>{ touched && error ? error : ' ' }</div>
+            </div>
+        );
     }
 
     register = () => {
         this.props.history.push('/registration');
     }
 
-    login() {
-        if (this.validateEmail(this.state.email)) {
-            if (this.users[this.state.email] == undefined) {
-                this.setState({isEmailInvalid: true});
-            }
-            else {
-                if ( this.users[this.state.email].password == this.state.password) {
-                    localStorage.setItem("email", JSON.stringify(this.state.email));
-                    this.props.userLogin(this.state.email);
-                }
-                else {
-                    this.passInputStyle += ".input-error";
-                    this.setState({isPasswordInvalid: true});
-                }
-            }
+    login = (values) => {
+        if (this.users[values.email] == undefined || this.users[values.email].password != values.password) {
+            this.setState({isUserValid: false});
+            return;
         }
+        localStorage.setItem("email", JSON.stringify(values.email));
+        this.props.userLogin(values.email);
     }
 
     render() {
+        const { handleSubmit } = this.props;
+
         return (
             <div className="login-form-container container-fluid">
                 <div className="form-center col-xs-10 col-sm-8 col-md-4">
-                    <form>
-                        <FormGroup
-                        controlId="email"
-                        validationState={this.getValidationState()}
-                        >
-                            <ControlLabel>Email</ControlLabel>
-                            <FormControl
-                                name="email"
-                                type="email"
-                                value={this.state.email}
-                                placeholder="Enter your email"
-                                onChange={this.handleChange}
-                                autoComplete="off"
-                            />
-                            <FormControl.Feedback />
-                            <div style={this.errorStyle}>
-                            { this.state.isEmailInvalid ? 'Email not found' : ''}
-                            { !this.validateEmail(this.state.email) && this.state.email != ''? 'Email is incorrect': ''}
-                            </div>
-                        </FormGroup>
-                        <FormGroup
-                        controlId="password"
-                        >
-                            <ControlLabel>Password</ControlLabel>
-                            <FormControl
-                                name="password"
-                                type="password"
-                                value={this.state.password}
-                                placeholder="Enter your password"
-                                onChange={this.handleChange}
-                            />
-                            <FormControl.Feedback />
-                            <div style={this.errorStyle}>
-                            { this.state.isPasswordInvalid ? 'Password is invalid' : ''}
-                            </div>
-                        </FormGroup>
-                        <Button onClick={this.login} bsStyle="success">Login</Button><span> </span>
-                        <Button onClick={this.register} bsStyle="primary">Register</Button>
+                    <form onSubmit={handleSubmit(this.login)}>
+                        <div style={{ height: '16px', fontSize: '14px', color: '#a64540', textAlign: 'center' }}>{ this.state.isUserValid? ' ' : 'Invalid Email or Password' }</div>
+                        <Field label="Email" name="email" component={this.renderInputField} type="email"
+                                />
+                        <Field label="Password" name="password" component={this.renderInputField} type="password"
+                                />
+                        <div className="col-xs-12 form-group" style={{padding: '0'}}>
+                                <button style={{display: 'block', display: 'inline', marginRight: '10px'}} className="btn btn-success" type="submit">Login</button>
+                                <span>Not yet registered? <Link to="/registration">Register</Link></span>
+                                {/* <button onClick={this.register} style={{display: 'block', marginTop: '15px', display: 'inline'}} className="btn btn-primary">Register</button> */}
+                        </div>
                     </form>
                 </div>
             </div>
@@ -125,4 +69,26 @@ class Login extends React.Component {
     }
 }
 
-export default withRouter(Login);
+function validate(values, props) {
+    const errors = {};
+    if (values.email) {
+        let email = values.email;
+        if (!email.match(/\S+@\S+\.\S+/)) {
+            errors.email = 'Please enter valid email.';
+        }
+    }
+    else {
+        errors.email = 'Please enter your email';
+    }
+
+    if (!values.password) {
+        errors.password = "Please enter password";
+    }
+
+    return errors;
+}
+
+export default withRouter(reduxForm({
+    form: 'LoginForm',
+    validate
+})(Login));

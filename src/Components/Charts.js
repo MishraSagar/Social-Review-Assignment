@@ -22,7 +22,7 @@ function Charts(props) {
                 <div className="row">
                     <div className="about-container">
                         <div className="row">
-                            <div className="about-content">
+                            <div className="about-content col-xs-12">
                                 {generateComponent(props)}
                             </div>
                         </div>

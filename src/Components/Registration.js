@@ -1,5 +1,6 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
+import {Link} from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import "react-datepicker/dist/react-datepicker.css";
@@ -87,7 +88,6 @@ class Registration extends React.Component {
     }
 
     onSubmit(values) {
-        console.log(values);
 
         let userID = values.email;
         let checked = [];
@@ -264,8 +264,9 @@ class Registration extends React.Component {
                                 />
                             </fieldset>
 
-                            <div className="col-xs-12 form-group">
-                                <button style={{display: 'block', marginTop: '15px'}} className="btn btn-success" type="submit">Submit</button>
+                            <div className="form-group">
+                                <button style={{marginRight: '10px'}} className="btn btn-success" type="submit">Register</button><span>Already registered? <Link to="/login" >Login</Link></span>
+
                             </div>
                         </form>
                     </div>

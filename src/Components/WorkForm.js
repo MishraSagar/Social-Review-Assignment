@@ -112,7 +112,7 @@ class WorkForm extends React.Component {
 
                     <div className="row">
                         <div className="title col-xs-4">
-                            designation 
+                            Designation 
                         </div>
                         <div className="value col-xs-8">
                             <FormGroup

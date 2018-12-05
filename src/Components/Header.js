@@ -16,7 +16,7 @@ class Header extends React.Component {
         this.nameStyle = {
             color: 'white',
             fontSize: '18px',
-            paddingRight: '10px'
+            padding: '10px'
         }
     }
 
@@ -48,7 +48,7 @@ class Header extends React.Component {
                         <Nav pullRight>
                             <NavItem >
                                 <div className="logo">
-                                    <img src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/>
+                                    <img style={{marginLeft: '10px'}} src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/>
                                 </div>
                             </NavItem>
                             <NavItem>

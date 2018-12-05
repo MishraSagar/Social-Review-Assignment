@@ -21,6 +21,14 @@ body > #root{
             background-color: $blue-main;
         }
 
+        .navbar-nav {
+            li {
+                a {
+                    padding: 12px 0;
+                }
+            }
+        } 
+
         .navbar-collapse {
             nav {
                 li {
@@ -35,6 +43,7 @@ body > #root{
             color: white;
             font-weight: 400;
             font-size: 28px;
+            padding: 20px;
         }
     }
 
@@ -46,6 +55,7 @@ body > #root{
                 border-radius: 50%;
                 margin-top: 0;
                 width: 30px;
+                padding: 4px 0;
             }
         }
         .navbar-brand {
@@ -519,6 +529,13 @@ body > #root{
               .react-datepicker__day-name, .react-datepicker__day {
                 margin: 0.5rem !important;
               }
+
+              .react-datepicker-wrapper {
+                    width: 100%;
+                    .react-datepicker__input-container {
+                        width: 100%;
+                    }
+                }
         }
     }
 }
@@ -530,15 +547,6 @@ body > #root{
             .company-name {
                 font-size: 24px;
                 margin-left: 5%;
-            } 
-            .nav-user {
-                font-size: 16px; 
-                padding: 0;
-                img {
-                    border-radius: 50%;
-                    margin-right: 5px;
-                    width: 30px;
-                }
             }
         }
 
