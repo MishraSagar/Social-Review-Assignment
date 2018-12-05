@@ -51,12 +51,11 @@ body > #root{
         background-color: $blue-main;
         margin: 0;
         .logo {
-            img {
-                border-radius: 50%;
-                margin-top: 0;
-                width: 30px;
-                padding: 4px 0;
-            }
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            background-position: center;
         }
         .navbar-brand {
             font-size: 24px;

@@ -47,8 +47,8 @@ class Header extends React.Component {
                     <Navbar.Collapse>
                         <Nav pullRight>
                             <NavItem >
-                                <div className="logo">
-                                    <img style={{marginLeft: '10px'}} src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/>
+                                <div style={{marginLeft: '10px', backgroundImage: `url(${user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage })`}} className="logo">
+                                    {/* <img src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/> */}
                                 </div>
                             </NavItem>
                             <NavItem>
