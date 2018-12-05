@@ -43,10 +43,10 @@ class App extends Component {
     }
 
     userLogin(userEmail) {
+        this.userID = userEmail;
         this.setState({
             isUserLoggedIn: true
         });
-        this.userID = userEmail;
     }
 
     logout() {

@@ -18,6 +18,7 @@ class Header extends React.Component {
             fontSize: '18px',
             padding: '10px'
         }
+        console.log("header called");
     }
 
     handleClick() {
@@ -47,8 +48,11 @@ class Header extends React.Component {
                     <Navbar.Collapse>
                         <Nav pullRight>
                             <NavItem >
-                                <div style={{marginLeft: '10px', backgroundImage: `url(${user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage })`}} className="logo">
+                                {/* <div style={{marginLeft: '10px', backgroundImage: `url(${user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage })`}} className="logo"> */}
                                     {/* <img src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/> */}
+                                {/* </div> */}
+                                <div className="logo">
+                                    <img src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/>
                                 </div>
                             </NavItem>
                             <NavItem>

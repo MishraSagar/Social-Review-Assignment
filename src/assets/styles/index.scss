@@ -6,6 +6,8 @@ body > #root{
         background-image: none !important;
         background-color: $blue-main;
         border: none;
+        border-radius: 0;
+        height: 60px;
         .navbar-toggle {
             color: white;
             .icon-bar {
@@ -50,12 +52,21 @@ body > #root{
     nav {
         background-color: $blue-main;
         margin: 0;
+        // .logo {
+        //     border-radius: 50%;
+        //     width: 40px;
+        //     height: 40px;
+        //     background-size: cover;
+        //     background-position: center;
+        // }
         .logo {
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            background-size: cover;
-            background-position: center;
+            display: inline-block;
+            margin-left: 10px;
+            img {
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+            }
         }
         .navbar-brand {
             font-size: 24px;

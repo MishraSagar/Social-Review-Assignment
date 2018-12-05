@@ -132,10 +132,11 @@ class Registration extends React.Component {
         this.setImageData(values).then((result) => {
             let users = JSON.parse(localStorage.getItem("users"));
             users[userID] = newUser;
+            localStorage.setItem(values.email, JSON.stringify(newUser));
             localStorage.setItem("users", JSON.stringify(users));
             localStorage.setItem("email", JSON.stringify(values.email));
             this.props.userLogin(values.email);
-            this.props.history.push('/dashboard/timeline');
+            this.props.history.push('/');
         });
         
     }
