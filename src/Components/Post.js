@@ -20,7 +20,6 @@ export default class Post extends React.Component {
 
         this.users = JSON.parse(localStorage.getItem("users"));
         this.author = this.users[this.props.userID];
-        console.log(this.author);
     }
 
     calculateTime(millis) { 

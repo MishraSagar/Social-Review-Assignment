@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {Navbar, Nav, NavItem, MenuItem} from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { updateFollowing } from "../actions";
@@ -16,15 +16,19 @@ class Header extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.nameStyle = {
             color: 'white',
-            fontSize: '18px',
-            padding: '10px'
+            fontSize: '20px',
+            padding: '10px',
+            display: 'inherit'
         }
-        console.log("header called");
     }
 
     handleClick() {
         this.props.logout();
         this.setState({isLoggedOut: true});
+    }
+
+    handleClickChart = () => {
+        this.props.history.push('/charts');
     }
 
     render() {
@@ -38,7 +42,7 @@ class Header extends React.Component {
         
         let user = this.props.isUserInfoEdited ? JSON.parse(localStorage.getItem(this.props.userID)) : users[this.props.userID];
         return (
-                <Navbar collapseOnSelect={true}>
+                <Navbar collapseOnSelect={true} fluid={true}>
                     <Navbar.Header>
                         <Navbar.Brand>
                         <Link to="/dashboard">Newput</Link>
@@ -57,9 +61,13 @@ class Header extends React.Component {
                                 </div> */}
                             </NavItem>
                             <NavItem>
-                            <span style={this.nameStyle}>{user.userName}</span>
-                            <span> </span>
-                            <i className="fa fa-sign-out" aria-hidden="true" style={this.nameStyle} onClick={this.handleClick}></i>
+                                <span style={this.nameStyle}>{user.userName}</span>
+                            </NavItem>
+                            <NavItem>
+                                <i className="fa fa-pie-chart" style={this.nameStyle} onClick={this.handleClickChart}></i>
+                            </NavItem>
+                            <NavItem>
+                                <i className="fa fa-sign-out" aria-hidden="true" style={this.nameStyle} onClick={this.handleClick}></i>
                             </NavItem>
                         </Nav>
                     </Navbar.Collapse>) : (
@@ -80,4 +88,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({follow: updateFollowing}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
