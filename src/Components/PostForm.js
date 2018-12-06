@@ -112,9 +112,7 @@ class PostForm extends React.Component {
         e.preventDefault();
         if (this.getLengthAndValueValidated(this.state.title, 10) && this.getLengthAndValueValidated(this.state.description, 20) && this.isValidUrl) {
             let newPost = {
-                userID: this.state.userID,
-                authorName: this.author,
-                authorID: this.props.authorID,
+                authorID: this.state.userID,
                 comment: 0,
                 description: this.state.description,
                 likes: 0,

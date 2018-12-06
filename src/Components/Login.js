@@ -50,6 +50,7 @@ class Login extends React.Component {
 
         return (
             <div className="login-form-container container-fluid">
+                <div style={{textAlign: 'center', margin: '50px'}}><h1>Login</h1></div>
                 <div className="form-center col-xs-10 col-sm-8 col-md-4">
                     <form onSubmit={handleSubmit(this.login)}>
                         <div style={{ height: '16px', fontSize: '14px', color: '#a64540', textAlign: 'center' }}>{ this.state.isUserValid? ' ' : 'Invalid Email or Password' }</div>

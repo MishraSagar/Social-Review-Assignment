@@ -58,7 +58,7 @@ class Timeline extends React.Component {
     render() {
         return (
             <div className="post-container">
-                <PostForm userID={this.state.userID} authorID={"sample2@gmail.com"}/>
+                <PostForm userID={this.state.userID}/>
                 {this.generatePosts()}
             </div>
         );

@@ -59,7 +59,6 @@ class App extends Component {
         localStorage.setItem("users", JSON.stringify(users));
         localStorage.removeItem('email');
         localStorage.removeItem(this.userID);
-        localStorage.removeItem('posts-' + this.userID);
     }
 
     login() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {Navbar, Nav, NavItem, MenuItem} from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { updateFollowing } from "../actions";
@@ -40,7 +41,7 @@ class Header extends React.Component {
                 <Navbar collapseOnSelect={true}>
                     <Navbar.Header>
                         <Navbar.Brand>
-                        <a href="#brand">Newput</a>
+                        <Link to="/dashboard">Newput</Link>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>
@@ -48,12 +49,12 @@ class Header extends React.Component {
                     <Navbar.Collapse>
                         <Nav pullRight>
                             <NavItem >
-                                {/* <div style={{marginLeft: '10px', backgroundImage: `url(${user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage })`}} className="logo"> */}
+                                <div style={{marginLeft: '10px', backgroundImage: `url(${user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage })`}} className="logo">
                                     {/* <img src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/> */}
-                                {/* </div> */}
-                                <div className="logo">
-                                    <img src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/>
                                 </div>
+                                {/* <div className="logo">
+                                    <img src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/>
+                                </div> */}
                             </NavItem>
                             <NavItem>
                             <span style={this.nameStyle}>{user.userName}</span>

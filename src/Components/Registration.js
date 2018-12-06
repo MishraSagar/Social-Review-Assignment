@@ -150,7 +150,7 @@ class Registration extends React.Component {
         return (
             <div>
                 <div className="login-form-container container-fluid">
-                    <div style={{textAlign: 'center', color: 'white'}}><h1>Registration</h1></div>
+                    <div style={{textAlign: 'center'}}><h1>Registration</h1></div>
                     <div className="registration-center col-xs-10 col-sm-9 col-md-6">
                         <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
 
