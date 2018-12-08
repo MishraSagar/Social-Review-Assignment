@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function Following(props) {
+export default props => {
     let list = [];
 
     list = props.whoToFollow.map((obj, index) => {
         return (
-            <div className="following-info" key={"follow-"+index}>               
+            <div className="following-info" key={`follow-${index}`}>               
                 <img src={require("../assets/images/avatar-1.png")} className="following-img" alt="Image" />
                 <div className="follower-info">
                     <div className="follower-name">{obj.userName}</div>

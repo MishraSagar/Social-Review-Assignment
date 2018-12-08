@@ -20,7 +20,6 @@ export default class Photos extends React.Component{
         this.handleClose = this.handleClose.bind(this);
         this.generatePicElement = this.generatePicElement.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
-
     }
 
     generatePicElement() {

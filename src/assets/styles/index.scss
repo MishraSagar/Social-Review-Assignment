@@ -505,6 +505,10 @@ body > #root{
     }
 
     .login-form-container {
+        .form-header {
+            text-align: center;
+            margin: 50px;
+        }
         height: 1200px;
         position: relative;
         %form {
@@ -520,6 +524,22 @@ body > #root{
 
         .form-center {
            @extend %form; 
+           form {
+               .invalid-login {
+                   height: 16px;
+                   font-size: 14px;
+                   color: #a64540;
+                   text-align: center
+               }
+
+               .btn-content {
+                   padding: 0;
+                   button {
+                    display: inline;
+                    margin-right: 10px;
+                   }
+               }
+           }
         }
 
         .registration-center {

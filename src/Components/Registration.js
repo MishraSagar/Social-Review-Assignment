@@ -1,9 +1,9 @@
 import React from 'react';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router-dom';
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 
 class Registration extends React.Component {
@@ -13,7 +13,7 @@ class Registration extends React.Component {
     }
 
     renderInputField = (field) => {
-        const { type, meta: { pristine, touched, error}} = field;
+        const { type, meta: { touched, error}} = field;
         const className = `col-sm-6 form-group ${touched && error ? 'has-error' : '' }`;
 
         return (

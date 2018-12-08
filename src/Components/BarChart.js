@@ -9,7 +9,7 @@ ReactFC.fcRoot(FusionCharts, Charts, CandyTheme);
 
 const chartConfigs = {
     type: 'column2d',
-    width: "100%",
+    width: '100%',
     height: 500,
     dataFormat: 'json',
     dataSource: barData,
@@ -17,9 +17,7 @@ const chartConfigs = {
 
 export default (props) => {
     return (
-        <div>
             <ReactFC {...chartConfigs} />
-        </div>
     );
 }
 

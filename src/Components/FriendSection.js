@@ -2,7 +2,7 @@ import React from 'react';
 import FriendComponent from './FriendComponent';
 
 export default function FriendSection(props){
-    let userinfo = JSON.parse(localStorage.getItem("users"));
+    let userinfo = JSON.parse(localStorage.getItem('users'));
     let following = [];
 
     Object.keys(userinfo).map(function(key) {
@@ -11,17 +11,16 @@ export default function FriendSection(props){
         }
     });
 
-
-
     let friendElements = following.map((friendID) => {
         let friendInfo = userinfo[friendID];
 
         return (
-            <div className="col-xs-12 col-md-6 col-lg-6" key={"friend-" + friendID}>
+            <div className="col-xs-12 col-md-6 col-lg-6" key={'friend-' + friendID}>
                 <FriendComponent userID={props.userID} friendID={friendID} name={friendInfo.userName} work={friendInfo.work} organization={friendInfo.organization} image={friendInfo.profileImage}/>
             </div>
         );
     });
+    
     return (
         <div className="friends">
             <div className="row">

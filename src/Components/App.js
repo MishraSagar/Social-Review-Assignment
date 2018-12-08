@@ -17,12 +17,12 @@ class App extends Component {
     }
 
     componentWillMount() {
-        if (localStorage.hasOwnProperty("users") == false) {
-            localStorage.setItem("users", JSON.stringify(users));
+        if (localStorage.hasOwnProperty('users') == false) {
+            localStorage.setItem('users', JSON.stringify(users));
         }
 
-        if (localStorage.hasOwnProperty("email")) {
-            this.userID = JSON.parse(localStorage.getItem("email"));
+        if (localStorage.hasOwnProperty('email')) {
+            this.userID = JSON.parse(localStorage.getItem('email'));
             this.setState({
                 isUserLoggedIn: true
             });
@@ -36,8 +36,8 @@ class App extends Component {
 
     componentDidUpdate() {
         if (this.state.isUserLoggedIn == true) {
-            if (localStorage.hasOwnProperty("email")) {
-                this.userID = JSON.parse(localStorage.getItem("email"));
+            if (localStorage.hasOwnProperty('email')) {
+                this.userID = JSON.parse(localStorage.getItem('email'));
             }
         }
     }
@@ -53,10 +53,10 @@ class App extends Component {
         this.setState({
             isUserLoggedIn: false
         });
-        let users = JSON.parse(localStorage.getItem("users"));
+        let users = JSON.parse(localStorage.getItem('users'));
         let user = JSON.parse(localStorage.getItem(this.userID));
         users[this.userID] = user;
-        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem('users', JSON.stringify(users));
         localStorage.removeItem('email');
         localStorage.removeItem(this.userID);
     }

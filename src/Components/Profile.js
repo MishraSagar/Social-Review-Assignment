@@ -1,7 +1,7 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { updateFollowing } from "../actions";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateFollowing } from '../actions';
 import User from './User';
 import Following from './Following';
 import Friends from './Friends';
@@ -11,8 +11,8 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
 
-        if (localStorage.hasOwnProperty("users")) {
-            this.userinfo = JSON.parse(localStorage.getItem("users"));
+        if (localStorage.hasOwnProperty('users')) {
+            this.userinfo = JSON.parse(localStorage.getItem('users'));
         }
         else {
             this.userinfo = userinfo;
@@ -26,7 +26,7 @@ class Profile extends React.Component {
         else {
 
             this.state = {
-                followings: JSON.parse(localStorage.getItem("followingCount")),
+                followings: JSON.parse(localStorage.getItem('followingCount')),
                 userinfo: {
                     userID: this.props.userID,
                     profileImage: this.userinfo[this.props.userID].profileImage,
@@ -56,8 +56,8 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        if (localStorage.hasOwnProperty(this.props.userID + "followingCount")) {
-            this.props.follow(JSON.parse(localStorage.getItem(this.props.userID + "followingCount")), this.props.userID);
+        if (localStorage.hasOwnProperty(this.props.userID + 'followingCount')) {
+            this.props.follow(JSON.parse(localStorage.getItem(this.props.userID + 'followingCount')), this.props.userID);
         }
         else {
             this.props.follow(0);

@@ -1,13 +1,13 @@
 import React from 'react';
 import {FormGroup, FormControl, Button, Radio } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { refreshUserInfo } from '../actions';
 import { bindActionCreators } from "redux";
+import { refreshUserInfo } from '../actions';
+
 
 class BasicInfoForm extends React.Component {
     constructor(props) {
         super(props);
-        console.log("constructor called");
         if (localStorage.hasOwnProperty(this.props.userID)) {
             this.userinfo = JSON.parse(localStorage.getItem(this.props.userID));
             this.state = {
@@ -19,7 +19,7 @@ class BasicInfoForm extends React.Component {
             }
         }
         else {
-            alert("error");
+            alert('error');
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -96,17 +96,15 @@ class BasicInfoForm extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className="title col-xs-4">
-                            Gender 
-                        </div>
+                        <div className="title col-xs-4">Gender</div>
                         <div className="value col-xs-8">
                             <FormGroup controlId="gender">
                                 <Radio name="gender" value="Male" inline checked={this.state.gender == 'Male'} onChange={this.handleChange} >
                                     Male
-                                </Radio>{' '}
+                                </Radio>&nbsp;&nbsp;
                                 <Radio name="gender" value="Female" inline checked={this.state.gender == 'Female'} onChange={this.handleChange} >
                                     Female
-                                </Radio>{' '}
+                                </Radio>&nbsp;&nbsp;
                                 <Radio name="gender" value="Other" inline checked={this.state.gender == 'Other'} onChange={this.handleChange} >
                                     Other
                                 </Radio>
@@ -115,9 +113,7 @@ class BasicInfoForm extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className="title col-xs-4">
-                            Date of Birth 
-                        </div>
+                        <div className="title col-xs-4">Date of Birth</div>
                         <div className="value col-xs-8">
                             <input type="date" id="birthdate" value={this.state.birthdate} onChange={this.handleChange}/>
                         </div>
@@ -142,15 +138,13 @@ class BasicInfoForm extends React.Component {
                         Location 
                         </div>
                         <div className="value col-xs-8">
-                            <FormGroup
-                                controlId="location"
-                                >
-                                    <FormControl
-                                        type="text"
-                                        value={this.state.location}
-                                        placeholder=""
-                                        onChange={this.handleChange}
-                                    />
+                            <FormGroup controlId="location">
+                                <FormControl
+                                    type="text"
+                                    value={this.state.location}
+                                    placeholder=""
+                                    onChange={this.handleChange}
+                                />
                                 <FormControl.Feedback />
                             </FormGroup>
                         </div>

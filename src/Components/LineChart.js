@@ -9,7 +9,7 @@ ReactFC.fcRoot(FusionCharts, Charts, CandyTheme);
 
 const chartConfigs = {
     type: 'line',
-    width: "100%",
+    width: '100%',
     height: 500,
     dataFormat: 'json',
     dataSource: lineData,

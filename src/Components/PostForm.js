@@ -1,7 +1,7 @@
 import React from 'react';
-import {Modal, FormGroup, FormControl, Button, ControlLabel, HelpBlock } from 'react-bootstrap';
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import {Modal, FormGroup, FormControl, Button, ControlLabel } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { withRouter, Redirect } from 'react-router-dom';
 import { refreshWithNewPost } from '../actions';
 
@@ -15,7 +15,7 @@ class PostForm extends React.Component {
             show: false,
             userID: this.props.userID,
             shouldRefresh: false
-        }
+        };
         this.isValidUrl = false;
         this.isAllInvalid = false;
         this.handleClose = this.handleClose.bind(this);
@@ -27,12 +27,12 @@ class PostForm extends React.Component {
             color: 'red',
             fontSize: '12px',
             height: '14px'
-        }
+        };
         
         this.validStyle = {
             color: '500',
             color: 'green'
-        }
+        };
     }
 
     handleClose() {
@@ -56,24 +56,22 @@ class PostForm extends React.Component {
         let value = target.value;
         
         
-        if (target.id == "title") {
+        if (target.id == 'title') {
             this.setState({
                 title: value
             });
-        }
-        else if (target.id == "image-url") {
+        } else if (target.id == 'image-url') {
             this.setState({
-                imageUrl: e.target.value
+                imageUrl: value
             })
-        }
-        else if (target.id == "description") {
+        } else if (target.id == 'description') {
             this.setState({
                 description: value
             });
         }
     }
 
-    getTitleValidationState(){
+    getTitleValidationState() {
         if (this.state.title == '') {
             return null;
         }
@@ -82,12 +80,11 @@ class PostForm extends React.Component {
         }
     }
 
-    getImageValidationState(){
+    getImageValidationState() {
         if (this.state.imageUrl == '') {
             this.isValidUrl = false;
             return null;
-        }
-        else if (this.state.imageUrl.match(/https:\/\/.+\.(gif|png|jpg|jpeg)$/) != null) {
+        } else if (this.state.imageUrl.match(/https:\/\/.+\.(gif|png|jpg|jpeg)$/) != null) {
             this.isValidUrl = true;
             return 'success';
         }
@@ -95,11 +92,10 @@ class PostForm extends React.Component {
         return 'error';
     }
 
-    getDescriptionValidationState(){
+    getDescriptionValidationState() {
         if (this.state.description == '') {
             return null;
-        }
-        else {
+        } else {
             return (this.getLengthAndValueValidated(this.state.description, 20)) ? 'success' : 'error';
         }
     }
@@ -125,7 +121,7 @@ class PostForm extends React.Component {
             postsArr.unshift(newPost);
             localStorage.setItem('posts-' + this.state.userID, JSON.stringify(postsArr));
             this.props.updatePosts(true);
-            this.props.history.push("/");
+            this.props.history.push('/');
             this.handleClose();
         }
         else {

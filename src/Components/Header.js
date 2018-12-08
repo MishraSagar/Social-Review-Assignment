@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
-import {Navbar, Nav, NavItem, MenuItem} from 'react-bootstrap';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
-import { updateFollowing } from "../actions";
+import { updateFollowing } from '../actions';
 import userinfo from '../JSONs/users';
 
 class Header extends React.Component {
@@ -33,8 +33,8 @@ class Header extends React.Component {
 
     render() {
         let users;
-        if (localStorage.hasOwnProperty("users")) {
-            users = JSON.parse(localStorage.getItem("users"));
+        if (localStorage.hasOwnProperty('users')) {
+            users = JSON.parse(localStorage.getItem('users'));
         }
         else {
             users = userinfo;
@@ -54,11 +54,7 @@ class Header extends React.Component {
                         <Nav pullRight>
                             <NavItem >
                                 <div style={{marginLeft: '10px', backgroundImage: `url(${user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage })`}} className="logo">
-                                    {/* <img src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/> */}
                                 </div>
-                                {/* <div className="logo">
-                                    <img src={user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage } alt="user image"/>
-                                </div> */}
                             </NavItem>
                             <NavItem>
                                 <span style={this.nameStyle}>{user.userName}</span>
@@ -71,7 +67,7 @@ class Header extends React.Component {
                             </NavItem>
                         </Nav>
                     </Navbar.Collapse>) : (
-                    <div></div>
+                    ''
                     )}
                 </Navbar>              
         );

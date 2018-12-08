@@ -9,41 +9,42 @@ export default function Work(props) {
     else {
         alert("error");
     }
+
+    let infoList = [
+        {
+            label: 'Occupation',
+            value: userinfo.occupation
+        },
+        {
+            label: 'Designation',
+            value: userinfo.designation
+        },
+        {
+            label: 'Skills',
+            value: userinfo.skills
+        },
+        {
+            label: 'Jobs',
+            value: userinfo.organization
+        }
+    ];
+
+    let infoElements = infoList.map((obj, index) => {
+        return (
+            <div className="row" key={`info ${obj.label}`}>
+                <div className="title col-xs-4">
+                    {obj.label} 
+                </div>
+                <div className="value col-xs-8">
+                    {obj.value}
+                </div>
+            </div>
+        );
+    });
     
     return (
         <div className="content">
-            <div className="row">
-                <div className="title col-xs-4">
-                    Occupation 
-                </div>
-                <div className="value col-xs-8">
-                    {userinfo.occupation}
-                </div>
-            </div>
-            <div className="row">
-                <div className="title col-xs-4">
-                    Designation 
-                </div>
-                <div className="value col-xs-8">
-                    {userinfo.designation}
-                </div>
-            </div>
-            <div className="row">
-                <div className="title col-xs-4">
-                    Skills 
-                </div>
-                <div className="value col-xs-8">
-                    {userinfo.skills}
-                </div>
-            </div>
-            <div className="row">
-                <div className="title col-xs-4">
-                    Jobs 
-                </div>
-                <div className="value col-xs-8">
-                    {userinfo.organization}
-                </div>
-            </div>
+            {infoElements}
         </div>
     );
 }
