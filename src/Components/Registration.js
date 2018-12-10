@@ -10,6 +10,11 @@ class Registration extends React.Component {
 
     constructor(props) {
         super(props);
+        this.errorStyle = {
+            height: '14px', 
+            fontSize: '12px', 
+            color: '#a64540'
+        }
     }
 
     renderInputField = (field) => {
@@ -20,7 +25,7 @@ class Registration extends React.Component {
             <div className={className}>
                 <label>{field.label}</label>
                 <input type={type} className="form-control" {...field.input}/>
-                <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
+                <div style={this.errorStyle}>{ touched && error ? error : ' ' }</div>
             </div>
         );
     }
@@ -41,7 +46,7 @@ class Registration extends React.Component {
             {...props.input}
             {...props}
         />
-        <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
+        <div style={this.errorStyle}>{ touched && error ? error : ' ' }</div>
         </div>
     );
     };
@@ -56,7 +61,7 @@ class Registration extends React.Component {
                 <select {...field.input} className="form-control">
                     {children}
                 </select>
-                <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
+                <div style={this.errorStyle}>{ touched && error ? error : ' ' }</div>
             </div>
         );
     }
@@ -71,7 +76,7 @@ class Registration extends React.Component {
                 <DatePicker className="form-control" peekNextMonth showMonthDropdown showYearDropdown dropdownMode="select" {...field.input} dateForm="DD/MM/YYYY" selected={field.input.value ? field.input.value : null} 
                 value = {field.input.value !== ''? moment(field.input.value).format('DD/MM/YYYY') : null} 
                 />
-                <div style={{ height: '14px', fontSize: '12px', color: '#a64540' }}>{ touched && error ? error : ' ' }</div>
+                <div style={this.errorStyle}>{ touched && error ? error : ' ' }</div>
             </div>
         );
     }
@@ -150,7 +155,7 @@ class Registration extends React.Component {
         return (
             <div>
                 <div className="login-form-container container-fluid">
-                    <div style={{textAlign: 'center'}}><h1>Registration</h1></div>
+                    <div className="form-header"><h1>Registration</h1></div>
                     <div className="registration-center col-xs-10 col-sm-9 col-md-6">
                         <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
 
@@ -169,7 +174,7 @@ class Registration extends React.Component {
 
 
                                 <div className="col-sm-6 form-group">
-                                    <label style={{display: 'block'}}>Gender</label>
+                                    <label className="gender">Gender</label>
                                     <Field label="Gender" name="gender" component="input" type="radio" value="Male" /> <span style={{padding: '10px 25px 10px 5px'}}>  Male </span> 
                                     <Field label="Gender" name="gender" component="input" type="radio" value="Female"/> <span style={{padding: '10px 25px 10px 5px'}}>  Female </span>
                                     <Field label="Gender" name="gender" component="input" type="radio" value="Other"/> <span style={{padding: '10px 25px 10px 5px'}}>  Other </span> 
@@ -266,7 +271,7 @@ class Registration extends React.Component {
                             </fieldset>
 
                             <div className="form-group">
-                                <button style={{marginRight: '10px'}} className="btn btn-success" type="submit">Register</button><span>Already registered? <Link to="/login" >Login</Link></span>
+                                <button className="btn btn-success submit" type="submit">Register</button><span>Already registered? <Link to="/login" >Login</Link></span>
 
                             </div>
                         </form>

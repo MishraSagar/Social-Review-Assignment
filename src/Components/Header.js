@@ -27,10 +27,6 @@ class Header extends React.Component {
         this.setState({isLoggedOut: true});
     }
 
-    handleClickChart = () => {
-        this.props.history.push('/charts');
-    }
-
     render() {
         let users;
         if (localStorage.hasOwnProperty('users')) {
@@ -57,10 +53,13 @@ class Header extends React.Component {
                                 </div>
                             </NavItem>
                             <NavItem>
-                                <span style={this.nameStyle}>{user.userName}</span>
+                                <span style={this.nameStyle} onClick={() => this.props.history.push('/dashboard/timeline')}>{user.userName}</span>
                             </NavItem>
                             <NavItem>
-                                <i className="fa fa-pie-chart" style={this.nameStyle} onClick={this.handleClickChart}></i>
+                                <i className="fa fa-pie-chart" style={this.nameStyle} onClick={() => this.props.history.push('/charts')}></i>
+                            </NavItem>
+                            <NavItem>
+                                <i className="fa fa-map" aria-hidden="true" style={this.nameStyle} onClick={() => this.props.history.push('/map')}></i>
                             </NavItem>
                             <NavItem>
                                 <i className="fa fa-sign-out" aria-hidden="true" style={this.nameStyle} onClick={this.handleClick}></i>

@@ -544,7 +544,7 @@ body > #root{
 
         .registration-center {
             @extend %form;
-            transform: translate(-50%, -15%);
+            transform: translate(-50%, -10%);
 
             .react-datepicker {
                 font-size: 1.3rem !important;
@@ -571,7 +571,18 @@ body > #root{
                     .react-datepicker__input-container {
                         width: 100%;
                     }
+            }
+
+            .form-group {
+                .gender {
+                    display: block;
                 }
+
+                .submit {
+                    margin-right: 10px;
+                }
+            }
+                
         }
     }
 }
