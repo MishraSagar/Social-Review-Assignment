@@ -11,11 +11,11 @@ class Timeline extends React.Component {
     constructor(props) {
         super(props);
 
-        if (localStorage.hasOwnProperty('posts-' + this.props.userID)){
+        if (localStorage.hasOwnProperty('posts-' + this.props.userID)) {
             this.posts = JSON.parse(localStorage.getItem('posts-' + this.props.userID));
         }
         else {
-            this.posts = posts[this.props.userID];
+            this.posts = ( posts[this.props.userID] == undefined ) ? [] : posts[this.props.userID];
             localStorage.setItem('posts-' + this.props.userID, JSON.stringify(this.posts));
         }
 
@@ -42,6 +42,11 @@ class Timeline extends React.Component {
     }
 
     generatePosts() {
+        if (this.posts.length == 0 ) {
+            return (
+                <div className="no-data-block">No Data</div>
+            );
+        }
         let posts = this.posts.map((postObj, index) => {
             return (
                 <Post {...postObj} userID={this.state.userID} key={"post-" + index} />
@@ -53,7 +58,7 @@ class Timeline extends React.Component {
     render() {
         return (
             <div className="post-container">
-                <PostForm userID={this.state.userID} authorID={"sample2@gmail.com"}/>
+                <PostForm userID={this.state.userID}/>
                 {this.generatePosts()}
             </div>
         );

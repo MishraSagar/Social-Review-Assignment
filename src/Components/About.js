@@ -20,10 +20,10 @@ export default class About extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        if (e.target.id == "info-button") {
+        if (e.target.id == 'info-button') {
             this.setState({isInfoEditClicked : !this.state.isInfoEditClicked});
         }
-        else if (e.target.id == "work-button") {
+        else if (e.target.id == 'work-button') {
             this.setState({isWorkEditClicked : !this.state.isWorkEditClicked});
         }
     }

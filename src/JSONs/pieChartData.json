@@ -1,0 +1,49 @@
+{
+    "chart": {
+      "caption": "Expenditure in three months",
+      "subcaption": "for a total of 88,000",
+      "showvalues": "1",
+      "showpercentintooltip": "0",
+      "numberprefix": "Rs ",
+      "enablemultislicing": "1",
+      "theme": "candy"
+    },
+    "data": [
+      {
+        "label": "Papa",
+        "value": "21000"
+      },
+      {
+        "label": "Mobile",
+        "value": "7500"
+      },
+      {
+        "label": "Rent",
+        "value": "24000"
+      },
+      {
+        "label": "loss",
+        "value": "2000"
+      },
+      {
+        "label": "SM",
+        "value": "8000"
+      },
+      {
+        "label": "BroadBand",
+        "value": "1650"
+      },
+      {
+        "label": "food",
+        "value": "6000"
+      },
+      {
+        "label": "gym",
+        "value": "2100"
+      },
+      {
+        "label": "protein",
+        "value": "7244"
+      }
+    ]
+  }

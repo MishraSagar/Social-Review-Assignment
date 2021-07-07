@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Redirect, Switch} from 'react-router-dom';
+import users from '../JSONs/users'
 import Header from './Header';
-import Cover from './Cover';
-import Profile from './Profile';
 import Routes from '../Routes';
-import Login from './Login';
-import userinfo from '../JSONs/users';
 
 class App extends Component {
 
@@ -21,8 +17,12 @@ class App extends Component {
     }
 
     componentWillMount() {
-        if (localStorage.hasOwnProperty("email")) {
-            this.userID = JSON.parse(localStorage.getItem("email"));
+        if (localStorage.hasOwnProperty('users') == false) {
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        if (localStorage.hasOwnProperty('email')) {
+            this.userID = JSON.parse(localStorage.getItem('email'));
             this.setState({
                 isUserLoggedIn: true
             });
@@ -34,26 +34,31 @@ class App extends Component {
         }
     }
 
-    componentWillUpdate() {
+    componentDidUpdate() {
         if (this.state.isUserLoggedIn == true) {
-            if (localStorage.hasOwnProperty("email")) {
-                this.userID = JSON.parse(localStorage.getItem("email"));
+            if (localStorage.hasOwnProperty('email')) {
+                this.userID = JSON.parse(localStorage.getItem('email'));
             }
         }
     }
 
     userLogin(userEmail) {
+        this.userID = userEmail;
         this.setState({
             isUserLoggedIn: true
         });
-        this.userID = userEmail;
     }
 
     logout() {
-        localStorage.clear();
         this.setState({
             isUserLoggedIn: false
         });
+        let users = JSON.parse(localStorage.getItem('users'));
+        let user = JSON.parse(localStorage.getItem(this.userID));
+        users[this.userID] = user;
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.removeItem('email');
+        localStorage.removeItem(this.userID);
     }
 
     login() {
@@ -67,33 +72,7 @@ class App extends Component {
         return (
             <div>
                 <Header userID={this.userID} logout={this.logout} isLoggedIn={this.state.isUserLoggedIn}/>
-                <Switch>
-                    <Route path="/login" render={() => this.state.isUserLoggedIn ? <Redirect to="/"/> : <Login userLogin={this.userLogin} />} />
-                    <Route path="/" render={() => this.state.isUserLoggedIn ? (<div>
-                    <div className="container-fluid main-container">
-                        <div className="profile-heading">
-                          Social Profile
-                        </div>
-                        <Cover />
-
-                        <div className="main-content">
-                            <div className="row">
-                                <div className="about-container col-sm-8 col-sm-push-4 col-md-9 col-md-push-3">
-                                    <div className="row">
-                                        <div className="about-content">
-                                            <Routes userId={this.userID} isUserLoggedIn={this.state.isUserLoggedIn}/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="profile-content col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9">
-                                    <Profile {...userinfo} userID={this.userID}/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>) : <Redirect from="/" to="/login" />} />
-                </Switch>
+                <Routes userLogin={this.userLogin} isUserLoggedIn={this.state.isUserLoggedIn} login={this.login}  userID={this.userID}/>
             </div>
         );
     }

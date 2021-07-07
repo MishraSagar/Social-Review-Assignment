@@ -13,7 +13,8 @@ class WorkForm extends React.Component {
             this.state = {
                 occupation: this.userinfo.occupation,
                 skills: this.userinfo.skills,
-                organization: this.userinfo.organization
+                organization: this.userinfo.organization,
+                designation: this.userinfo.designation
             }
         }
         else {
@@ -44,6 +45,11 @@ class WorkForm extends React.Component {
                 organization: value
             });
         }
+        else if (target.id == "designation") {
+            this.setState({
+                designation: value
+            });
+        }
     }
 
     handleCancel() {
@@ -68,7 +74,9 @@ class WorkForm extends React.Component {
             maritalStatus: this.userinfo.maritalStatus,
             location: this.userinfo.location,
             skills: this.state.skills,
-            organization: this.state.organization
+            organization: this.state.organization,
+            designation: this.state.designation,
+            password: this.userinfo.password
         };
         localStorage.setItem(this.props.userID, JSON.stringify(updatedUser));
         this.props.refreshUserInfo(true);
@@ -94,6 +102,25 @@ class WorkForm extends React.Component {
                                     <FormControl
                                         type="text"
                                         value={this.state.occupation}
+                                        placeholder=""
+                                        onChange={this.handleChange}
+                                    />
+                                <FormControl.Feedback />
+                            </FormGroup>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="title col-xs-4">
+                            Designation 
+                        </div>
+                        <div className="value col-xs-8">
+                            <FormGroup
+                                controlId="designation"
+                                >
+                                    <FormControl
+                                        type="text"
+                                        value={this.state.designation}
                                         placeholder=""
                                         onChange={this.handleChange}
                                     />

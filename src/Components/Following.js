@@ -1,15 +1,15 @@
 import React from 'react';
 
-export default function Following(props) {
+export default props => {
     let list = [];
 
-    list = props.following.map((id) => {
+    list = props.whoToFollow.map((obj, index) => {
         return (
-            <div className="following-info" key={id}>               
+            <div className="following-info" key={`follow-${index}`}>               
                 <img src={require("../assets/images/avatar-1.png")} className="following-img" alt="Image" />
                 <div className="follower-info">
-                    <div className="follower-name">{props.users[id].userName}</div>
-                    <div className="follower-work">{props.users[id].work}</div>
+                    <div className="follower-name">{obj.userName}</div>
+                    <div className="follower-work">{obj.work}</div>
                 </div>
             </div>
         );
@@ -21,7 +21,7 @@ export default function Following(props) {
                 WHO TO FOLLOW
             </div>
             <div className="following-content">
-            {list}
+            {props.whoToFollow.length == 0 ? <div className="no-data-block">No Data</div> : list}
             </div>
         </div>
     );

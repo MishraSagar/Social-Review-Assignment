@@ -6,11 +6,9 @@ export default class Post extends React.Component {
     constructor(props) {
         super(props);
         this.userinfo = userinfo;
-        this.authorinfo = this.userinfo[this.props.authorID];
         this.state = {
             userID: this.props.userID,
             authorID: this.props.authorID,
-            authorName: this.authorinfo.userName,
             comments: this.props.comment,
             description: this.props.description,
             likes: this.props.likes,
@@ -19,9 +17,12 @@ export default class Post extends React.Component {
             uploadTime: this.props.time,
             image: this.props.image
         }
+
+        this.users = JSON.parse(localStorage.getItem('users'));
+        this.author = this.users[this.props.userID];
     }
 
-    calculateTime(millis){ //will be implemented later.
+    calculateTime(millis) { 
         let date = new Date();
         let diffMilliSeconds = date.getTime() - this.state.uploadTime;
         let seconds = diffMilliSeconds / 1000;
@@ -45,17 +46,19 @@ export default class Post extends React.Component {
             return `${Math.floor(seconds)} seconds ago`
         }
         else {
-            return "Just now";
+            return 'Just now';
         }
     }
 
     render() {
+        let image = this.author.image == ''? localStorage.getItem('user-image-'+this.state.userID) : this.author.profileImage;
         return (
             <div className="post">
                 <div className="post-header">               
-                    <img src={require("../assets/images/avatar-1.png")} className="img-responsive" alt="Image" />
+                    <div style={{backgroundImage: `url(${image})`}} className="logo">
+                                </div>
                     <p className="headline">
-                        {`${this.state.authorName} posted on your timeline`}
+                        {this.state.authorID == this.state.userID ? `${this.author.userName}` : `${this.author.userName} posted on your timeline`}
                     </p>
                     <p className="timestamp">
                      {this.calculateTime(this.state.uploadTime)}
@@ -68,7 +71,7 @@ export default class Post extends React.Component {
 
                 <div className="post-footer">
                     <p className="headline">
-                    {`${this.state.authorName} posted on your timeline`}
+                    {this.state.authorID == this.state.userID ? `${this.author.userName}` : `${this.author.userName} posted on your timeline`}
                     </p>
                     <p className="title">
                         {this.state.title}
@@ -79,9 +82,9 @@ export default class Post extends React.Component {
                 </div>
 
                 <div className="button-container">
-                    <a className="button" href=""><i className="fa fa-heart" aria-hidden="true"></i>Like ({`${this.state.likes}`})</a>
-                    <a className="button" href=""><i className="fa fa-comment-o"></i>Comment ({`${this.state.comments}`})</a>
-                    <a className="button" href=""><i className="fa fa-share-alt"></i>Share ({`${this.state.share}`})</a>
+                    <a className="button" ><i className="fa fa-heart" aria-hidden="true"></i>Like ({`${this.state.likes}`})</a>
+                    <a className="button"><i className="fa fa-comment-o"></i>Comment ({`${this.state.comments}`})</a>
+                    <a className="button"><i className="fa fa-share-alt"></i>Share ({`${this.state.share}`})</a>
                 </div>   
             </div>
         );

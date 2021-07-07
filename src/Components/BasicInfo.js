@@ -9,49 +9,46 @@ export default function BasicInfo(props) {
     else {
         alert("error");
     }
+
+    let infoList = [
+        {
+            label: 'Full Name',
+            value: userinfo.userName
+        },
+        {
+            label: 'Gender',
+            value: userinfo.gender
+        },
+        {
+            label: 'Date of Birth',
+            value: (new Date(userinfo.birthdate)).toDateString()
+        },
+        {
+            label: 'Marital Status',
+            value: userinfo.maritalStatus
+        },
+        {
+            label: 'location',
+            value: userinfo.location
+        }
+    ];
+
+    let infoElements = infoList.map((obj, index) => {
+        return (
+            <div className="row" key={`info ${obj.label}`}>
+                <div className="title col-xs-4">
+                    {obj.label} 
+                </div>
+                <div className="value col-xs-8">
+                    {obj.value}
+                </div>
+            </div>
+        );
+    });
     
     return (
         <div className="content">
-            <div className="row">
-                <div className="title col-xs-4">
-                    Full Name 
-                </div>
-                <div className="value col-xs-8">
-                    {userinfo.userName}
-                </div>
-            </div>
-            <div className="row">
-                <div className="title col-xs-4">
-                    Gender 
-                </div>
-                <div className="value col-xs-8">
-                    {userinfo.gender}
-                </div>
-            </div>
-            <div className="row">
-                <div className="title col-xs-4">
-                    Date of Birth 
-                </div>
-                <div className="value col-xs-8">
-                    {(new Date(userinfo.birthdate)).toDateString()}
-                </div>
-            </div>
-            <div className="row">
-                <div className="title col-xs-4">
-                Marital Status 
-                </div>
-                <div className="value col-xs-8">
-                    {userinfo.maritalStatus}                        
-                </div>
-            </div>
-            <div className="row">
-                <div className="title col-xs-4">
-                Location 
-                </div>
-                <div className="value col-xs-8">
-                    {userinfo.location}
-                </div>
-            </div>
+            {infoElements}
         </div>
     );
 }

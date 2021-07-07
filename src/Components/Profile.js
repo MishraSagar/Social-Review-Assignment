@@ -1,45 +1,68 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { updateFollowing } from "../actions";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateFollowing } from '../actions';
 import User from './User';
 import Following from './Following';
 import Friends from './Friends';
+import userinfo from '../JSONs/users';
 
 class Profile extends React.Component {
     constructor(props) {
         super(props);
+
+        if (localStorage.hasOwnProperty('users')) {
+            this.userinfo = JSON.parse(localStorage.getItem('users'));
+        }
+        else {
+            this.userinfo = userinfo;
+        }
+
         if (localStorage.hasOwnProperty(this.props.userID)) {
             this.state = {
                 userinfo: JSON.parse(localStorage.getItem(this.props.userID))
             }
         }
         else {
+
             this.state = {
-                followings: JSON.parse(localStorage.getItem("followingCount")),
+                followings: JSON.parse(localStorage.getItem('followingCount')),
                 userinfo: {
                     userID: this.props.userID,
-                    profileImage: this.props[this.props.userID].profileImage,
-                    userName: this.props[this.props.userID].userName,
-                    work: this.props[this.props.userID].work,
+                    profileImage: this.userinfo[this.props.userID].profileImage,
+                    userName: this.userinfo[this.props.userID].userName,
+                    work: this.userinfo[this.props.userID].work,
                     following: this.props.following,
-                    followers: this.props[this.props.userID].followers,
-                    activities: this.props[this.props.userID].activities,
-                    image: this.props[this.props.userID].profileImage,
-                    whoToFollow: this.props[this.props.userID].whoToFollow,
-                    friends: this.props[this.props.userID].friends,
-                    occupation: this.props[this.props.userID].occupation,
-                    gender: this.props[this.props.userID].gender,
-                    birthdate: this.props[this.props.userID].birthdate,
-                    maritalStatus: this.props[this.props.userID].maritalStatus,
-                    location: this.props[this.props.userID].location,
-                    skills: this.props[this.props.userID].skills,
-                    organization: this.props[this.props.userID].organization,
-                    password: this.props[this.props.userID].password
+                    followers: this.userinfo[this.props.userID].followers,
+                    activities: this.userinfo[this.props.userID].activities,
+                    image: this.userinfo[this.props.userID].profileImage,
+                    whoToFollow: this.userinfo[this.props.userID].whoToFollow,
+                    friends: this.userinfo[this.props.userID].friends,
+                    occupation: this.userinfo[this.props.userID].occupation,
+                    gender: this.userinfo[this.props.userID].gender,
+                    birthdate: this.userinfo[this.props.userID].birthdate,
+                    maritalStatus: this.userinfo[this.props.userID].maritalStatus,
+                    location: this.userinfo[this.props.userID].location,
+                    skills: this.userinfo[this.props.userID].skills,
+                    organization: this.userinfo[this.props.userID].organization,
+                    password: this.userinfo[this.props.userID].password,
+                    designation: this.userinfo[this.props.userID].designation
                 }
             }
             localStorage.setItem(this.props.userID, JSON.stringify(this.state.userinfo));
         }
+        this.getFollowingInfo = this.getFollowingInfo.bind(this);
+        this.getFriendsName = this.getFriendsName.bind(this);
+    }
+
+    componentDidMount() {
+        if (localStorage.hasOwnProperty(this.props.userID + 'followingCount')) {
+            this.props.follow(JSON.parse(localStorage.getItem(this.props.userID + 'followingCount')), this.props.userID);
+        }
+        else {
+            this.props.follow(0);
+        }
+        
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -53,12 +76,37 @@ class Profile extends React.Component {
         }
     }
 
+    getFollowingInfo() {
+        let list = [];
+
+        list = this.state.userinfo.whoToFollow.map((id) => {
+            return ({
+                userName: this.userinfo[id].userName,
+                work: this.userinfo[id].work
+            });
+        });
+        return list;
+    }
+
+    getFriendsName() {
+        let friends = [];
+
+        friends = this.state.userinfo.friends.map((id, index) => {
+            return this.userinfo[id].userName;
+        });
+
+        return friends;
+    }
+
     render() {
+         
+        let list = this.getFollowingInfo();
+        let friends = this.getFriendsName();
         return (
             <div>
-                <User {...this.state.userinfo} />
-                <Following following={this.state.userinfo.whoToFollow} users={this.props}/>
-                <Friends friends={this.state.userinfo.friends} users={this.props} />
+                <User followings={this.props.following} {...this.state.userinfo} />
+                <Following whoToFollow={list} />
+                <Friends friends={friends} />
             </div>
         );
     }

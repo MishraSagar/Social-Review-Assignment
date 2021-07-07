@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
+import { bindActionCreators } from 'redux';
 import { updateFollowing } from "../actions";
 
 class FriendComponent extends React.Component {
@@ -12,21 +12,21 @@ class FriendComponent extends React.Component {
             name: props.name,
             work: props.work,
             organization: props.organization,
-            isFollowing: (localStorage.hasOwnProperty("following-" + this.props.friendID) ? true : false)
+            isFollowing: (localStorage.hasOwnProperty(this.props.userID + '-following-' + this.props.friendID) ? true : false)
         }
     }
 
     handleClick(e) {
         e.preventDefault();
         if(this.state.isFollowing) {
-            localStorage.removeItem("following-" + this.state.friendID);
-            localStorage.setItem("followingCount", JSON.stringify(this.props.following - 1));
+            localStorage.removeItem(this.props.userID + '-following-' + this.state.friendID);
+            localStorage.setItem(this.props.userID + 'followingCount', JSON.stringify(this.props.following - 1));
             this.props.follow(this.props.following - 1);
             this.state.isFollowing = false;
         }
         else {
-            localStorage.setItem("following-" + this.state.friendID, true);
-            localStorage.setItem("followingCount", JSON.stringify(this.props.following + 1));
+            localStorage.setItem(this.props.userID + '-following-' + this.state.friendID, true);
+            localStorage.setItem(this.props.userID + 'followingCount', JSON.stringify(this.props.following + 1));
             this.props.follow(this.props.following + 1);
             this.state.isFollowing = true;
         }
@@ -35,7 +35,8 @@ class FriendComponent extends React.Component {
     render() {
         return (
             <div className="friend-info">
-                <img src={require("../assets/images/profile-girl.png")} className="friend-profile-pic" alt="Image" />
+                <div className="friend-img" style={{background: `url(${this.props.image == ''? localStorage.getItem('user-image-' + this.props.friendID) : this.props.image})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                </div>
                 <div className="friend-content">
                     <p className="friend-name">{this.state.name}</p>
                     <p className="work">{this.state.work} at {this.state.organization}</p>

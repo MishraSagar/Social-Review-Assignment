@@ -1,9 +1,8 @@
 import React from 'react';
-import {Modal, FormGroup, FormControl, Button, ControlLabel, HelpBlock } from 'react-bootstrap';
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import {Modal, FormGroup, FormControl, Button, ControlLabel } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { withRouter, Redirect } from 'react-router-dom';
-import userinfo from '../JSONs/users';
 import { refreshWithNewPost } from '../actions';
 
 class PostForm extends React.Component {
@@ -16,7 +15,7 @@ class PostForm extends React.Component {
             show: false,
             userID: this.props.userID,
             shouldRefresh: false
-        }
+        };
         this.isValidUrl = false;
         this.isAllInvalid = false;
         this.handleClose = this.handleClose.bind(this);
@@ -26,13 +25,14 @@ class PostForm extends React.Component {
         this.errorStyle = {
             fontWeight: '500',
             color: 'red',
-            fontSize: '12px'
-        }
+            fontSize: '12px',
+            height: '14px'
+        };
         
         this.validStyle = {
             color: '500',
             color: 'green'
-        }
+        };
     }
 
     handleClose() {
@@ -56,24 +56,22 @@ class PostForm extends React.Component {
         let value = target.value;
         
         
-        if (target.id == "title") {
+        if (target.id == 'title') {
             this.setState({
                 title: value
             });
-        }
-        else if (target.id == "image-url") {
+        } else if (target.id == 'image-url') {
             this.setState({
-                imageUrl: e.target.value
+                imageUrl: value
             })
-        }
-        else if (target.id == "description") {
+        } else if (target.id == 'description') {
             this.setState({
                 description: value
             });
         }
     }
 
-    getTitleValidationState(){
+    getTitleValidationState() {
         if (this.state.title == '') {
             return null;
         }
@@ -82,12 +80,11 @@ class PostForm extends React.Component {
         }
     }
 
-    getImageValidationState(){
+    getImageValidationState() {
         if (this.state.imageUrl == '') {
             this.isValidUrl = false;
             return null;
-        }
-        else if (this.state.imageUrl.match(/https:\/\/.+\.(gif|png|jpg|jpeg)$/) != null) {
+        } else if (this.state.imageUrl.match(/https:\/\/.+\.(gif|png|jpg|jpeg)$/) != null) {
             this.isValidUrl = true;
             return 'success';
         }
@@ -95,11 +92,10 @@ class PostForm extends React.Component {
         return 'error';
     }
 
-    getDescriptionValidationState(){
+    getDescriptionValidationState() {
         if (this.state.description == '') {
             return null;
-        }
-        else {
+        } else {
             return (this.getLengthAndValueValidated(this.state.description, 20)) ? 'success' : 'error';
         }
     }
@@ -112,9 +108,7 @@ class PostForm extends React.Component {
         e.preventDefault();
         if (this.getLengthAndValueValidated(this.state.title, 10) && this.getLengthAndValueValidated(this.state.description, 20) && this.isValidUrl) {
             let newPost = {
-                userID: this.state.userID,
-                authorName: this.author,
-                authorID: this.props.authorID,
+                authorID: this.state.userID,
                 comment: 0,
                 description: this.state.description,
                 likes: 0,
@@ -127,7 +121,7 @@ class PostForm extends React.Component {
             postsArr.unshift(newPost);
             localStorage.setItem('posts-' + this.state.userID, JSON.stringify(postsArr));
             this.props.updatePosts(true);
-            this.props.history.push("/");
+            this.props.history.push('/');
             this.handleClose();
         }
         else {
@@ -162,7 +156,9 @@ class PostForm extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             <FormControl.Feedback />
-                            { this.getLengthAndValueValidated(this.state.title, 10) || this.state.title == ''? <div></div> : <div style={this.errorStyle}>Title must have 10 or more characters.</div> }
+                            <div style={this.errorStyle}>
+                            { this.getLengthAndValueValidated(this.state.title, 10) || this.state.title == '' ? '' : 'Title should have 10 or more characters.'}
+                            </div>
                             </FormGroup>
 
                             <FormGroup
@@ -177,7 +173,9 @@ class PostForm extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             <FormControl.Feedback />
-                            { this.isValidUrl || this.state.imageUrl == ''? <div></div> : <div style={this.errorStyle}>Image Url is invalid</div> }
+                            <div style={this.errorStyle}>
+                            { this.isValidUrl || this.state.imageUrl == ''? '' : 'Image Url is invalid'}
+                            </div>
                             </FormGroup>
 
                             <FormGroup
@@ -193,7 +191,9 @@ class PostForm extends React.Component {
                                     componentClass="textarea"
                                 />
                             <FormControl.Feedback />
-                            { this.getLengthAndValueValidated(this.state.description, 20) || this.state.description == ''? <div></div> : <div style={this.errorStyle}>Description must have 20 or more characters.</div> }
+                            <div style={this.errorStyle}>
+                            { this.getLengthAndValueValidated(this.state.description, 20) || this.state.description == ''? '' : 'Description must have 20 or more characters.'}
+                            </div>
                             </FormGroup>
                         </form>
                     </Modal.Body>

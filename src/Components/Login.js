@@ -1,114 +1,92 @@
 import React from 'react';
-import {FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
-import userinfo from '../JSONs/users';
+import {withRouter, Link} from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
+
     constructor(props) {
         super(props);
+
         this.state = {
-            email: '',
-            password: '',
-            isEmailInvalid: false,
-            isPasswordInvalid: false,
-            userLoggedIn: false
+            isUserValid: true
         }
-        this.users = userinfo;
-        this.handleChange = this.handleChange.bind(this);
-        this.login = this.login.bind(this);
-        this.getValidationState = this.getValidationState.bind(this);
+        this.users = JSON.parse(localStorage.getItem('users'));
         this.errorStyle = {
-            fontWeight: '500',
-            color: '#a64540',
-            fontSize: '12px',
-            height: '14px'
-        }  
-    }
-
-    validateEmail(email) {
-        return email.match(/\S+@\S+\.\S+/);
-    }
-
-    getValidationState() {
-        if (this.validateEmail(this.state.email)) {
-            return 'success';
-        } else {
-            return (this.state.email == '') ? null : 'error';
+            height: '14px',
+            fontSize: '12px', 
+            color: '#a64540'
         }
     }
+    renderInputField = (field) => {
+        const { type, meta: { touched, error}} = field;
+        const className = `form-group ${touched && error ? 'has-error' : '' }`;
 
-    handleChange(e) {
-        let target = e.target;
-        let value = target.value;
-        this.setState({
-            [target.id]: value,
-            isEmailInvalid: false,
-            isPasswordInvalid: false
-        });
+        return (
+            <div className={className}>
+                <label>{field.label}</label>
+                <input type={type} className="form-control" {...field.input}/>
+                <div style={this.errorStyle}>{ touched && error ? error : ' ' }</div>
+            </div>
+        );
     }
 
-    login() {
-        if (this.validateEmail(this.state.email)) {
-            if (userinfo[this.state.email] == undefined) {
-                this.setState({isEmailInvalid: true});
-            }
-            else {
-                if ( this.users[this.state.email].password == this.state.password) {
-                    localStorage.clear();
-                    localStorage.setItem("email", JSON.stringify(this.state.email));
-                    this.props.userLogin(this.state.email);
-                }
-                else {
-                    this.passInputStyle += ".input-error";
-                    this.setState({isPasswordInvalid: true});
-                }
-            }
+    register = () => {
+        this.props.history.push('/registration');
+    }
+
+    login = (values) => {
+        if (this.users[values.email] == undefined || this.users[values.email].password != values.password) {
+            this.setState({isUserValid: false});
+            return;
         }
+        localStorage.setItem('email', JSON.stringify(values.email));
+        this.props.userLogin(values.email);
     }
 
     render() {
+        const { handleSubmit } = this.props;
+
         return (
             <div className="login-form-container container-fluid">
+                <div className="form-header"><h1>Login</h1></div>
                 <div className="form-center col-xs-10 col-sm-8 col-md-4">
-                        <form>
-                        <FormGroup
-                        controlId="email"
-                        validationState={this.getValidationState()}
-                        >
-                            <ControlLabel>Email</ControlLabel>
-                            <FormControl
-                                name="email"
-                                type="email"
-                                value={this.state.email}
-                                placeholder="Enter your email"
-                                onChange={this.handleChange}
-                                autoComplete="off"
-                            />
-                            <FormControl.Feedback />
-                            <div style={this.errorStyle}>
-                            { this.state.isEmailInvalid ? 'Email not found' : ''}
-                            { !this.validateEmail(this.state.email) && this.state.email != ''? 'Email is incorrect': ''}
-                            </div>
-                        </FormGroup>
-                        <FormGroup
-                        controlId="password"
-                        >
-                            <ControlLabel>Password</ControlLabel>
-                            <FormControl
-                                name="password"
-                                type="password"
-                                value={this.state.password}
-                                placeholder="Enter your password"
-                                onChange={this.handleChange}
-                            />
-                            <FormControl.Feedback />
-                            <div style={this.errorStyle}>
-                            { this.state.isPasswordInvalid ? 'Password is invalid' : ''}
-                            </div>
-                        </FormGroup>
-                        <Button onClick={this.login} bsStyle="success">Login</Button>
-                        </form>
+                    <form onSubmit={handleSubmit(this.login)}>
+                        <div className="invalid-login">
+                            { this.state.isUserValid? ' ' : 'Invalid Email or Password' }
+                        </div>
+                        <Field label="Email" name="email" component={this.renderInputField} type="email"/>
+                        <Field label="Password" name="password" component={this.renderInputField} type="password"/>
+                        <div className="col-xs-12 form-group btn-content">
+                            <button className="btn btn-success" type="submit">Login</button>
+                            <span>Not yet registered? <Link to="/registration">Register</Link></span>
+                        </div>
+                    </form>
                 </div>
             </div>
         );
     }
 }
+
+function validate(values) {
+    const errors = {};
+    if (values.email) {
+        let email = values.email;
+        if (!email.match(/\S+@\S+\.\S+/)) {
+            errors.email = 'Please enter valid email.';
+        }
+    }
+    else {
+        errors.email = 'Please enter your email';
+    }
+
+    if (!values.password) {
+        errors.password = 'Please enter password';
+    }
+
+    return errors;
+}
+
+export default withRouter(reduxForm({
+    form: 'LoginForm',
+    validate
+})(Login));

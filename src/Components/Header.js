@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Navbar, Nav, NavItem, MenuItem} from 'react-bootstrap';
+import {Link, withRouter} from 'react-router-dom';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
-import { updateFollowing } from "../actions";
+import { updateFollowing } from '../actions';
 import userinfo from '../JSONs/users';
 
 class Header extends React.Component {
@@ -15,24 +16,32 @@ class Header extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.nameStyle = {
             color: 'white',
-            fontSize: '18px',
-            paddingRight: '10px'
+            fontSize: '20px',
+            padding: '10px',
+            display: 'inherit'
         }
     }
 
     handleClick() {
-        this.props.follow(0);
         this.props.logout();
         this.setState({isLoggedOut: true});
     }
 
     render() {
-        let user = this.props.isUserInfoEdited ? JSON.parse(localStorage.getItem(this.props.userID)) : userinfo[this.props.userID];
+        let users;
+        if (localStorage.hasOwnProperty('users')) {
+            users = JSON.parse(localStorage.getItem('users'));
+        }
+        else {
+            users = userinfo;
+        }
+        
+        let user = this.props.isUserInfoEdited ? JSON.parse(localStorage.getItem(this.props.userID)) : users[this.props.userID];
         return (
-                <Navbar collapseOnSelect={true}>
+                <Navbar collapseOnSelect={true} fluid={true}>
                     <Navbar.Header>
                         <Navbar.Brand>
-                        <a href="#brand">Newput</a>
+                        <Link to="/dashboard">Newput</Link>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>
@@ -40,18 +49,24 @@ class Header extends React.Component {
                     <Navbar.Collapse>
                         <Nav pullRight>
                             <NavItem >
-                                <div className="logo">
-                                    <img src={user.profileImage} alt="user image"/>
+                                <div style={{marginLeft: '10px', backgroundImage: `url(${user.profileImage == ''? localStorage.getItem('user-image-'+this.props.userID) : user.profileImage })`}} className="logo">
                                 </div>
                             </NavItem>
                             <NavItem>
-                            <span style={this.nameStyle}>{user.userName}</span>
-                            <span> </span>
-                            <i className="fa fa-sign-out" aria-hidden="true" style={this.nameStyle} onClick={this.handleClick}></i>
+                                <span style={this.nameStyle} onClick={() => this.props.history.push('/dashboard/timeline')}>{user.userName}</span>
+                            </NavItem>
+                            <NavItem>
+                                <i className="fa fa-pie-chart" style={this.nameStyle} onClick={() => this.props.history.push('/charts')}></i>
+                            </NavItem>
+                            <NavItem>
+                                <i className="fa fa-map" aria-hidden="true" style={this.nameStyle} onClick={() => this.props.history.push('/map')}></i>
+                            </NavItem>
+                            <NavItem>
+                                <i className="fa fa-sign-out" aria-hidden="true" style={this.nameStyle} onClick={this.handleClick}></i>
                             </NavItem>
                         </Nav>
                     </Navbar.Collapse>) : (
-                    <div></div>
+                    ''
                     )}
                 </Navbar>              
         );
@@ -68,4 +83,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({follow: updateFollowing}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

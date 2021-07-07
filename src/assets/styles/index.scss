@@ -6,6 +6,7 @@ body > #root{
         background-image: none !important;
         background-color: $blue-main;
         border: none;
+        border-radius: 0;
         .navbar-toggle {
             color: white;
             .icon-bar {
@@ -21,6 +22,14 @@ body > #root{
             background-color: $blue-main;
         }
 
+        .navbar-nav {
+            li {
+                a {
+                    padding: 10px 0;
+                }
+            }
+        } 
+
         .navbar-collapse {
             nav {
                 li {
@@ -35,6 +44,8 @@ body > #root{
             color: white;
             font-weight: 400;
             font-size: 28px;
+            padding: 20px;
+            height: 60px;
         }
     }
 
@@ -42,15 +53,29 @@ body > #root{
         background-color: $blue-main;
         margin: 0;
         .logo {
-            img {
-                border-radius: 50%;
-                margin-top: 0;
-                width: 30px;
-            }
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            background-position: center;
         }
-        .navbar-brand {
-            font-size: 24px;
-        }
+        // .logo {
+        //     display: inline-block;
+        //     margin-left: 10px;
+        //     img {
+        //         border-radius: 50%;
+        //         width: 40px;
+        //         height: 40px;
+        //     }
+        // }
+    }
+
+    %no-data-block {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 18px;
     }
 
     %profile-header {
@@ -60,6 +85,33 @@ body > #root{
         font-weight: 500;
         height: 64px;
         padding: 22px 15px;
+    }
+
+    .charts-container {
+        background-color: #e5e5e5;
+
+        .cover {
+            .menu { 
+                background-color: white;
+                box-shadow: $shadow;
+                color: black;
+                height: 70px;
+                right: 0;
+                margin-bottom: 20px;
+                width: 100%;
+
+                .menu-item {
+                    text-align: center;
+                    font-size: 18px;
+                    padding-top: 20px;
+                    height: 70px;
+                }
+
+                .link {
+                    color: #626461;
+                }
+            }
+        }
     }
 
     .main-container {
@@ -181,6 +233,11 @@ body > #root{
 
                     .following-content {
                         padding: 15px;
+                        .no-data-block {
+                            @extend %no-data-block;
+                            padding: 5px;
+                        }
+
                         .following-info {
                             margin: 10px 10px;
                             .following-img {
@@ -227,6 +284,11 @@ body > #root{
 
                     .friends {
                         padding: 20px;
+                        .no-data-block {
+                            @extend %no-data-block;
+                            padding: 5px;
+                        }
+
                         img {
                             border-radius: 50%;
                             display: inline-block;
@@ -254,7 +316,10 @@ body > #root{
                                 height: 100%;
                                 left: -40px;
                                 position: absolute;
+                            }
 
+                            .no-data-block {
+                                @extend %no-data-block;
                             }
 
                             .btn-container {
@@ -284,11 +349,15 @@ body > #root{
                                         margin-bottom: 0px;
                                     }
 
-                                    img {
+                                    .logo {
                                         display: block;
                                         left: -58px;
                                         position: absolute;
                                         width: 40px;
+                                        height: 40px;
+                                        background-position: center;
+                                        background-size: cover;
+                                        border-radius: 50%;
                                     }
                                 }
 
@@ -391,8 +460,15 @@ body > #root{
                                     box-shadow: $shadow;
                                     margin-bottom: 10px;
                                     padding: 10px;
-                                    .friend-profile-pic {
-                                        height: 100%;
+                                    height: 150px;
+
+                                    .friend-img {
+                                        display: inline-block;
+                                        height: 130px;
+                                        width: 130px;
+                                        background-size: cover;
+                                        background-position: center;
+                                        border-radius: 50%;
                                     }
 
                                     .friend-content {
@@ -401,7 +477,7 @@ body > #root{
                                         margin: 15px 0; 
                                         padding-left: 10px;
                                         vertical-align: top; 
-                                        width: 50%;
+                                        width: 60%;
                                         .friend-name {
                                             font-size: 16px;
                                         }
@@ -429,37 +505,111 @@ body > #root{
     }
 
     .login-form-container {
-        background-color: #3198fe;
-        height: 800px;
+        .form-header {
+            text-align: center;
+            margin: 50px;
+        }
+        height: 1200px;
         position: relative;
-        .form-center {
+        %form {
             background-color: white;
-            border-radius: 15px;
+            border-radius: 10px;
             left: 50%;
             padding: 15px;
             position: absolute;
             top: 20%;
             transform: translate(-50%, -30%);
+            box-shadow: 2px 2px 15px #0979c5;
+        }
+
+        .form-center {
+           @extend %form; 
+           form {
+               .invalid-login {
+                   height: 16px;
+                   font-size: 14px;
+                   color: #a64540;
+                   text-align: center
+               }
+
+               .btn-content {
+                   padding: 0;
+                   button {
+                    display: inline;
+                    margin-right: 10px;
+                   }
+               }
+           }
+        }
+
+        .registration-center {
+            @extend %form;
+            transform: translate(-50%, -10%);
+
+            .react-datepicker {
+                font-size: 1.3rem !important;
+              }
+              
+              .react-datepicker__current-month {
+                font-size: 1.5rem !important;
+              }
+              
+              .react-datepicker__header {
+                padding-top: 6px !important;
+              }
+              
+              .react-datepicker__navigation {
+                top: 13px !important;
+              }
+              
+              .react-datepicker__day-name, .react-datepicker__day {
+                margin: 0.5rem !important;
+              }
+
+              .react-datepicker-wrapper {
+                    width: 100%;
+                    .react-datepicker__input-container {
+                        width: 100%;
+                    }
+            }
+
+            .form-group {
+                .gender {
+                    display: block;
+                }
+
+                .submit {
+                    margin-right: 10px;
+                }
+            }
+                
         }
     }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px){
     body > #root{
+
+        .navbar, .navbar-default {
+            .navbar-nav {
+                li {
+                    a {
+                        padding: 0;
+                    }
+                }
+            }
+
+            .navbar-brand {
+                padding: 15px;
+                height: 50px;
+            }
+        } 
+
         header {
             height: 40px;
             .company-name {
                 font-size: 24px;
                 margin-left: 5%;
-            } 
-            .nav-user {
-                font-size: 16px; 
-                padding: 0;
-                img {
-                    border-radius: 50%;
-                    margin-right: 5px;
-                    width: 30px;
-                }
             }
         }
 
@@ -513,6 +663,24 @@ body > #root{
                                 }
                             }
 
+                            .friends {
+                                .row {
+                                    .friend-info {
+                                        height: 125px;
+                                        .friend-img {
+                                            height: 100px;
+                                            width: 100px;
+                                        }
+                                        .friend-content {
+                                            margin: 5px 0;
+                                            .friend-name {
+                                                margin-bottom: 5px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
                             .photos-container {
                                 .photo {
                                     margin-bottom: 10px;
@@ -525,8 +693,8 @@ body > #root{
                                 }
                                 .post {
                                     .post-header {
-                                        img {
-                                            left: -44px;
+                                            .logo {
+                                                left: -44px;
                                         }
                                     }
 
@@ -552,6 +720,9 @@ body > #root{
                     }    
                 }
             }            
+        }
+        .login-form-container {
+            height: 1700px;
         }
     }
 }
